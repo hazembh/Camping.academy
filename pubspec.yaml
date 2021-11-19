@@ -69,6 +69,8 @@ flutter:
     - assets/mo8amer.png
     - assets/mostakchef.png
     - assets/ra7ala.png
+    - assets/google.png
+    - assets/facebook.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
