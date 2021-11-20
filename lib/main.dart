@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Interfaces/Menu/menu.dart';
 import 'function_class/navigation bar.dart';
 import 'home.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      home: Navigationbar(),
+      home: Navigationbar()
     );
   }
 }

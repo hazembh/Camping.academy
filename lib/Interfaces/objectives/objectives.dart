@@ -10,6 +10,8 @@ class Objectives extends StatefulWidget {
 class _ObjectivesState extends State<Objectives> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Center(
+      child: Text("objectives"),
+    );
   }
 }
