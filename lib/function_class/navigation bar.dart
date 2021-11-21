@@ -1,6 +1,7 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Interfaces/Menu/membre_scout.dart';
 import 'package:flutter_application_1/Interfaces/Menu/menu.dart';
 import 'package:flutter_application_1/Interfaces/Profile.dart';
 import 'package:flutter_application_1/Interfaces/friends.dart';
@@ -34,6 +35,8 @@ class _NavigationbarState extends State<Navigationbar> {
           TabItem(icon: Icons.supervised_user_circle, title: 'User'),
           TabItem(icon: Icons.message, title: 'Message'),
           TabItem(icon: Icons.check, title: 'Objectives'),
+
+
         ],
         initialActiveIndex:selectedPage,//optional, default as 0
         onTap: (int index ){
@@ -41,10 +44,6 @@ class _NavigationbarState extends State<Navigationbar> {
             selectedPage = index;
           });
         },
-
-
-
-
       ),
     );
 

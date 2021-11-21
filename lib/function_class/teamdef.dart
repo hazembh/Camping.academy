@@ -5,7 +5,7 @@ Widget Teamdef(
   return Column(
     children: [
       SizedBox(
-        height: 20,
+        height: 32,
       ),
       Row(
         children: [
@@ -15,7 +15,8 @@ Widget Teamdef(
           ClipOval(
             child: Image.asset(
               path,
-              width: 70,
+              width: 55,
+
             ),
           ),
           SizedBox(
@@ -30,7 +31,7 @@ Widget Teamdef(
               Text(
                 post,
                 style: TextStyle(
-                    fontSize: 20, color: Color.fromRGBO(126, 112, 68, 1)),
+                    fontSize: 18, color: Color.fromRGBO(126, 112, 68, 1),fontWeight: FontWeight.bold),
               )
             ],
           )

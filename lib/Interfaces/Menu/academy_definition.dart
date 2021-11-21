@@ -12,35 +12,28 @@ class _AcademyState extends State<Academy> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-
-
-        body:
-
+        body: Container(
+      height: 20000000,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color.fromRGBO(255, 255, 255, 1),
+            Color.fromRGBO(200, 241, 170, 1)
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
+      child: SingleChildScrollView(
+          child: Stack(children: <Widget>[
         Container(
-          height: 20000000,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromRGBO(255, 255, 255, 1),
-                Color.fromRGBO(200, 241, 170, 1)
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-
-          ),
-
-          child: SingleChildScrollView(
-              child: Stack(children: <Widget>[
-      Container(
           height: 270,
           decoration: BoxDecoration(
               color: Color.fromRGBO(126, 112, 39, 0.8),
               borderRadius: BorderRadius.vertical(bottom: Radius.circular(40))),
-      ), // Required some widget in between to float AppBar
+        ), // Required some widget in between to float AppBar
 
-      Positioned(
+        Positioned(
           top: 0.0, // To take AppBar Size only
           left: 0.0,
 
@@ -51,23 +44,26 @@ class _AcademyState extends State<Academy> {
               child: Image.asset('assets/nat.png'),
             ),
           ),
-      ),
-      Positioned(
+        ),
+        Positioned(
           top: 40.0, // To take AppBar Size only
           left: -350.0,
 
           right: 0.0,
           child: Container(
             child: IconButton(
-              icon: const Icon(Icons.arrow_back,size: 40,color: Colors.green,),
-              onPressed: () {
+              icon: const Icon(
+                Icons.arrow_back,
+                size: 40,
+                color: Color.fromRGBO(126, 112, 39, 0.8),
 
-              },
+              ),
+              onPressed: () {},
             ),
           ),
-      ),
+        ),
 
-      Positioned(
+        Positioned(
             top: 225, // To take AppBar Size only
             left: 40.0,
             right: 0.0,
@@ -83,7 +79,7 @@ class _AcademyState extends State<Academy> {
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 )))),
-      Column(
+        Column(
           children: [
             SizedBox(
               height: 280,
@@ -115,6 +111,7 @@ class _AcademyState extends State<Academy> {
                 SizedBox(
                   width: 15,
                 ),
+
                 Container(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
@@ -131,17 +128,34 @@ class _AcademyState extends State<Academy> {
                   ),
                   width: 380,
                   height: 150,
-                  padding: EdgeInsets.all(40),
-                  child: Text(
-                    "Leadership is the art of letting someone else do something you want because they want to do it ",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  padding: EdgeInsets.only(left: 40,right: 40,top: 20,bottom: 10),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Leadership is the art of letting someone else do something you want because they want to do it. ",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                           SizedBox(
+                             height: 10,
+                           ),
+
+                           Text(
+                            "Doueyet Izenhaouer",
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black38,
+                                fontWeight: FontWeight.bold),
+                           )
+                    ],
                   ),
-                )
+                ),
+
+
               ],
             ),
           ],
-      )
-    ])),
-        ));
+        )
+      ])),
+    ));
   }
 }
