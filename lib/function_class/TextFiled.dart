@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 
 class MyTextField extends StatelessWidget {
@@ -20,14 +22,15 @@ class MyTextField extends StatelessWidget {
         obscureText: obscure,
         style: TextStyle(color: Colors.black),
         decoration: InputDecoration(
-
             prefixIcon: Icon(icon, color: Colors.grey),
             hintText: name,
             hintStyle: TextStyle(color: Colors.grey),
             border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30.0)
+                borderRadius: BorderRadius.circular(30.0),
+
             ),
             ),
+
       ),
     );
   }
