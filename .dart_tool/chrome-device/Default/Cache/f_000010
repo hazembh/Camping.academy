@@ -1,0 +1,3873 @@
+define(['dart_sdk', 'packages/convex_bottom_bar/src/style/transition_container_builder.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/box_border.dart', 'packages/convex_bottom_bar/src/style/blend_image_icon.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/convex_bottom_bar/src/interface.dart', 'packages/convex_bottom_bar/src/item.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/flutter/src/material/colors.dart', 'packages/convex_bottom_bar/src/chip_builder.dart', 'packages/flutter/src/material/tab_controller.dart', 'packages/flutter/src/painting/gradient.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/painting/fractional_offset.dart', 'packages/convex_bottom_bar/src/stack.dart', 'packages/convex_bottom_bar/src/painter.dart', 'packages/flutter/src/rendering/proxy_box.dart', 'packages/flutter/src/foundation/print.dart'], (function load__packages__convex_bottom_bar__src__style__titled_tab_style_dart(dart_sdk, packages__convex_bottom_bar__src__style__transition_container_builder$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__box_border$46dart, packages__convex_bottom_bar__src__style__blend_image_icon$46dart, packages__flutter__src__painting__alignment$46dart, packages__convex_bottom_bar__src__interface$46dart, packages__convex_bottom_bar__src__item$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__rendering__flex$46dart, packages__flutter__src__painting__strut_style$46dart, packages__flutter__src__material__colors$46dart, packages__convex_bottom_bar__src__chip_builder$46dart, packages__flutter__src__material__tab_controller$46dart, packages__flutter__src__painting__gradient$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__painting__fractional_offset$46dart, packages__convex_bottom_bar__src__stack$46dart, packages__convex_bottom_bar__src__painter$46dart, packages__flutter__src__rendering__proxy_box$46dart, packages__flutter__src__foundation__print$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
+  const async = dart_sdk.async;
+  const math = dart_sdk.math;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const transition_container = packages__convex_bottom_bar__src__style__transition_container_builder$46dart.src__style__transition_container;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const media_query = packages__flutter__src__widgets__widget_span$46dart.src__widgets__media_query;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const box_border = packages__flutter__src__painting__box_border$46dart.src__painting__box_border;
+  const blend_image_icon = packages__convex_bottom_bar__src__style__blend_image_icon$46dart.src__style__blend_image_icon;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const $interface = packages__convex_bottom_bar__src__interface$46dart.src__interface;
+  const item = packages__convex_bottom_bar__src__item$46dart.src__item;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const chip_builder = packages__convex_bottom_bar__src__chip_builder$46dart.src__chip_builder;
+  const tab_controller = packages__flutter__src__material__tab_controller$46dart.src__material__tab_controller;
+  const gradient = packages__flutter__src__painting__gradient$46dart.src__painting__gradient;
+  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const fractional_offset = packages__flutter__src__painting__fractional_offset$46dart.src__painting__fractional_offset;
+  const stack = packages__convex_bottom_bar__src__stack$46dart.src__stack;
+  const painter = packages__convex_bottom_bar__src__painter$46dart.src__painter;
+  const proxy_box = packages__flutter__src__rendering__proxy_box$46dart.src__rendering__proxy_box;
+  const print = packages__flutter__src__foundation__print$46dart.src__foundation__print;
+  var titled_tab_style = Object.create(dart.library);
+  var textin_tab_style = Object.create(dart.library);
+  var flip_tab_style = Object.create(dart.library);
+  var styles = Object.create(dart.library);
+  var react_tab_style = Object.create(dart.library);
+  var react_circle_tab_style = Object.create(dart.library);
+  var fixed_tab_style = Object.create(dart.library);
+  var internal_style_config = Object.create(dart.library);
+  var inner_builder = Object.create(dart.library);
+  var fixed_circle_tab_style = Object.create(dart.library);
+  var bar = Object.create(dart.library);
+  var convex_bottom_bar = Object.create(dart.library);
+  var $_get = dartx._get;
+  var $isEmpty = dartx.isEmpty;
+  var $add = dartx.add;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $isOdd = dartx.isOdd;
+  var $length = dartx.length;
+  var $truncate = dartx.truncate;
+  var $every = dartx.every;
+  var $abs = dartx.abs;
+  dart._checkModuleNullSafetyMode(true);
+  var T = {
+    JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
+    TabItemTobool: () => (T.TabItemTobool = dart.constFn(dart.fnType(core.bool, [item.TabItem])))(),
+    JSArrayOfDiagnosticsNode: () => (T.JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))(),
+    FutureOfvoid: () => (T.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    TweenOfdouble: () => (T.TweenOfdouble = dart.constFn(tween.Tween$(core.double)))(),
+    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
+    AlwaysStoppedAnimationOfdouble: () => (T.AlwaysStoppedAnimationOfdouble = dart.constFn(animations.AlwaysStoppedAnimation$(core.double)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 29,
+        [_Location_line]: 66,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 13,
+        [_Location_line]: 67,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 13,
+        [_Location_line]: 68,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4], widget_inspector._Location);
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 65,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/titled_tab_style.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 11,
+        [_Location_line]: 61,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 11,
+        [_Location_line]: 62,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "margin",
+        [_Location_column]: 11,
+        [_Location_line]: 63,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 11,
+        [_Location_line]: 64,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 65,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.constList([C[7] || CT.C7, C[8] || CT.C8, C[9] || CT.C9, C[10] || CT.C10, C[11] || CT.C11], widget_inspector._Location);
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[6] || CT.C6,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 59,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/titled_tab_style.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 9,
+        [_Location_line]: 56,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "duration",
+        [_Location_column]: 9,
+        [_Location_line]: 57,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "curve",
+        [_Location_column]: 9,
+        [_Location_line]: 58,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 59,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.constList([C[14] || CT.C14, C[15] || CT.C15, C[16] || CT.C16, C[17] || CT.C17], widget_inspector._Location);
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[13] || CT.C13,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 55,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/titled_tab_style.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 27,
+        [_Location_line]: 80,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 34,
+        [_Location_line]: 80,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.constList([C[20] || CT.C20, C[21] || CT.C21], widget_inspector._Location);
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[19] || CT.C19,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 80,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/titled_tab_style.dart"
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 33,
+        [_Location_line]: 91,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 17,
+        [_Location_line]: 92,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 17,
+        [_Location_line]: 93,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.constList([C[24] || CT.C24, C[25] || CT.C25, C[26] || CT.C26], widget_inspector._Location);
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[23] || CT.C23,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 90,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/titled_tab_style.dart"
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "margin",
+        [_Location_column]: 15,
+        [_Location_line]: 85,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 15,
+        [_Location_line]: 86,
+        [_Location_file]: null
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 90,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.constList([C[29] || CT.C29, C[30] || CT.C30, C[31] || CT.C31], widget_inspector._Location);
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[28] || CT.C28,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 84,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/titled_tab_style.dart"
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "reverse",
+        [_Location_column]: 13,
+        [_Location_line]: 82,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "curve",
+        [_Location_column]: 13,
+        [_Location_line]: 83,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 84,
+        [_Location_file]: null
+      });
+    },
+    get C33() {
+      return C[33] = dart.constList([C[34] || CT.C34, C[35] || CT.C35, C[36] || CT.C36], widget_inspector._Location);
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[33] || CT.C33,
+        [_Location_name]: null,
+        [_Location_column]: 31,
+        [_Location_line]: 81,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/titled_tab_style.dart"
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "clipBehavior",
+        [_Location_column]: 9,
+        [_Location_line]: 77,
+        [_Location_file]: null
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 9,
+        [_Location_line]: 78,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 9,
+        [_Location_line]: 79,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.constList([C[39] || CT.C39, C[40] || CT.C40, C[41] || CT.C41], widget_inspector._Location);
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[38] || CT.C38,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 76,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/titled_tab_style.dart"
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 42,
+        [_Location_line]: 100,
+        [_Location_file]: null
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 49,
+        [_Location_line]: 100,
+        [_Location_file]: null
+      });
+    },
+    get C43() {
+      return C[43] = dart.constList([C[44] || CT.C44, C[45] || CT.C45], widget_inspector._Location);
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[43] || CT.C43,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 100,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/titled_tab_style.dart"
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 19,
+        [_Location_line]: 100,
+        [_Location_file]: null
+      });
+    },
+    get C47() {
+      return C[47] = dart.constList([C[48] || CT.C48], widget_inspector._Location);
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[47] || CT.C47,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 100,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/titled_tab_style.dart"
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 2,
+        [EdgeInsets_right]: 0,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 0
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 33,
+        [_Location_line]: 52,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 17,
+        [_Location_line]: 53,
+        [_Location_file]: null
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 17,
+        [_Location_line]: 54,
+        [_Location_file]: null
+      });
+    },
+    get C51() {
+      return C[51] = dart.constList([C[52] || CT.C52, C[53] || CT.C53, C[54] || CT.C54], widget_inspector._Location);
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[51] || CT.C51,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 51,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/textin_tab_style.dart"
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 15,
+        [_Location_line]: 49,
+        [_Location_file]: null
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "curve",
+        [_Location_column]: 15,
+        [_Location_line]: 50,
+        [_Location_file]: null
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 51,
+        [_Location_file]: null
+      });
+    },
+    get C56() {
+      return C[56] = dart.constList([C[57] || CT.C57, C[58] || CT.C58, C[59] || CT.C59], widget_inspector._Location);
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[56] || CT.C56,
+        [_Location_name]: null,
+        [_Location_column]: 33,
+        [_Location_line]: 48,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/textin_tab_style.dart"
+      });
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 38,
+        [_Location_line]: 59,
+        [_Location_file]: null
+      });
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 45,
+        [_Location_line]: 59,
+        [_Location_file]: null
+      });
+    },
+    get C61() {
+      return C[61] = dart.constList([C[62] || CT.C62, C[63] || CT.C63], widget_inspector._Location);
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[61] || CT.C61,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 59,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/textin_tab_style.dart"
+      });
+    },
+    get C66() {
+      return C[66] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "curve",
+        [_Location_column]: 15,
+        [_Location_line]: 58,
+        [_Location_file]: null
+      });
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 59,
+        [_Location_file]: null
+      });
+    },
+    get C65() {
+      return C[65] = dart.constList([C[66] || CT.C66, C[67] || CT.C67], widget_inspector._Location);
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[65] || CT.C65,
+        [_Location_name]: null,
+        [_Location_column]: 33,
+        [_Location_line]: 57,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/textin_tab_style.dart"
+      });
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 11,
+        [_Location_line]: 46,
+        [_Location_file]: null
+      });
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 11,
+        [_Location_line]: 47,
+        [_Location_file]: null
+      });
+    },
+    get C69() {
+      return C[69] = dart.constList([C[70] || CT.C70, C[71] || CT.C71], widget_inspector._Location);
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[69] || CT.C69,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 45,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/textin_tab_style.dart"
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 9,
+        [_Location_line]: 44,
+        [_Location_file]: null
+      });
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 45,
+        [_Location_file]: null
+      });
+    },
+    get C73() {
+      return C[73] = dart.constList([C[74] || CT.C74, C[75] || CT.C75], widget_inspector._Location);
+    },
+    get C72() {
+      return C[72] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[73] || CT.C73,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 43,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/textin_tab_style.dart"
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 34,
+        [_Location_line]: 67,
+        [_Location_file]: null
+      });
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 11,
+        [_Location_line]: 68,
+        [_Location_file]: null
+      });
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 33,
+        [_Location_line]: 68,
+        [_Location_file]: null
+      });
+    },
+    get C77() {
+      return C[77] = dart.constList([C[78] || CT.C78, C[79] || CT.C79, C[80] || CT.C80], widget_inspector._Location);
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[77] || CT.C77,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 67,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/textin_tab_style.dart"
+      });
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 67,
+        [_Location_file]: null
+      });
+    },
+    get C82() {
+      return C[82] = dart.constList([C[83] || CT.C83], widget_inspector._Location);
+    },
+    get C81() {
+      return C[81] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[82] || CT.C82,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 66,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/textin_tab_style.dart"
+      });
+    },
+    get C86() {
+      return C[86] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 27,
+        [_Location_line]: 46,
+        [_Location_file]: null
+      });
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 11,
+        [_Location_line]: 47,
+        [_Location_file]: null
+      });
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 11,
+        [_Location_line]: 48,
+        [_Location_file]: null
+      });
+    },
+    get C85() {
+      return C[85] = dart.constList([C[86] || CT.C86, C[87] || CT.C87, C[88] || CT.C88], widget_inspector._Location);
+    },
+    get C84() {
+      return C[84] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[85] || CT.C85,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 45,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/flip_tab_style.dart"
+      });
+    },
+    get C91() {
+      return C[91] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 38,
+        [_Location_line]: 53,
+        [_Location_file]: null
+      });
+    },
+    get C92() {
+      return C[92] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 45,
+        [_Location_line]: 53,
+        [_Location_file]: null
+      });
+    },
+    get C90() {
+      return C[90] = dart.constList([C[91] || CT.C91, C[92] || CT.C92], widget_inspector._Location);
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[90] || CT.C90,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 53,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/flip_tab_style.dart"
+      });
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 13,
+        [_Location_line]: 62,
+        [_Location_file]: null
+      });
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 13,
+        [_Location_line]: 63,
+        [_Location_file]: null
+      });
+    },
+    get C94() {
+      return C[94] = dart.constList([C[95] || CT.C95, C[96] || CT.C96], widget_inspector._Location);
+    },
+    get C93() {
+      return C[93] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[94] || CT.C94,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 61,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/flip_tab_style.dart"
+      });
+    },
+    get C99() {
+      return C[99] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 11,
+        [_Location_line]: 60,
+        [_Location_file]: null
+      });
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 61,
+        [_Location_file]: null
+      });
+    },
+    get C98() {
+      return C[98] = dart.constList([C[99] || CT.C99, C[100] || CT.C100], widget_inspector._Location);
+    },
+    get C97() {
+      return C[97] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[98] || CT.C98,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 59,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/flip_tab_style.dart"
+      });
+    },
+    get C103() {
+      return C[103] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 20,
+        [_Location_line]: 69,
+        [_Location_file]: null
+      });
+    },
+    get C104() {
+      return C[104] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 15,
+        [_Location_line]: 70,
+        [_Location_file]: null
+      });
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 15,
+        [_Location_line]: 71,
+        [_Location_file]: null
+      });
+    },
+    get C102() {
+      return C[102] = dart.constList([C[103] || CT.C103, C[104] || CT.C104, C[105] || CT.C105], widget_inspector._Location);
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[102] || CT.C102,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 68,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/flip_tab_style.dart"
+      });
+    },
+    get C108() {
+      return C[108] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 68,
+        [_Location_file]: null
+      });
+    },
+    get C107() {
+      return C[107] = dart.constList([C[108] || CT.C108], widget_inspector._Location);
+    },
+    get C106() {
+      return C[106] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[107] || CT.C107,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 67,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/flip_tab_style.dart"
+      });
+    },
+    get C111() {
+      return C[111] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 67,
+        [_Location_file]: null
+      });
+    },
+    get C110() {
+      return C[110] = dart.constList([C[111] || CT.C111], widget_inspector._Location);
+    },
+    get C109() {
+      return C[109] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[110] || CT.C110,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 66,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/flip_tab_style.dart"
+      });
+    },
+    get C114() {
+      return C[114] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 9,
+        [_Location_line]: 58,
+        [_Location_file]: null
+      });
+    },
+    get C115() {
+      return C[115] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "bottomChild",
+        [_Location_column]: 9,
+        [_Location_line]: 59,
+        [_Location_file]: null
+      });
+    },
+    get C116() {
+      return C[116] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "topChild",
+        [_Location_column]: 9,
+        [_Location_line]: 66,
+        [_Location_file]: null
+      });
+    },
+    get C117() {
+      return C[117] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "curve",
+        [_Location_column]: 9,
+        [_Location_line]: 75,
+        [_Location_file]: null
+      });
+    },
+    get C113() {
+      return C[113] = dart.constList([C[14] || CT.C14, C[15] || CT.C15, C[114] || CT.C114, C[115] || CT.C115, C[116] || CT.C116, C[117] || CT.C117], widget_inspector._Location);
+    },
+    get C112() {
+      return C[112] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[113] || CT.C113,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 55,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/flip_tab_style.dart"
+      });
+    },
+    get C120() {
+      return C[120] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 14,
+        [_Location_line]: 80,
+        [_Location_file]: null
+      });
+    },
+    get C121() {
+      return C[121] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 9,
+        [_Location_line]: 81,
+        [_Location_file]: null
+      });
+    },
+    get C122() {
+      return C[122] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 9,
+        [_Location_line]: 82,
+        [_Location_file]: null
+      });
+    },
+    get C119() {
+      return C[119] = dart.constList([C[120] || CT.C120, C[121] || CT.C121, C[122] || CT.C122], widget_inspector._Location);
+    },
+    get C118() {
+      return C[118] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[119] || CT.C119,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 79,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/flip_tab_style.dart"
+      });
+    },
+    get C125() {
+      return C[125] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 79,
+        [_Location_file]: null
+      });
+    },
+    get C124() {
+      return C[124] = dart.constList([C[125] || CT.C125], widget_inspector._Location);
+    },
+    get C123() {
+      return C[123] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[124] || CT.C124,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 78,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/flip_tab_style.dart"
+      });
+    },
+    get C126() {
+      return C[126] = dart.const({
+        __proto__: bar.TabStyle.prototype,
+        [_name$]: "TabStyle.fixed",
+        index: 0
+      });
+    },
+    get C127() {
+      return C[127] = dart.const({
+        __proto__: bar.TabStyle.prototype,
+        [_name$]: "TabStyle.fixedCircle",
+        index: 1
+      });
+    },
+    get C128() {
+      return C[128] = dart.const({
+        __proto__: bar.TabStyle.prototype,
+        [_name$]: "TabStyle.react",
+        index: 2
+      });
+    },
+    get C129() {
+      return C[129] = dart.const({
+        __proto__: bar.TabStyle.prototype,
+        [_name$]: "TabStyle.reactCircle",
+        index: 3
+      });
+    },
+    get C130() {
+      return C[130] = dart.const({
+        __proto__: bar.TabStyle.prototype,
+        [_name$]: "TabStyle.textIn",
+        index: 4
+      });
+    },
+    get C131() {
+      return C[131] = dart.const({
+        __proto__: bar.TabStyle.prototype,
+        [_name$]: "TabStyle.titled",
+        index: 5
+      });
+    },
+    get C132() {
+      return C[132] = dart.const({
+        __proto__: bar.TabStyle.prototype,
+        [_name$]: "TabStyle.flip",
+        index: 6
+      });
+    },
+    get C135() {
+      return C[135] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 29,
+        [_Location_line]: 49,
+        [_Location_file]: null
+      });
+    },
+    get C136() {
+      return C[136] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 13,
+        [_Location_line]: 50,
+        [_Location_file]: null
+      });
+    },
+    get C137() {
+      return C[137] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 13,
+        [_Location_line]: 51,
+        [_Location_file]: null
+      });
+    },
+    get C134() {
+      return C[134] = dart.constList([C[135] || CT.C135, C[136] || CT.C136, C[137] || CT.C137], widget_inspector._Location);
+    },
+    get C133() {
+      return C[133] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[134] || CT.C134,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 48,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/react_tab_style.dart"
+      });
+    },
+    get C140() {
+      return C[140] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 11,
+        [_Location_line]: 46,
+        [_Location_file]: null
+      });
+    },
+    get C141() {
+      return C[141] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "curve",
+        [_Location_column]: 11,
+        [_Location_line]: 47,
+        [_Location_file]: null
+      });
+    },
+    get C142() {
+      return C[142] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 48,
+        [_Location_file]: null
+      });
+    },
+    get C139() {
+      return C[139] = dart.constList([C[140] || CT.C140, C[141] || CT.C141, C[142] || CT.C142], widget_inspector._Location);
+    },
+    get C138() {
+      return C[138] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[139] || CT.C139,
+        [_Location_name]: null,
+        [_Location_column]: 29,
+        [_Location_line]: 45,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/react_tab_style.dart"
+      });
+    },
+    get C145() {
+      return C[145] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 34,
+        [_Location_line]: 57,
+        [_Location_file]: null
+      });
+    },
+    get C146() {
+      return C[146] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 41,
+        [_Location_line]: 57,
+        [_Location_file]: null
+      });
+    },
+    get C144() {
+      return C[144] = dart.constList([C[145] || CT.C145, C[146] || CT.C146], widget_inspector._Location);
+    },
+    get C143() {
+      return C[143] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[144] || CT.C144,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 57,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/react_tab_style.dart"
+      });
+    },
+    get C149() {
+      return C[149] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 11,
+        [_Location_line]: 62,
+        [_Location_file]: null
+      });
+    },
+    get C150() {
+      return C[150] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 11,
+        [_Location_line]: 64,
+        [_Location_file]: null
+      });
+    },
+    get C148() {
+      return C[148] = dart.constList([C[149] || CT.C149, C[150] || CT.C150], widget_inspector._Location);
+    },
+    get C147() {
+      return C[147] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[148] || CT.C148,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 61,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/react_tab_style.dart"
+      });
+    },
+    get C153() {
+      return C[153] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 9,
+        [_Location_line]: 60,
+        [_Location_file]: null
+      });
+    },
+    get C154() {
+      return C[154] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 61,
+        [_Location_file]: null
+      });
+    },
+    get C152() {
+      return C[152] = dart.constList([C[153] || CT.C153, C[154] || CT.C154], widget_inspector._Location);
+    },
+    get C151() {
+      return C[151] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[152] || CT.C152,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 59,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/react_tab_style.dart"
+      });
+    },
+    get C157() {
+      return C[157] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 27,
+        [_Location_line]: 69,
+        [_Location_file]: null
+      });
+    },
+    get C158() {
+      return C[158] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 33,
+        [_Location_line]: 69,
+        [_Location_file]: null
+      });
+    },
+    get C156() {
+      return C[156] = dart.constList([C[157] || CT.C157, C[158] || CT.C158], widget_inspector._Location);
+    },
+    get C155() {
+      return C[155] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[156] || CT.C156,
+        [_Location_name]: null,
+        [_Location_column]: 7,
+        [_Location_line]: 69,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/react_tab_style.dart"
+      });
+    },
+    get C161() {
+      return C[161] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 36,
+        [_Location_line]: 72,
+        [_Location_file]: null
+      });
+    },
+    get C162() {
+      return C[162] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 43,
+        [_Location_line]: 72,
+        [_Location_file]: null
+      });
+    },
+    get C160() {
+      return C[160] = dart.constList([C[161] || CT.C161, C[162] || CT.C162], widget_inspector._Location);
+    },
+    get C159() {
+      return C[159] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[160] || CT.C160,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 72,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/react_tab_style.dart"
+      });
+    },
+    get C165() {
+      return C[165] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 9,
+        [_Location_line]: 77,
+        [_Location_file]: null
+      });
+    },
+    get C164() {
+      return C[164] = dart.constList([C[165] || CT.C165, C[41] || CT.C41], widget_inspector._Location);
+    },
+    get C163() {
+      return C[163] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[164] || CT.C164,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 76,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/react_tab_style.dart"
+      });
+    },
+    get C168() {
+      return C[168] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 7,
+        [_Location_line]: 75,
+        [_Location_file]: null
+      });
+    },
+    get C169() {
+      return C[169] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 76,
+        [_Location_file]: null
+      });
+    },
+    get C167() {
+      return C[167] = dart.constList([C[168] || CT.C168, C[169] || CT.C169], widget_inspector._Location);
+    },
+    get C166() {
+      return C[166] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[167] || CT.C167,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 74,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/react_tab_style.dart"
+      });
+    },
+    get C172() {
+      return C[172] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 20,
+        [_Location_line]: 62,
+        [_Location_file]: null
+      });
+    },
+    get C173() {
+      return C[173] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 13,
+        [_Location_line]: 63,
+        [_Location_file]: null
+      });
+    },
+    get C174() {
+      return C[174] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 13,
+        [_Location_line]: 64,
+        [_Location_file]: null
+      });
+    },
+    get C171() {
+      return C[171] = dart.constList([C[172] || CT.C172, C[173] || CT.C173, C[174] || CT.C174], widget_inspector._Location);
+    },
+    get C170() {
+      return C[170] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[171] || CT.C171,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 61,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/react_circle_tab_style.dart"
+      });
+    },
+    get C177() {
+      return C[177] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 11,
+        [_Location_line]: 54,
+        [_Location_file]: null
+      });
+    },
+    get C178() {
+      return C[178] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 11,
+        [_Location_line]: 55,
+        [_Location_file]: null
+      });
+    },
+    get C179() {
+      return C[179] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "margin",
+        [_Location_column]: 11,
+        [_Location_line]: 56,
+        [_Location_file]: null
+      });
+    },
+    get C180() {
+      return C[180] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 11,
+        [_Location_line]: 57,
+        [_Location_file]: null
+      });
+    },
+    get C176() {
+      return C[176] = dart.constList([C[177] || CT.C177, C[178] || CT.C178, C[179] || CT.C179, C[180] || CT.C180, C[100] || CT.C100], widget_inspector._Location);
+    },
+    get C175() {
+      return C[175] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[176] || CT.C176,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 52,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/react_circle_tab_style.dart"
+      });
+    },
+    get C183() {
+      return C[183] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 9,
+        [_Location_line]: 50,
+        [_Location_file]: null
+      });
+    },
+    get C184() {
+      return C[184] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "curve",
+        [_Location_column]: 9,
+        [_Location_line]: 51,
+        [_Location_file]: null
+      });
+    },
+    get C185() {
+      return C[185] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 52,
+        [_Location_file]: null
+      });
+    },
+    get C182() {
+      return C[182] = dart.constList([C[183] || CT.C183, C[184] || CT.C184, C[185] || CT.C185], widget_inspector._Location);
+    },
+    get C181() {
+      return C[181] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[182] || CT.C182,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 49,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/react_circle_tab_style.dart"
+      });
+    },
+    get C188() {
+      return C[188] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 16,
+        [_Location_line]: 73,
+        [_Location_file]: null
+      });
+    },
+    get C189() {
+      return C[189] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 9,
+        [_Location_line]: 74,
+        [_Location_file]: null
+      });
+    },
+    get C187() {
+      return C[187] = dart.constList([C[188] || CT.C188, C[189] || CT.C189], widget_inspector._Location);
+    },
+    get C186() {
+      return C[186] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[187] || CT.C187,
+        [_Location_name]: null,
+        [_Location_column]: 7,
+        [_Location_line]: 72,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/react_circle_tab_style.dart"
+      });
+    },
+    get C192() {
+      return C[192] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 36,
+        [_Location_line]: 78,
+        [_Location_file]: null
+      });
+    },
+    get C193() {
+      return C[193] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 43,
+        [_Location_line]: 78,
+        [_Location_file]: null
+      });
+    },
+    get C191() {
+      return C[191] = dart.constList([C[192] || CT.C192, C[193] || CT.C193], widget_inspector._Location);
+    },
+    get C190() {
+      return C[190] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[191] || CT.C191,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 78,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/react_circle_tab_style.dart"
+      });
+    },
+    get C196() {
+      return C[196] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 9,
+        [_Location_line]: 83,
+        [_Location_file]: null
+      });
+    },
+    get C197() {
+      return C[197] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 9,
+        [_Location_line]: 84,
+        [_Location_file]: null
+      });
+    },
+    get C195() {
+      return C[195] = dart.constList([C[196] || CT.C196, C[197] || CT.C197], widget_inspector._Location);
+    },
+    get C194() {
+      return C[194] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[195] || CT.C195,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 82,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/react_circle_tab_style.dart"
+      });
+    },
+    get C200() {
+      return C[200] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 7,
+        [_Location_line]: 81,
+        [_Location_file]: null
+      });
+    },
+    get C201() {
+      return C[201] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 82,
+        [_Location_file]: null
+      });
+    },
+    get C199() {
+      return C[199] = dart.constList([C[200] || CT.C200, C[201] || CT.C201], widget_inspector._Location);
+    },
+    get C198() {
+      return C[198] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[199] || CT.C199,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 80,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/react_circle_tab_style.dart"
+      });
+    },
+    get C204() {
+      return C[204] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 22,
+        [_Location_line]: 53,
+        [_Location_file]: null
+      });
+    },
+    get C205() {
+      return C[205] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 15,
+        [_Location_line]: 54,
+        [_Location_file]: null
+      });
+    },
+    get C206() {
+      return C[206] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 15,
+        [_Location_line]: 55,
+        [_Location_file]: null
+      });
+    },
+    get C203() {
+      return C[203] = dart.constList([C[204] || CT.C204, C[205] || CT.C205, C[206] || CT.C206], widget_inspector._Location);
+    },
+    get C202() {
+      return C[202] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[203] || CT.C203,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 52,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/fixed_tab_style.dart"
+      });
+    },
+    get C209() {
+      return C[209] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 29,
+        [_Location_line]: 57,
+        [_Location_file]: null
+      });
+    },
+    get C210() {
+      return C[210] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 36,
+        [_Location_line]: 57,
+        [_Location_file]: null
+      });
+    },
+    get C208() {
+      return C[208] = dart.constList([C[209] || CT.C209, C[210] || CT.C210], widget_inspector._Location);
+    },
+    get C207() {
+      return C[207] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[208] || CT.C208,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 57,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/fixed_tab_style.dart"
+      });
+    },
+    get C213() {
+      return C[213] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 11,
+        [_Location_line]: 50,
+        [_Location_file]: null
+      });
+    },
+    get C214() {
+      return C[214] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 11,
+        [_Location_line]: 51,
+        [_Location_file]: null
+      });
+    },
+    get C212() {
+      return C[212] = dart.constList([C[213] || CT.C213, C[214] || CT.C214], widget_inspector._Location);
+    },
+    get C211() {
+      return C[211] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[212] || CT.C212,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 49,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/fixed_tab_style.dart"
+      });
+    },
+    get C217() {
+      return C[217] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 9,
+        [_Location_line]: 48,
+        [_Location_file]: null
+      });
+    },
+    get C218() {
+      return C[218] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 49,
+        [_Location_file]: null
+      });
+    },
+    get C216() {
+      return C[216] = dart.constList([C[217] || CT.C217, C[218] || CT.C218], widget_inspector._Location);
+    },
+    get C215() {
+      return C[215] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[216] || CT.C216,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 47,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/fixed_tab_style.dart"
+      });
+    },
+    get C221() {
+      return C[221] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 14,
+        [_Location_line]: 65,
+        [_Location_file]: null
+      });
+    },
+    get C222() {
+      return C[222] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 7,
+        [_Location_line]: 66,
+        [_Location_file]: null
+      });
+    },
+    get C223() {
+      return C[223] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 7,
+        [_Location_line]: 67,
+        [_Location_file]: null
+      });
+    },
+    get C220() {
+      return C[220] = dart.constList([C[221] || CT.C221, C[222] || CT.C222, C[223] || CT.C223], widget_inspector._Location);
+    },
+    get C219() {
+      return C[219] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[220] || CT.C220,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 64,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/fixed_tab_style.dart"
+      });
+    },
+    get C226() {
+      return C[226] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 42,
+        [_Location_line]: 71,
+        [_Location_file]: null
+      });
+    },
+    get C227() {
+      return C[227] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 49,
+        [_Location_line]: 71,
+        [_Location_file]: null
+      });
+    },
+    get C225() {
+      return C[225] = dart.constList([C[226] || CT.C226, C[227] || CT.C227], widget_inspector._Location);
+    },
+    get C224() {
+      return C[224] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[225] || CT.C225,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 71,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/fixed_tab_style.dart"
+      });
+    },
+    get C230() {
+      return C[230] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 9,
+        [_Location_line]: 75,
+        [_Location_file]: null
+      });
+    },
+    get C231() {
+      return C[231] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 9,
+        [_Location_line]: 76,
+        [_Location_file]: null
+      });
+    },
+    get C229() {
+      return C[229] = dart.constList([C[230] || CT.C230, C[231] || CT.C231], widget_inspector._Location);
+    },
+    get C228() {
+      return C[228] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[229] || CT.C229,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 74,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/fixed_tab_style.dart"
+      });
+    },
+    get C234() {
+      return C[234] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 7,
+        [_Location_line]: 73,
+        [_Location_file]: null
+      });
+    },
+    get C235() {
+      return C[235] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 74,
+        [_Location_file]: null
+      });
+    },
+    get C233() {
+      return C[233] = dart.constList([C[234] || CT.C234, C[235] || CT.C235], widget_inspector._Location);
+    },
+    get C232() {
+      return C[232] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[233] || CT.C233,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 72,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/fixed_tab_style.dart"
+      });
+    },
+    get C238() {
+      return C[238] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 18,
+        [_Location_line]: 61,
+        [_Location_file]: null
+      });
+    },
+    get C239() {
+      return C[239] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 11,
+        [_Location_line]: 62,
+        [_Location_file]: null
+      });
+    },
+    get C240() {
+      return C[240] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 11,
+        [_Location_line]: 63,
+        [_Location_file]: null
+      });
+    },
+    get C237() {
+      return C[237] = dart.constList([C[238] || CT.C238, C[239] || CT.C239, C[240] || CT.C240], widget_inspector._Location);
+    },
+    get C236() {
+      return C[236] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[237] || CT.C237,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 60,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/fixed_circle_tab_style.dart"
+      });
+    },
+    get C243() {
+      return C[243] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 9,
+        [_Location_line]: 53,
+        [_Location_file]: null
+      });
+    },
+    get C244() {
+      return C[244] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 9,
+        [_Location_line]: 54,
+        [_Location_file]: null
+      });
+    },
+    get C245() {
+      return C[245] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 9,
+        [_Location_line]: 55,
+        [_Location_file]: null
+      });
+    },
+    get C246() {
+      return C[246] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "margin",
+        [_Location_column]: 9,
+        [_Location_line]: 59,
+        [_Location_file]: null
+      });
+    },
+    get C247() {
+      return C[247] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 60,
+        [_Location_file]: null
+      });
+    },
+    get C242() {
+      return C[242] = dart.constList([C[243] || CT.C243, C[244] || CT.C244, C[245] || CT.C245, C[246] || CT.C246, C[247] || CT.C247], widget_inspector._Location);
+    },
+    get C241() {
+      return C[241] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[242] || CT.C242,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 51,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/fixed_circle_tab_style.dart"
+      });
+    },
+    get C250() {
+      return C[250] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 14,
+        [_Location_line]: 70,
+        [_Location_file]: null
+      });
+    },
+    get C251() {
+      return C[251] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 7,
+        [_Location_line]: 71,
+        [_Location_file]: null
+      });
+    },
+    get C252() {
+      return C[252] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 7,
+        [_Location_line]: 72,
+        [_Location_file]: null
+      });
+    },
+    get C249() {
+      return C[249] = dart.constList([C[250] || CT.C250, C[251] || CT.C251, C[252] || CT.C252], widget_inspector._Location);
+    },
+    get C248() {
+      return C[248] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[249] || CT.C249,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 69,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/fixed_circle_tab_style.dart"
+      });
+    },
+    get C255() {
+      return C[255] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 42,
+        [_Location_line]: 76,
+        [_Location_file]: null
+      });
+    },
+    get C256() {
+      return C[256] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 49,
+        [_Location_line]: 76,
+        [_Location_file]: null
+      });
+    },
+    get C254() {
+      return C[254] = dart.constList([C[255] || CT.C255, C[256] || CT.C256], widget_inspector._Location);
+    },
+    get C253() {
+      return C[253] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[254] || CT.C254,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 76,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/fixed_circle_tab_style.dart"
+      });
+    },
+    get C259() {
+      return C[259] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 9,
+        [_Location_line]: 80,
+        [_Location_file]: null
+      });
+    },
+    get C260() {
+      return C[260] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 9,
+        [_Location_line]: 81,
+        [_Location_file]: null
+      });
+    },
+    get C258() {
+      return C[258] = dart.constList([C[259] || CT.C259, C[260] || CT.C260], widget_inspector._Location);
+    },
+    get C257() {
+      return C[257] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[258] || CT.C258,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 79,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/fixed_circle_tab_style.dart"
+      });
+    },
+    get C263() {
+      return C[263] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 7,
+        [_Location_line]: 78,
+        [_Location_file]: null
+      });
+    },
+    get C262() {
+      return C[262] = dart.constList([C[263] || CT.C263, C[125] || CT.C125], widget_inspector._Location);
+    },
+    get C261() {
+      return C[261] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[262] || CT.C262,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 77,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/fixed_circle_tab_style.dart"
+      });
+    },
+    get C264() {
+      return C[264] = dart.const({
+        __proto__: bar.TabStyle.prototype,
+        [_name$]: "TabStyle.custom",
+        index: 7
+      });
+    },
+    get C265() {
+      return C[265] = dart.constList([C[126] || CT.C126, C[127] || CT.C127, C[128] || CT.C128, C[129] || CT.C129, C[130] || CT.C130, C[131] || CT.C131, C[132] || CT.C132, C[264] || CT.C264], bar.TabStyle);
+    },
+    get C266() {
+      return C[266] = dart.const({
+        __proto__: curves.Cubic.prototype,
+        [Cubic_d]: 1,
+        [Cubic_c]: 0.58,
+        [Cubic_b]: 0,
+        [Cubic_a]: 0.42
+      });
+    },
+    get C267() {
+      return C[267] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 150000
+      });
+    },
+    get C268() {
+      return C[268] = dart.const({
+        __proto__: T.AlwaysStoppedAnimationOfdouble().prototype,
+        [AlwaysStoppedAnimation_value]: 0.5
+      });
+    },
+    get C271() {
+      return C[271] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "painter",
+        [_Location_column]: 13,
+        [_Location_line]: 554,
+        [_Location_file]: null
+      });
+    },
+    get C270() {
+      return C[270] = dart.constList([C[271] || CT.C271], widget_inspector._Location);
+    },
+    get C269() {
+      return C[269] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[270] || CT.C270,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 553,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/bar.dart"
+      });
+    },
+    get C274() {
+      return C[274] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 11,
+        [_Location_line]: 551,
+        [_Location_file]: null
+      });
+    },
+    get C275() {
+      return C[275] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 11,
+        [_Location_line]: 552,
+        [_Location_file]: null
+      });
+    },
+    get C276() {
+      return C[276] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 553,
+        [_Location_file]: null
+      });
+    },
+    get C273() {
+      return C[273] = dart.constList([C[274] || CT.C274, C[275] || CT.C275, C[276] || CT.C276], widget_inspector._Location);
+    },
+    get C272() {
+      return C[272] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[273] || CT.C273,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 550,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/bar.dart"
+      });
+    },
+    get C279() {
+      return C[279] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 17,
+        [_Location_line]: 575,
+        [_Location_file]: null
+      });
+    },
+    get C280() {
+      return C[280] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 576,
+        [_Location_file]: null
+      });
+    },
+    get C278() {
+      return C[278] = dart.constList([C[279] || CT.C279, C[280] || CT.C280], widget_inspector._Location);
+    },
+    get C277() {
+      return C[277] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[278] || CT.C278,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 574,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/bar.dart"
+      });
+    },
+    get C283() {
+      return C[283] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "widthFactor",
+        [_Location_column]: 15,
+        [_Location_line]: 572,
+        [_Location_file]: null
+      });
+    },
+    get C284() {
+      return C[284] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 15,
+        [_Location_line]: 573,
+        [_Location_file]: null
+      });
+    },
+    get C285() {
+      return C[285] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 574,
+        [_Location_file]: null
+      });
+    },
+    get C282() {
+      return C[282] = dart.constList([C[283] || CT.C283, C[284] || CT.C284, C[285] || CT.C285], widget_inspector._Location);
+    },
+    get C281() {
+      return C[281] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[282] || CT.C282,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 571,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/bar.dart"
+      });
+    },
+    get C288() {
+      return C[288] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "top",
+        [_Location_column]: 11,
+        [_Location_line]: 569,
+        [_Location_file]: null
+      });
+    },
+    get C289() {
+      return C[289] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "bottom",
+        [_Location_column]: 11,
+        [_Location_line]: 570,
+        [_Location_file]: null
+      });
+    },
+    get C290() {
+      return C[290] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 571,
+        [_Location_file]: null
+      });
+    },
+    get C287() {
+      return C[287] = dart.constList([C[288] || CT.C288, C[289] || CT.C289, C[290] || CT.C290], widget_inspector._Location);
+    },
+    get C286() {
+      return C[286] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[287] || CT.C287,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 568,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/bar.dart"
+      });
+    },
+    get C293() {
+      return C[293] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "clipBehavior",
+        [_Location_column]: 7,
+        [_Location_line]: 547,
+        [_Location_file]: null
+      });
+    },
+    get C294() {
+      return C[294] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 7,
+        [_Location_line]: 548,
+        [_Location_file]: null
+      });
+    },
+    get C295() {
+      return C[295] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 7,
+        [_Location_line]: 549,
+        [_Location_file]: null
+      });
+    },
+    get C292() {
+      return C[292] = dart.constList([C[293] || CT.C293, C[294] || CT.C294, C[295] || CT.C295], widget_inspector._Location);
+    },
+    get C291() {
+      return C[291] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[292] || CT.C292,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 546,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/bar.dart"
+      });
+    },
+    get C297() {
+      return C[297] = dart.constList([], widget_inspector._Location);
+    },
+    get C296() {
+      return C[296] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[297] || CT.C297,
+        [_Location_name]: null,
+        [_Location_column]: 38,
+        [_Location_line]: 590,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/bar.dart"
+      });
+    },
+    get C300() {
+      return C[300] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 31,
+        [_Location_line]: 590,
+        [_Location_file]: null
+      });
+    },
+    get C299() {
+      return C[299] = dart.constList([C[300] || CT.C300], widget_inspector._Location);
+    },
+    get C298() {
+      return C[298] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[299] || CT.C299,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 590,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/bar.dart"
+      });
+    },
+    get C303() {
+      return C[303] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "behavior",
+        [_Location_column]: 11,
+        [_Location_line]: 596,
+        [_Location_file]: null
+      });
+    },
+    get C304() {
+      return C[304] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 11,
+        [_Location_line]: 597,
+        [_Location_file]: null
+      });
+    },
+    get C305() {
+      return C[305] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 598,
+        [_Location_file]: null
+      });
+    },
+    get C302() {
+      return C[302] = dart.constList([C[303] || CT.C303, C[304] || CT.C304, C[305] || CT.C305], widget_inspector._Location);
+    },
+    get C301() {
+      return C[301] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[302] || CT.C302,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 595,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/bar.dart"
+      });
+    },
+    get C308() {
+      return C[308] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 595,
+        [_Location_file]: null
+      });
+    },
+    get C307() {
+      return C[307] = dart.constList([C[308] || CT.C308], widget_inspector._Location);
+    },
+    get C306() {
+      return C[306] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[307] || CT.C307,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 594,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/bar.dart"
+      });
+    },
+    get C311() {
+      return C[311] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisSize",
+        [_Location_column]: 9,
+        [_Location_line]: 607,
+        [_Location_file]: null
+      });
+    },
+    get C312() {
+      return C[312] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 9,
+        [_Location_line]: 608,
+        [_Location_file]: null
+      });
+    },
+    get C313() {
+      return C[313] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 9,
+        [_Location_line]: 609,
+        [_Location_file]: null
+      });
+    },
+    get C310() {
+      return C[310] = dart.constList([C[311] || CT.C311, C[312] || CT.C312, C[313] || CT.C313], widget_inspector._Location);
+    },
+    get C309() {
+      return C[309] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[310] || CT.C310,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 606,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/bar.dart"
+      });
+    },
+    get C316() {
+      return C[316] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 7,
+        [_Location_line]: 604,
+        [_Location_file]: null
+      });
+    },
+    get C317() {
+      return C[317] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 7,
+        [_Location_line]: 605,
+        [_Location_file]: null
+      });
+    },
+    get C318() {
+      return C[318] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 606,
+        [_Location_file]: null
+      });
+    },
+    get C315() {
+      return C[315] = dart.constList([C[316] || CT.C316, C[317] || CT.C317, C[318] || CT.C318], widget_inspector._Location);
+    },
+    get C314() {
+      return C[314] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[315] || CT.C315,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 603,
+        [_Location_file]: "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/bar.dart"
+      });
+    }
+  }, false);
+  var C = Array(319).fill(void 0);
+  var I = [
+    "package:convex_bottom_bar/src/style/inner_builder.dart",
+    "package:convex_bottom_bar/src/style/titled_tab_style.dart",
+    "package:convex_bottom_bar/src/style/textin_tab_style.dart",
+    "package:convex_bottom_bar/src/style/flip_tab_style.dart",
+    "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/style/styles.dart",
+    "package:convex_bottom_bar/src/style/react_tab_style.dart",
+    "package:convex_bottom_bar/src/style/react_circle_tab_style.dart",
+    "package:convex_bottom_bar/src/style/fixed_tab_style.dart",
+    "package:convex_bottom_bar/src/style/internal_style_config.dart",
+    "package:convex_bottom_bar/src/style/fixed_circle_tab_style.dart",
+    "package:convex_bottom_bar/src/bar.dart",
+    "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0/lib/src/bar.dart"
+  ];
+  var curve$ = dart.privateName(titled_tab_style, "TitledTabStyle.curve");
+  var backgroundColor$ = dart.privateName(titled_tab_style, "TitledTabStyle.backgroundColor");
+  var _preActivate = dart.privateName(titled_tab_style, "_preActivate");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var items$ = dart.privateName(inner_builder, "InnerBuilder.items");
+  var activeColor$ = dart.privateName(inner_builder, "InnerBuilder.activeColor");
+  var color$ = dart.privateName(inner_builder, "InnerBuilder.color");
+  var _style = dart.privateName(inner_builder, "_style");
+  inner_builder.InnerBuilder = class InnerBuilder extends $interface.DelegateBuilder {
+    get items() {
+      return this[items$];
+    }
+    set items(value) {
+      super.items = value;
+    }
+    get activeColor() {
+      return this[activeColor$];
+    }
+    set activeColor(value) {
+      super.activeColor = value;
+    }
+    get color() {
+      return this[color$];
+    }
+    set color(value) {
+      super.color = value;
+    }
+    ofStyle(context) {
+      let t0, t1, t0$;
+      t0$ = (t0 = bar.StyleProvider.of(context), t0 == null ? null : t0.style);
+      return t0$ == null ? (t1 = this[_style], t1 == null ? this[_style] = new internal_style_config.InternalStyle.new() : t1) : t0$;
+    }
+    hasNoText(item) {
+      return item.title == null || dart.nullCheck(item.title)[$isEmpty];
+    }
+  };
+  (inner_builder.InnerBuilder.new = function(opts) {
+    let items = opts && 'items' in opts ? opts.items : null;
+    let activeColor = opts && 'activeColor' in opts ? opts.activeColor : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    this[_style] = null;
+    this[items$] = items;
+    this[activeColor$] = activeColor;
+    this[color$] = color;
+    ;
+  }).prototype = inner_builder.InnerBuilder.prototype;
+  dart.addTypeTests(inner_builder.InnerBuilder);
+  dart.addTypeCaches(inner_builder.InnerBuilder);
+  dart.setMethodSignature(inner_builder.InnerBuilder, () => ({
+    __proto__: dart.getMethods(inner_builder.InnerBuilder.__proto__),
+    ofStyle: dart.fnType($interface.StyleHook, [framework.BuildContext]),
+    hasNoText: dart.fnType(core.bool, [item.TabItem])
+  }));
+  dart.setLibraryUri(inner_builder.InnerBuilder, I[0]);
+  dart.setFieldSignature(inner_builder.InnerBuilder, () => ({
+    __proto__: dart.getFields(inner_builder.InnerBuilder.__proto__),
+    items: dart.finalFieldType(core.List$(item.TabItem)),
+    activeColor: dart.finalFieldType(ui.Color),
+    color: dart.finalFieldType(ui.Color),
+    [_style]: dart.fieldType(dart.nullable($interface.StyleHook))
+  }));
+  titled_tab_style.TitledTabStyle = class TitledTabStyle extends inner_builder.InnerBuilder {
+    get curve() {
+      return this[curve$];
+    }
+    set curve(value) {
+      super.curve = value;
+    }
+    get backgroundColor() {
+      return this[backgroundColor$];
+    }
+    set backgroundColor(value) {
+      super.backgroundColor = value;
+    }
+    build(context, index, active) {
+      let t0, t0$, t0$0, t0$1;
+      let pre = this[_preActivate];
+      if (active) {
+        this[_preActivate] = index;
+      }
+      let item = this.items[$_get](index);
+      let style = this.ofStyle(context);
+      let margin = style.activeIconMargin;
+      if (active) {
+        return new transition_container.TransitionContainer.slide({data: index, duration: new core.Duration.new({milliseconds: 200}), curve: this.curve, child: new container.Container.new({width: style.layoutSize, height: style.layoutSize, margin: new edge_insets.EdgeInsets.all(margin), decoration: new box_decoration.BoxDecoration.new({shape: box_border.BoxShape.circle, color: this.activeColor}), child: new blend_image_icon.BlendImageIcon.new((t0 = item.activeIcon, t0 == null ? item.icon : t0), {size: style.activeIconSize, color: item.blend ? this.backgroundColor : null, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), $creationLocationd_0dea112b090073317d4: C[5] || CT.C5}), $creationLocationd_0dea112b090073317d4: C[12] || CT.C12});
+      }
+      let textStyle = style.textStyle(this.activeColor);
+      if (pre === index) {
+        return new basic.Stack.new({clipBehavior: ui.Clip.hardEdge, alignment: alignment.Alignment.center, children: T.JSArrayOfWidget().of([new text.Text.new((t0$ = item.title, t0$ == null ? "" : t0$), {style: textStyle, $creationLocationd_0dea112b090073317d4: C[18] || CT.C18}), new transition_container.TransitionContainer.slide({reverse: true, curve: this.curve, child: new container.Container.new({margin: new edge_insets.EdgeInsets.all(margin), decoration: new box_decoration.BoxDecoration.new({shape: box_border.BoxShape.circle, color: this.activeColor}), child: new blend_image_icon.BlendImageIcon.new((t0$0 = item.activeIcon, t0$0 == null ? item.icon : t0$0), {size: style.activeIconSize, color: item.blend ? this.backgroundColor : null, $creationLocationd_0dea112b090073317d4: C[22] || CT.C22}), $creationLocationd_0dea112b090073317d4: C[27] || CT.C27}), $creationLocationd_0dea112b090073317d4: C[32] || CT.C32})]), $creationLocationd_0dea112b090073317d4: C[37] || CT.C37});
+      }
+      return new basic.Center.new({child: new text.Text.new((t0$1 = item.title, t0$1 == null ? "" : t0$1), {style: textStyle, $creationLocationd_0dea112b090073317d4: C[42] || CT.C42}), $creationLocationd_0dea112b090073317d4: C[46] || CT.C46});
+    }
+  };
+  (titled_tab_style.TitledTabStyle.new = function(opts) {
+    let items = opts && 'items' in opts ? opts.items : null;
+    let activeColor = opts && 'activeColor' in opts ? opts.activeColor : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let curve = opts && 'curve' in opts ? opts.curve : null;
+    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+    this[_preActivate] = -1;
+    this[curve$] = curve;
+    this[backgroundColor$] = backgroundColor;
+    titled_tab_style.TitledTabStyle.__proto__.new.call(this, {items: items, activeColor: activeColor, color: color});
+    ;
+  }).prototype = titled_tab_style.TitledTabStyle.prototype;
+  dart.addTypeTests(titled_tab_style.TitledTabStyle);
+  dart.addTypeCaches(titled_tab_style.TitledTabStyle);
+  dart.setMethodSignature(titled_tab_style.TitledTabStyle, () => ({
+    __proto__: dart.getMethods(titled_tab_style.TitledTabStyle.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext, core.int, core.bool])
+  }));
+  dart.setLibraryUri(titled_tab_style.TitledTabStyle, I[1]);
+  dart.setFieldSignature(titled_tab_style.TitledTabStyle, () => ({
+    __proto__: dart.getFields(titled_tab_style.TitledTabStyle.__proto__),
+    curve: dart.finalFieldType(curves.Curve),
+    backgroundColor: dart.finalFieldType(ui.Color),
+    [_preActivate]: dart.fieldType(core.int)
+  }));
+  var curve$0 = dart.privateName(textin_tab_style, "TextInTabStyle.curve");
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  textin_tab_style.TextInTabStyle = class TextInTabStyle extends inner_builder.InnerBuilder {
+    get curve() {
+      return this[curve$0];
+    }
+    set curve(value) {
+      super.curve = value;
+    }
+    build(context, index, active) {
+      let t0, t0$;
+      let item = this.items[$_get](index);
+      let style = this.ofStyle(context);
+      if (active) {
+        let textStyle = style.textStyle(this.activeColor);
+        return new container.Container.new({padding: C[49] || CT.C49, child: new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.center, children: T.JSArrayOfWidget().of([new transition_container.TransitionContainer.scale({data: index, curve: this.curve, child: new blend_image_icon.BlendImageIcon.new((t0 = item.activeIcon, t0 == null ? item.icon : t0), {color: item.blend ? this.activeColor : null, size: style.activeIconSize, $creationLocationd_0dea112b090073317d4: C[50] || CT.C50}), $creationLocationd_0dea112b090073317d4: C[55] || CT.C55}), new transition_container.TransitionContainer.slide({curve: this.curve, child: new text.Text.new((t0$ = item.title, t0$ == null ? "" : t0$), {style: textStyle, $creationLocationd_0dea112b090073317d4: C[60] || CT.C60}), $creationLocationd_0dea112b090073317d4: C[64] || CT.C64})]), $creationLocationd_0dea112b090073317d4: C[68] || CT.C68}), $creationLocationd_0dea112b090073317d4: C[72] || CT.C72});
+      }
+      return new basic.Center.new({child: new blend_image_icon.BlendImageIcon.new(item.icon, {size: style.iconSize, color: item.blend ? this.color : null, $creationLocationd_0dea112b090073317d4: C[76] || CT.C76}), $creationLocationd_0dea112b090073317d4: C[81] || CT.C81});
+    }
+  };
+  (textin_tab_style.TextInTabStyle.new = function(opts) {
+    let items = opts && 'items' in opts ? opts.items : null;
+    let activeColor = opts && 'activeColor' in opts ? opts.activeColor : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let curve = opts && 'curve' in opts ? opts.curve : null;
+    this[curve$0] = curve;
+    textin_tab_style.TextInTabStyle.__proto__.new.call(this, {items: items, activeColor: activeColor, color: color});
+    ;
+  }).prototype = textin_tab_style.TextInTabStyle.prototype;
+  dart.addTypeTests(textin_tab_style.TextInTabStyle);
+  dart.addTypeCaches(textin_tab_style.TextInTabStyle);
+  dart.setMethodSignature(textin_tab_style.TextInTabStyle, () => ({
+    __proto__: dart.getMethods(textin_tab_style.TextInTabStyle.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext, core.int, core.bool])
+  }));
+  dart.setLibraryUri(textin_tab_style.TextInTabStyle, I[2]);
+  dart.setFieldSignature(textin_tab_style.TextInTabStyle, () => ({
+    __proto__: dart.getFields(textin_tab_style.TextInTabStyle.__proto__),
+    curve: dart.finalFieldType(curves.Curve)
+  }));
+  var curve$1 = dart.privateName(flip_tab_style, "FlipTabStyle.curve");
+  flip_tab_style.FlipTabStyle = class FlipTabStyle extends inner_builder.InnerBuilder {
+    get curve() {
+      return this[curve$1];
+    }
+    set curve(value) {
+      super.curve = value;
+    }
+    build(context, index, active) {
+      let t0, t0$;
+      let item = this.items[$_get](index);
+      let style = this.ofStyle(context);
+      let textStyle = style.textStyle(this.activeColor);
+      if (active) {
+        let children = T.JSArrayOfWidget().of([new blend_image_icon.BlendImageIcon.new((t0 = item.activeIcon, t0 == null ? item.icon : t0), {color: item.blend ? this.activeColor : null, size: style.activeIconSize, $creationLocationd_0dea112b090073317d4: C[84] || CT.C84})]);
+        let noLabel = style.hideEmptyLabel && this.hasNoText(item);
+        if (!noLabel) {
+          children[$add](new text.Text.new((t0$ = item.title, t0$ == null ? "" : t0$), {style: textStyle, $creationLocationd_0dea112b090073317d4: C[89] || CT.C89}));
+        }
+        return new transition_container.TransitionContainer.flip({data: index, duration: new core.Duration.new({milliseconds: 500}), height: style.activeIconMargin + style.activeIconSize, bottomChild: new container.Container.new({padding: new edge_insets.EdgeInsets.only({bottom: 2.0}), child: new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.end, children: children, $creationLocationd_0dea112b090073317d4: C[93] || CT.C93}), $creationLocationd_0dea112b090073317d4: C[97] || CT.C97}), topChild: new container.Container.new({child: new basic.Center.new({child: new blend_image_icon.BlendImageIcon.new(item.icon, {color: item.blend ? this.color : null, size: style.iconSize, $creationLocationd_0dea112b090073317d4: C[101] || CT.C101}), $creationLocationd_0dea112b090073317d4: C[106] || CT.C106}), $creationLocationd_0dea112b090073317d4: C[109] || CT.C109}), curve: this.curve, $creationLocationd_0dea112b090073317d4: C[112] || CT.C112});
+      }
+      return new basic.Center.new({child: new blend_image_icon.BlendImageIcon.new(item.icon, {color: item.blend ? this.color : null, size: style.iconSize, $creationLocationd_0dea112b090073317d4: C[118] || CT.C118}), $creationLocationd_0dea112b090073317d4: C[123] || CT.C123});
+    }
+  };
+  (flip_tab_style.FlipTabStyle.new = function(opts) {
+    let items = opts && 'items' in opts ? opts.items : null;
+    let activeColor = opts && 'activeColor' in opts ? opts.activeColor : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let curve = opts && 'curve' in opts ? opts.curve : null;
+    this[curve$1] = curve;
+    flip_tab_style.FlipTabStyle.__proto__.new.call(this, {items: items, activeColor: activeColor, color: color});
+    ;
+  }).prototype = flip_tab_style.FlipTabStyle.prototype;
+  dart.addTypeTests(flip_tab_style.FlipTabStyle);
+  dart.addTypeCaches(flip_tab_style.FlipTabStyle);
+  dart.setMethodSignature(flip_tab_style.FlipTabStyle, () => ({
+    __proto__: dart.getMethods(flip_tab_style.FlipTabStyle.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext, core.int, core.bool])
+  }));
+  dart.setLibraryUri(flip_tab_style.FlipTabStyle, I[3]);
+  dart.setFieldSignature(flip_tab_style.FlipTabStyle, () => ({
+    __proto__: dart.getFields(flip_tab_style.FlipTabStyle.__proto__),
+    curve: dart.finalFieldType(curves.Curve)
+  }));
+  var _name$ = dart.privateName(bar, "_name");
+  styles.supportedStyle = function supportedStyle(style, opts) {
+    let items = opts && 'items' in opts ? opts.items : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let activeColor = opts && 'activeColor' in opts ? opts.activeColor : null;
+    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+    let curve = opts && 'curve' in opts ? opts.curve : null;
+    if (!items[$isNotEmpty]) dart.assertFailed("items should not be empty", I[4], 39, 10, "items.isNotEmpty");
+    if (!((style === bar.TabStyle.fixed || style === bar.TabStyle.fixedCircle) && items[$length][$isOdd] || style !== bar.TabStyle.fixed && style !== bar.TabStyle.fixedCircle)) dart.assertFailed("item count should be an odd number when using fixed/fixedCircle", I[4], 41, 7, "((style == TabStyle.fixed || style == TabStyle.fixedCircle) &&\n              items.length.isOdd) ||\n          (style != TabStyle.fixed && style != TabStyle.fixedCircle)");
+    let builder = null;
+    switch (style) {
+      case C[126] || CT.C126:
+      {
+        builder = new fixed_tab_style.FixedTabStyle.new({items: items, color: color, activeColor: activeColor, convexIndex: (items[$length] / 2)[$truncate]()});
+        break;
+      }
+      case C[127] || CT.C127:
+      {
+        builder = new fixed_circle_tab_style.FixedCircleTabStyle.new({items: items, color: color, activeColor: activeColor, backgroundColor: backgroundColor, convexIndex: (items[$length] / 2)[$truncate]()});
+        break;
+      }
+      case C[128] || CT.C128:
+      {
+        builder = new react_tab_style.ReactTabStyle.new({items: items, color: color, activeColor: activeColor, curve: curve});
+        break;
+      }
+      case C[129] || CT.C129:
+      {
+        builder = new react_circle_tab_style.ReactCircleTabStyle.new({items: items, color: color, activeColor: activeColor, backgroundColor: backgroundColor, curve: curve});
+        break;
+      }
+      case C[130] || CT.C130:
+      {
+        if (!items[$every](dart.fn(it => it.title != null && dart.nullCheck(it.title)[$isNotEmpty], T.TabItemTobool()))) dart.assertFailed("title is necessary for TabStyle.textIn", I[4], 82, 14, "items.every((it) => it.title != null && it.title!.isNotEmpty)");
+        builder = new textin_tab_style.TextInTabStyle.new({items: items, color: color, activeColor: activeColor, curve: curve});
+        break;
+      }
+      case C[131] || CT.C131:
+      {
+        if (!items[$every](dart.fn(it => it.title != null && dart.nullCheck(it.title)[$isNotEmpty], T.TabItemTobool()))) dart.assertFailed("title is necessary for TabStyle.titled", I[4], 92, 14, "items.every((it) => it.title != null && it.title!.isNotEmpty)");
+        builder = new titled_tab_style.TitledTabStyle.new({items: items, color: color, activeColor: activeColor, curve: curve, backgroundColor: backgroundColor});
+        break;
+      }
+      case C[132] || CT.C132:
+      {
+        builder = new flip_tab_style.FlipTabStyle.new({items: items, color: color, activeColor: activeColor, curve: curve});
+        break;
+      }
+      default:
+      {
+        builder = new react_circle_tab_style.ReactCircleTabStyle.new({items: items, color: color, activeColor: activeColor, backgroundColor: backgroundColor, curve: curve});
+        break;
+      }
+    }
+    return builder;
+  };
+  var curve$2 = dart.privateName(react_tab_style, "ReactTabStyle.curve");
+  react_tab_style.ReactTabStyle = class ReactTabStyle extends inner_builder.InnerBuilder {
+    get curve() {
+      return this[curve$2];
+    }
+    set curve(value) {
+      super.curve = value;
+    }
+    build(context, index, active) {
+      let t0, t0$, t0$0;
+      let item = this.items[$_get](index);
+      let style = this.ofStyle(context);
+      let noLabel = style.hideEmptyLabel && this.hasNoText(item);
+      if (active) {
+        let children = T.JSArrayOfWidget().of([new transition_container.TransitionContainer.scale({data: index, curve: this.curve, child: new blend_image_icon.BlendImageIcon.new((t0 = item.activeIcon, t0 == null ? item.icon : t0), {color: item.blend ? this.activeColor : null, size: style.activeIconSize, $creationLocationd_0dea112b090073317d4: C[133] || CT.C133}), $creationLocationd_0dea112b090073317d4: C[138] || CT.C138})]);
+        if (!noLabel) {
+          children[$add](new text.Text.new((t0$ = item.title, t0$ == null ? "" : t0$), {style: style.textStyle(this.activeColor), $creationLocationd_0dea112b090073317d4: C[143] || CT.C143}));
+        }
+        return new container.Container.new({padding: C[49] || CT.C49, child: new basic.Column.new({mainAxisAlignment: noLabel ? flex.MainAxisAlignment.center : flex.MainAxisAlignment.end, children: children, $creationLocationd_0dea112b090073317d4: C[147] || CT.C147}), $creationLocationd_0dea112b090073317d4: C[151] || CT.C151});
+      }
+      let children = T.JSArrayOfWidget().of([new blend_image_icon.BlendImageIcon.new(item.icon, {color: item.blend ? this.color : null, $creationLocationd_0dea112b090073317d4: C[155] || CT.C155})]);
+      if (!noLabel) {
+        children[$add](new text.Text.new((t0$0 = item.title, t0$0 == null ? "" : t0$0), {style: style.textStyle(this.color), $creationLocationd_0dea112b090073317d4: C[159] || CT.C159}));
+      }
+      return new container.Container.new({padding: C[49] || CT.C49, child: new basic.Column.new({mainAxisAlignment: noLabel ? flex.MainAxisAlignment.center : flex.MainAxisAlignment.end, children: children, $creationLocationd_0dea112b090073317d4: C[163] || CT.C163}), $creationLocationd_0dea112b090073317d4: C[166] || CT.C166});
+    }
+  };
+  (react_tab_style.ReactTabStyle.new = function(opts) {
+    let items = opts && 'items' in opts ? opts.items : null;
+    let activeColor = opts && 'activeColor' in opts ? opts.activeColor : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let curve = opts && 'curve' in opts ? opts.curve : null;
+    this[curve$2] = curve;
+    react_tab_style.ReactTabStyle.__proto__.new.call(this, {items: items, activeColor: activeColor, color: color});
+    ;
+  }).prototype = react_tab_style.ReactTabStyle.prototype;
+  dart.addTypeTests(react_tab_style.ReactTabStyle);
+  dart.addTypeCaches(react_tab_style.ReactTabStyle);
+  dart.setMethodSignature(react_tab_style.ReactTabStyle, () => ({
+    __proto__: dart.getMethods(react_tab_style.ReactTabStyle.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext, core.int, core.bool])
+  }));
+  dart.setLibraryUri(react_tab_style.ReactTabStyle, I[5]);
+  dart.setFieldSignature(react_tab_style.ReactTabStyle, () => ({
+    __proto__: dart.getFields(react_tab_style.ReactTabStyle.__proto__),
+    curve: dart.finalFieldType(curves.Curve)
+  }));
+  var backgroundColor$0 = dart.privateName(react_circle_tab_style, "ReactCircleTabStyle.backgroundColor");
+  var curve$3 = dart.privateName(react_circle_tab_style, "ReactCircleTabStyle.curve");
+  react_circle_tab_style.ReactCircleTabStyle = class ReactCircleTabStyle extends inner_builder.InnerBuilder {
+    get backgroundColor() {
+      return this[backgroundColor$0];
+    }
+    set backgroundColor(value) {
+      super.backgroundColor = value;
+    }
+    get curve() {
+      return this[curve$3];
+    }
+    set curve(value) {
+      super.curve = value;
+    }
+    build(context, index, active) {
+      let t0, t0$, t0$0;
+      let item = this.items[$_get](index);
+      let style = this.ofStyle(context);
+      let margin = style.activeIconMargin;
+      if (active) {
+        let item = this.items[$_get](index);
+        return new transition_container.TransitionContainer.scale({data: index, curve: this.curve, child: new container.Container.new({width: style.layoutSize, height: style.layoutSize, margin: new edge_insets.EdgeInsets.all(margin), decoration: new box_decoration.BoxDecoration.new({shape: box_border.BoxShape.circle, color: active ? this.activeColor : this.color}), child: new blend_image_icon.BlendImageIcon.new(active ? (t0 = item.activeIcon, t0 == null ? item.icon : t0) : item.icon, {size: style.activeIconSize, color: item.blend ? this.backgroundColor : null, $creationLocationd_0dea112b090073317d4: C[170] || CT.C170}), $creationLocationd_0dea112b090073317d4: C[175] || CT.C175}), $creationLocationd_0dea112b090073317d4: C[181] || CT.C181});
+      }
+      let textStyle = style.textStyle(this.color);
+      let noLabel = style.hideEmptyLabel && this.hasNoText(item);
+      let children = T.JSArrayOfWidget().of([new blend_image_icon.BlendImageIcon.new(active ? (t0$ = item.activeIcon, t0$ == null ? item.icon : t0$) : item.icon, {color: item.blend ? this.color : null, $creationLocationd_0dea112b090073317d4: C[186] || CT.C186})]);
+      if (!noLabel) {
+        children[$add](new text.Text.new((t0$0 = item.title, t0$0 == null ? "" : t0$0), {style: textStyle, $creationLocationd_0dea112b090073317d4: C[190] || CT.C190}));
+      }
+      return new container.Container.new({padding: new edge_insets.EdgeInsets.only({bottom: 2.0}), child: new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.center, children: children, $creationLocationd_0dea112b090073317d4: C[194] || CT.C194}), $creationLocationd_0dea112b090073317d4: C[198] || CT.C198});
+    }
+  };
+  (react_circle_tab_style.ReactCircleTabStyle.new = function(opts) {
+    let items = opts && 'items' in opts ? opts.items : null;
+    let activeColor = opts && 'activeColor' in opts ? opts.activeColor : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+    let curve = opts && 'curve' in opts ? opts.curve : null;
+    this[backgroundColor$0] = backgroundColor;
+    this[curve$3] = curve;
+    react_circle_tab_style.ReactCircleTabStyle.__proto__.new.call(this, {items: items, activeColor: activeColor, color: color});
+    ;
+  }).prototype = react_circle_tab_style.ReactCircleTabStyle.prototype;
+  dart.addTypeTests(react_circle_tab_style.ReactCircleTabStyle);
+  dart.addTypeCaches(react_circle_tab_style.ReactCircleTabStyle);
+  dart.setMethodSignature(react_circle_tab_style.ReactCircleTabStyle, () => ({
+    __proto__: dart.getMethods(react_circle_tab_style.ReactCircleTabStyle.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext, core.int, core.bool])
+  }));
+  dart.setLibraryUri(react_circle_tab_style.ReactCircleTabStyle, I[6]);
+  dart.setFieldSignature(react_circle_tab_style.ReactCircleTabStyle, () => ({
+    __proto__: dart.getFields(react_circle_tab_style.ReactCircleTabStyle.__proto__),
+    backgroundColor: dart.finalFieldType(ui.Color),
+    curve: dart.finalFieldType(curves.Curve)
+  }));
+  var convexIndex$ = dart.privateName(fixed_tab_style, "FixedTabStyle.convexIndex");
+  fixed_tab_style.FixedTabStyle = class FixedTabStyle extends inner_builder.InnerBuilder {
+    get convexIndex() {
+      return this[convexIndex$];
+    }
+    set convexIndex(value) {
+      super.convexIndex = value;
+    }
+    build(context, index, active) {
+      let t0, t0$, t0$0, t0$1;
+      let c = active ? this.activeColor : this.color;
+      let style = this.ofStyle(context);
+      let textStyle = style.textStyle(c);
+      let item = this.items[$_get](index);
+      if (index === this.convexIndex) {
+        let item = this.items[$_get](this.convexIndex);
+        return new container.Container.new({padding: new edge_insets.EdgeInsets.only({bottom: 2.0}), child: new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.end, children: T.JSArrayOfWidget().of([new blend_image_icon.BlendImageIcon.new(active ? (t0 = item.activeIcon, t0 == null ? item.icon : t0) : item.icon, {color: item.blend ? c : null, size: style.activeIconSize, $creationLocationd_0dea112b090073317d4: C[202] || CT.C202}), new text.Text.new((t0$ = item.title, t0$ == null ? "" : t0$), {style: textStyle, $creationLocationd_0dea112b090073317d4: C[207] || CT.C207})]), $creationLocationd_0dea112b090073317d4: C[211] || CT.C211}), $creationLocationd_0dea112b090073317d4: C[215] || CT.C215});
+      }
+      let noLabel = style.hideEmptyLabel && this.hasNoText(item);
+      let icon = new blend_image_icon.BlendImageIcon.new(active ? (t0$0 = item.activeIcon, t0$0 == null ? item.icon : t0$0) : item.icon, {size: style.iconSize, color: item.blend ? c : null, $creationLocationd_0dea112b090073317d4: C[219] || CT.C219});
+      let children = noLabel ? T.JSArrayOfWidget().of([icon]) : T.JSArrayOfWidget().of([icon, new text.Text.new((t0$1 = item.title, t0$1 == null ? "" : t0$1), {style: textStyle, $creationLocationd_0dea112b090073317d4: C[224] || CT.C224})]);
+      return new container.Container.new({padding: new edge_insets.EdgeInsets.only({bottom: 2.0}), child: new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.end, children: children, $creationLocationd_0dea112b090073317d4: C[228] || CT.C228}), $creationLocationd_0dea112b090073317d4: C[232] || CT.C232});
+    }
+    fixed() {
+      return true;
+    }
+  };
+  (fixed_tab_style.FixedTabStyle.new = function(opts) {
+    let items = opts && 'items' in opts ? opts.items : null;
+    let activeColor = opts && 'activeColor' in opts ? opts.activeColor : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let convexIndex = opts && 'convexIndex' in opts ? opts.convexIndex : null;
+    this[convexIndex$] = convexIndex;
+    fixed_tab_style.FixedTabStyle.__proto__.new.call(this, {items: items, activeColor: activeColor, color: color});
+    ;
+  }).prototype = fixed_tab_style.FixedTabStyle.prototype;
+  dart.addTypeTests(fixed_tab_style.FixedTabStyle);
+  dart.addTypeCaches(fixed_tab_style.FixedTabStyle);
+  dart.setMethodSignature(fixed_tab_style.FixedTabStyle, () => ({
+    __proto__: dart.getMethods(fixed_tab_style.FixedTabStyle.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext, core.int, core.bool])
+  }));
+  dart.setLibraryUri(fixed_tab_style.FixedTabStyle, I[7]);
+  dart.setFieldSignature(fixed_tab_style.FixedTabStyle, () => ({
+    __proto__: dart.getFields(fixed_tab_style.FixedTabStyle.__proto__),
+    convexIndex: dart.finalFieldType(core.int)
+  }));
+  internal_style_config.InternalStyle = class InternalStyle extends $interface.StyleHook {
+    get iconSize() {
+      return null;
+    }
+    get activeIconMargin() {
+      return (60 - 40) / 4;
+    }
+    get activeIconSize() {
+      return 40;
+    }
+    textStyle(color) {
+      return new text_style.TextStyle.new({color: color});
+    }
+  };
+  (internal_style_config.InternalStyle.new = function() {
+    ;
+  }).prototype = internal_style_config.InternalStyle.prototype;
+  dart.addTypeTests(internal_style_config.InternalStyle);
+  dart.addTypeCaches(internal_style_config.InternalStyle);
+  dart.setMethodSignature(internal_style_config.InternalStyle, () => ({
+    __proto__: dart.getMethods(internal_style_config.InternalStyle.__proto__),
+    textStyle: dart.fnType(text_style.TextStyle, [ui.Color])
+  }));
+  dart.setGetterSignature(internal_style_config.InternalStyle, () => ({
+    __proto__: dart.getGetters(internal_style_config.InternalStyle.__proto__),
+    iconSize: dart.nullable(core.double),
+    activeIconMargin: core.double,
+    activeIconSize: core.double
+  }));
+  dart.setLibraryUri(internal_style_config.InternalStyle, I[8]);
+  var backgroundColor$1 = dart.privateName(fixed_circle_tab_style, "FixedCircleTabStyle.backgroundColor");
+  var convexIndex$0 = dart.privateName(fixed_circle_tab_style, "FixedCircleTabStyle.convexIndex");
+  fixed_circle_tab_style.FixedCircleTabStyle = class FixedCircleTabStyle extends inner_builder.InnerBuilder {
+    get backgroundColor() {
+      return this[backgroundColor$1];
+    }
+    set backgroundColor(value) {
+      super.backgroundColor = value;
+    }
+    get convexIndex() {
+      return this[convexIndex$0];
+    }
+    set convexIndex(value) {
+      super.convexIndex = value;
+    }
+    build(context, index, active) {
+      let t0, t0$, t0$0;
+      let c = active ? this.activeColor : this.color;
+      let item = this.items[$_get](index);
+      let style = this.ofStyle(context);
+      let textStyle = style.textStyle(c);
+      let margin = style.activeIconMargin;
+      if (index === this.convexIndex) {
+        let item = this.items[$_get](index);
+        return new container.Container.new({width: style.layoutSize, height: style.layoutSize, decoration: new box_decoration.BoxDecoration.new({shape: box_border.BoxShape.circle, color: c}), margin: new edge_insets.EdgeInsets.all(margin), child: new blend_image_icon.BlendImageIcon.new(active ? (t0 = item.activeIcon, t0 == null ? item.icon : t0) : item.icon, {size: style.activeIconSize, color: item.blend ? this.backgroundColor : null, $creationLocationd_0dea112b090073317d4: C[236] || CT.C236}), $creationLocationd_0dea112b090073317d4: C[241] || CT.C241});
+      }
+      let noLabel = style.hideEmptyLabel && this.hasNoText(item);
+      let icon = new blend_image_icon.BlendImageIcon.new(active ? (t0$ = item.activeIcon, t0$ == null ? item.icon : t0$) : item.icon, {color: item.blend ? c : null, size: style.iconSize, $creationLocationd_0dea112b090073317d4: C[248] || CT.C248});
+      let children = noLabel ? T.JSArrayOfWidget().of([icon]) : T.JSArrayOfWidget().of([icon, new text.Text.new((t0$0 = item.title, t0$0 == null ? "" : t0$0), {style: textStyle, $creationLocationd_0dea112b090073317d4: C[253] || CT.C253})]);
+      return new container.Container.new({padding: new edge_insets.EdgeInsets.only({bottom: 2.0}), child: new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.center, children: children, $creationLocationd_0dea112b090073317d4: C[257] || CT.C257}), $creationLocationd_0dea112b090073317d4: C[261] || CT.C261});
+    }
+    fixed() {
+      return true;
+    }
+  };
+  (fixed_circle_tab_style.FixedCircleTabStyle.new = function(opts) {
+    let items = opts && 'items' in opts ? opts.items : null;
+    let activeColor = opts && 'activeColor' in opts ? opts.activeColor : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+    let convexIndex = opts && 'convexIndex' in opts ? opts.convexIndex : null;
+    this[backgroundColor$1] = backgroundColor;
+    this[convexIndex$0] = convexIndex;
+    fixed_circle_tab_style.FixedCircleTabStyle.__proto__.new.call(this, {items: items, activeColor: activeColor, color: color});
+    ;
+  }).prototype = fixed_circle_tab_style.FixedCircleTabStyle.prototype;
+  dart.addTypeTests(fixed_circle_tab_style.FixedCircleTabStyle);
+  dart.addTypeCaches(fixed_circle_tab_style.FixedCircleTabStyle);
+  dart.setMethodSignature(fixed_circle_tab_style.FixedCircleTabStyle, () => ({
+    __proto__: dart.getMethods(fixed_circle_tab_style.FixedCircleTabStyle.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext, core.int, core.bool])
+  }));
+  dart.setLibraryUri(fixed_circle_tab_style.FixedCircleTabStyle, I[9]);
+  dart.setFieldSignature(fixed_circle_tab_style.FixedCircleTabStyle, () => ({
+    __proto__: dart.getFields(fixed_circle_tab_style.FixedCircleTabStyle.__proto__),
+    backgroundColor: dart.finalFieldType(ui.Color),
+    convexIndex: dart.finalFieldType(core.int)
+  }));
+  bar.TabStyle = class TabStyle extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (bar.TabStyle.new = function(index, _name) {
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = bar.TabStyle.prototype;
+  dart.addTypeTests(bar.TabStyle);
+  dart.addTypeCaches(bar.TabStyle);
+  dart.setLibraryUri(bar.TabStyle, I[10]);
+  dart.setFieldSignature(bar.TabStyle, () => ({
+    __proto__: dart.getFields(bar.TabStyle.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(bar.TabStyle, ['toString']);
+  bar.TabStyle.fixed = C[126] || CT.C126;
+  bar.TabStyle.fixedCircle = C[127] || CT.C127;
+  bar.TabStyle.react = C[128] || CT.C128;
+  bar.TabStyle.reactCircle = C[129] || CT.C129;
+  bar.TabStyle.textIn = C[130] || CT.C130;
+  bar.TabStyle.titled = C[131] || CT.C131;
+  bar.TabStyle.flip = C[132] || CT.C132;
+  bar.TabStyle.custom = C[264] || CT.C264;
+  bar.TabStyle.values = C[265] || CT.C265;
+  var itemBuilder$ = dart.privateName(bar, "ConvexAppBar.itemBuilder");
+  var chipBuilder$ = dart.privateName(bar, "ConvexAppBar.chipBuilder");
+  var onTap$ = dart.privateName(bar, "ConvexAppBar.onTap");
+  var onTapNotify$ = dart.privateName(bar, "ConvexAppBar.onTapNotify");
+  var controller$ = dart.privateName(bar, "ConvexAppBar.controller");
+  var backgroundColor$2 = dart.privateName(bar, "ConvexAppBar.backgroundColor");
+  var cornerRadius$ = dart.privateName(bar, "ConvexAppBar.cornerRadius");
+  var gradient$ = dart.privateName(bar, "ConvexAppBar.gradient");
+  var initialActiveIndex$ = dart.privateName(bar, "ConvexAppBar.initialActiveIndex");
+  var disableDefaultTabController$ = dart.privateName(bar, "ConvexAppBar.disableDefaultTabController");
+  var count$ = dart.privateName(bar, "ConvexAppBar.count");
+  var height$ = dart.privateName(bar, "ConvexAppBar.height");
+  var curveSize$ = dart.privateName(bar, "ConvexAppBar.curveSize");
+  var top$ = dart.privateName(bar, "ConvexAppBar.top");
+  var elevation$ = dart.privateName(bar, "ConvexAppBar.elevation");
+  var curve$4 = dart.privateName(bar, "ConvexAppBar.curve");
+  var Cubic_d = dart.privateName(curves, "Cubic.d");
+  var Cubic_c = dart.privateName(curves, "Cubic.c");
+  var Cubic_b = dart.privateName(curves, "Cubic.b");
+  var Cubic_a = dart.privateName(curves, "Cubic.a");
+  bar.ConvexAppBar = class ConvexAppBar extends framework.StatefulWidget {
+    get itemBuilder() {
+      return this[itemBuilder$];
+    }
+    set itemBuilder(value) {
+      super.itemBuilder = value;
+    }
+    get chipBuilder() {
+      return this[chipBuilder$];
+    }
+    set chipBuilder(value) {
+      super.chipBuilder = value;
+    }
+    get onTap() {
+      return this[onTap$];
+    }
+    set onTap(value) {
+      super.onTap = value;
+    }
+    get onTapNotify() {
+      return this[onTapNotify$];
+    }
+    set onTapNotify(value) {
+      super.onTapNotify = value;
+    }
+    get controller() {
+      return this[controller$];
+    }
+    set controller(value) {
+      super.controller = value;
+    }
+    get backgroundColor() {
+      return this[backgroundColor$2];
+    }
+    set backgroundColor(value) {
+      super.backgroundColor = value;
+    }
+    get cornerRadius() {
+      return this[cornerRadius$];
+    }
+    set cornerRadius(value) {
+      super.cornerRadius = value;
+    }
+    get gradient() {
+      return this[gradient$];
+    }
+    set gradient(value) {
+      super.gradient = value;
+    }
+    get initialActiveIndex() {
+      return this[initialActiveIndex$];
+    }
+    set initialActiveIndex(value) {
+      super.initialActiveIndex = value;
+    }
+    get disableDefaultTabController() {
+      return this[disableDefaultTabController$];
+    }
+    set disableDefaultTabController(value) {
+      super.disableDefaultTabController = value;
+    }
+    get count() {
+      return this[count$];
+    }
+    set count(value) {
+      super.count = value;
+    }
+    get height() {
+      return this[height$];
+    }
+    set height(value) {
+      super.height = value;
+    }
+    get curveSize() {
+      return this[curveSize$];
+    }
+    set curveSize(value) {
+      super.curveSize = value;
+    }
+    get top() {
+      return this[top$];
+    }
+    set top(value) {
+      super.top = value;
+    }
+    get elevation() {
+      return this[elevation$];
+    }
+    set elevation(value) {
+      super.elevation = value;
+    }
+    get curve() {
+      return this[curve$4];
+    }
+    set curve(value) {
+      super.curve = value;
+    }
+    static badge(badge, opts) {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3;
+      let key = opts && 'key' in opts ? opts.key : null;
+      let badgeTextColor = opts && 'badgeTextColor' in opts ? opts.badgeTextColor : null;
+      let badgeColor = opts && 'badgeColor' in opts ? opts.badgeColor : null;
+      let badgePadding = opts && 'badgePadding' in opts ? opts.badgePadding : null;
+      let badgeMargin = opts && 'badgeMargin' in opts ? opts.badgeMargin : null;
+      let badgeBorderRadius = opts && 'badgeBorderRadius' in opts ? opts.badgeBorderRadius : null;
+      let items = opts && 'items' in opts ? opts.items : null;
+      let initialActiveIndex = opts && 'initialActiveIndex' in opts ? opts.initialActiveIndex : null;
+      let disableDefaultTabController = opts && 'disableDefaultTabController' in opts ? opts.disableDefaultTabController : null;
+      let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+      let onTabNotify = opts && 'onTabNotify' in opts ? opts.onTabNotify : null;
+      let controller = opts && 'controller' in opts ? opts.controller : null;
+      let color = opts && 'color' in opts ? opts.color : null;
+      let activeColor = opts && 'activeColor' in opts ? opts.activeColor : null;
+      let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+      let gradient = opts && 'gradient' in opts ? opts.gradient : null;
+      let height = opts && 'height' in opts ? opts.height : null;
+      let curveSize = opts && 'curveSize' in opts ? opts.curveSize : null;
+      let top = opts && 'top' in opts ? opts.top : null;
+      let elevation = opts && 'elevation' in opts ? opts.elevation : null;
+      let cornerRadius = opts && 'cornerRadius' in opts ? opts.cornerRadius : null;
+      let style = opts && 'style' in opts ? opts.style : null;
+      let curve = opts && 'curve' in opts ? opts.curve : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      let chipBuilder = null;
+      if (badge[$isNotEmpty]) {
+        chipBuilder = new chip_builder.DefaultChipBuilder.new(badge, {textColor: (t0 = badgeTextColor, t0 == null ? colors.Colors.white : t0), badgeColor: (t0$ = badgeColor, t0$ == null ? colors.Colors.redAccent : t0$), padding: (t0$0 = badgePadding, t0$0 == null ? new edge_insets.EdgeInsets.only({left: 4.0, right: 4.0}) : t0$0), margin: (t0$1 = badgeMargin, t0$1 == null ? new edge_insets.EdgeInsets.only({top: 10.0, right: 10.0}) : t0$1), borderRadius: (t0$2 = badgeBorderRadius, t0$2 == null ? 20.0 : t0$2)});
+      }
+      return new bar.ConvexAppBar.new({key: key, items: items, initialActiveIndex: initialActiveIndex, disableDefaultTabController: (t0$3 = disableDefaultTabController, t0$3 == null ? false : t0$3), onTap: onTap, onTabNotify: onTabNotify, controller: controller, color: color, activeColor: activeColor, backgroundColor: backgroundColor, gradient: gradient, height: height, curveSize: curveSize, top: top, elevation: elevation, cornerRadius: cornerRadius, style: style, curve: curve, chipBuilder: chipBuilder, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    }
+    createState() {
+      return new bar.ConvexAppBarState.new();
+    }
+  };
+  (bar.ConvexAppBar.new = function(opts) {
+    let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let items = opts && 'items' in opts ? opts.items : null;
+    let initialActiveIndex = opts && 'initialActiveIndex' in opts ? opts.initialActiveIndex : null;
+    let disableDefaultTabController = opts && 'disableDefaultTabController' in opts ? opts.disableDefaultTabController : null;
+    let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+    let onTabNotify = opts && 'onTabNotify' in opts ? opts.onTabNotify : null;
+    let controller = opts && 'controller' in opts ? opts.controller : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let activeColor = opts && 'activeColor' in opts ? opts.activeColor : null;
+    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+    let gradient = opts && 'gradient' in opts ? opts.gradient : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let curveSize = opts && 'curveSize' in opts ? opts.curveSize : null;
+    let top = opts && 'top' in opts ? opts.top : null;
+    let elevation = opts && 'elevation' in opts ? opts.elevation : null;
+    let cornerRadius = opts && 'cornerRadius' in opts ? opts.cornerRadius : null;
+    let style = opts && 'style' in opts ? opts.style : null;
+    let curve = opts && 'curve' in opts ? opts.curve : null;
+    let chipBuilder = opts && 'chipBuilder' in opts ? opts.chipBuilder : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    bar.ConvexAppBar.builder.call(this, {key: key, itemBuilder: styles.supportedStyle((t0 = style, t0 == null ? bar.TabStyle.reactCircle : t0), {items: items, color: (t0$ = color, t0$ == null ? colors.Colors.white60 : t0$), activeColor: (t0$0 = activeColor, t0$0 == null ? colors.Colors.white : t0$0), backgroundColor: (t0$1 = backgroundColor, t0$1 == null ? colors.Colors.blue : t0$1), curve: (t0$2 = curve, t0$2 == null ? curves.Curves.easeInOut : t0$2)}), onTap: onTap, onTapNotify: onTabNotify, controller: controller, backgroundColor: backgroundColor, count: items[$length], initialActiveIndex: initialActiveIndex, disableDefaultTabController: (t0$3 = disableDefaultTabController, t0$3 == null ? false : t0$3), gradient: gradient, height: height, curveSize: curveSize, top: top, elevation: elevation, cornerRadius: cornerRadius, curve: (t0$4 = curve, t0$4 == null ? curves.Curves.easeInOut : t0$4), chipBuilder: chipBuilder, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+  }).prototype = bar.ConvexAppBar.prototype;
+  (bar.ConvexAppBar.builder = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let itemBuilder = opts && 'itemBuilder' in opts ? opts.itemBuilder : null;
+    let count = opts && 'count' in opts ? opts.count : null;
+    let initialActiveIndex = opts && 'initialActiveIndex' in opts ? opts.initialActiveIndex : null;
+    let disableDefaultTabController = opts && 'disableDefaultTabController' in opts ? opts.disableDefaultTabController : false;
+    let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+    let onTapNotify = opts && 'onTapNotify' in opts ? opts.onTapNotify : null;
+    let controller = opts && 'controller' in opts ? opts.controller : null;
+    let backgroundColor = opts && 'backgroundColor' in opts ? opts.backgroundColor : null;
+    let gradient = opts && 'gradient' in opts ? opts.gradient : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let curveSize = opts && 'curveSize' in opts ? opts.curveSize : null;
+    let top = opts && 'top' in opts ? opts.top : null;
+    let elevation = opts && 'elevation' in opts ? opts.elevation : null;
+    let cornerRadius = opts && 'cornerRadius' in opts ? opts.cornerRadius : null;
+    let curve = opts && 'curve' in opts ? opts.curve : C[266] || CT.C266;
+    let chipBuilder = opts && 'chipBuilder' in opts ? opts.chipBuilder : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[itemBuilder$] = itemBuilder;
+    this[count$] = count;
+    this[initialActiveIndex$] = initialActiveIndex;
+    this[disableDefaultTabController$] = disableDefaultTabController;
+    this[onTap$] = onTap;
+    this[onTapNotify$] = onTapNotify;
+    this[controller$] = controller;
+    this[backgroundColor$2] = backgroundColor;
+    this[gradient$] = gradient;
+    this[height$] = height;
+    this[curveSize$] = curveSize;
+    this[top$] = top;
+    this[elevation$] = elevation;
+    this[cornerRadius$] = cornerRadius;
+    this[curve$4] = curve;
+    this[chipBuilder$] = chipBuilder;
+    if (!(top == null || dart.notNull(top) <= 0)) dart.assertFailed("top should be negative", I[11], 269, 16, "top == null || top <= 0");
+    if (!(initialActiveIndex == null || dart.notNull(initialActiveIndex) < count)) dart.assertFailed("initial index should < " + dart.str(count), I[11], 270, 16, "initialActiveIndex == null || initialActiveIndex < count");
+    if (!(cornerRadius == null || dart.notNull(cornerRadius) >= 0)) dart.assertFailed("cornerRadius must >= 0", I[11], 272, 16, "cornerRadius == null || cornerRadius >= 0");
+    bar.ConvexAppBar.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = bar.ConvexAppBar.prototype;
+  dart.addTypeTests(bar.ConvexAppBar);
+  dart.addTypeCaches(bar.ConvexAppBar);
+  dart.setMethodSignature(bar.ConvexAppBar, () => ({
+    __proto__: dart.getMethods(bar.ConvexAppBar.__proto__),
+    createState: dart.fnType(bar.ConvexAppBarState, [])
+  }));
+  dart.setLibraryUri(bar.ConvexAppBar, I[10]);
+  dart.setFieldSignature(bar.ConvexAppBar, () => ({
+    __proto__: dart.getFields(bar.ConvexAppBar.__proto__),
+    itemBuilder: dart.finalFieldType($interface.DelegateBuilder),
+    chipBuilder: dart.finalFieldType(dart.nullable($interface.ChipBuilder)),
+    onTap: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.int]))),
+    onTapNotify: dart.finalFieldType(dart.nullable(dart.fnType(core.bool, [core.int]))),
+    controller: dart.finalFieldType(dart.nullable(tab_controller.TabController)),
+    backgroundColor: dart.finalFieldType(dart.nullable(ui.Color)),
+    cornerRadius: dart.finalFieldType(dart.nullable(core.double)),
+    gradient: dart.finalFieldType(dart.nullable(gradient.Gradient)),
+    initialActiveIndex: dart.finalFieldType(dart.nullable(core.int)),
+    disableDefaultTabController: dart.finalFieldType(core.bool),
+    count: dart.finalFieldType(core.int),
+    height: dart.finalFieldType(dart.nullable(core.double)),
+    curveSize: dart.finalFieldType(dart.nullable(core.double)),
+    top: dart.finalFieldType(dart.nullable(core.double)),
+    elevation: dart.finalFieldType(dart.nullable(core.double)),
+    curve: dart.finalFieldType(curves.Curve)
+  }));
+  var _currentIndex = dart.privateName(bar, "_currentIndex");
+  var _warpUnderwayCount = dart.privateName(bar, "_warpUnderwayCount");
+  var _animation = dart.privateName(bar, "_animation");
+  var _animationController = dart.privateName(bar, "_animationController");
+  var _controller = dart.privateName(bar, "_controller");
+  var _previousTimestamp = dart.privateName(bar, "_previousTimestamp");
+  var _resetState = dart.privateName(bar, "_resetState");
+  var _warpToCurrentIndex = dart.privateName(bar, "_warpToCurrentIndex");
+  var _handleTabControllerAnimationTick = dart.privateName(bar, "_handleTabControllerAnimationTick");
+  var _blockEvent = dart.privateName(bar, "_blockEvent");
+  var _updateAnimation = dart.privateName(bar, "_updateAnimation");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var _takeControllerRef = dart.privateName(bar, "_takeControllerRef");
+  var _updateTabController = dart.privateName(bar, "_updateTabController");
+  var AlwaysStoppedAnimation_value = dart.privateName(animations, "AlwaysStoppedAnimation.value");
+  var _barContent = dart.privateName(bar, "_barContent");
+  var _onTabClick = dart.privateName(bar, "_onTabClick");
+  var _newTab = dart.privateName(bar, "_newTab");
+  const State_TickerProviderStateMixin$36 = class State_TickerProviderStateMixin extends framework.State$(bar.ConvexAppBar) {};
+  (State_TickerProviderStateMixin$36.new = function() {
+    ticker_provider.TickerProviderStateMixin$(bar.ConvexAppBar)[dart.mixinNew].call(this);
+    State_TickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_TickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_TickerProviderStateMixin$36, ticker_provider.TickerProviderStateMixin$(bar.ConvexAppBar));
+  bar.ConvexAppBarState = class ConvexAppBarState extends State_TickerProviderStateMixin$36 {
+    initState() {
+      if (this.widget.cornerRadius != null && dart.nullCheck(this.widget.cornerRadius) > 0 && !this.isFixed()) {
+        dart.throw(new assertions.FlutterError.fromParts(T.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("ConvexAppBar is configured with cornerRadius"), new assertions.ErrorDescription.new("Currently the corner only work for fixed style, if you are using " + "other styles, the convex shape can be broken on the first and last tab item "), new assertions.ErrorHint.new("You should use TabStyle.fixed or TabStyle.fixedCircle to make the" + " background display with topLeft/topRight corner")])));
+      }
+      this[_resetState]();
+      super.initState();
+    }
+    [_handleTabControllerAnimationTick]() {
+      if (this[_warpUnderwayCount] > 0 || this[_controller] == null || !dart.nullCheck(this[_controller]).indexIsChanging) {
+        return;
+      }
+      if (dart.nullCheck(this[_controller]).index !== this[_currentIndex]) {
+        this[_warpToCurrentIndex]();
+      }
+    }
+    [_warpToCurrentIndex]() {
+      return async.async(dart.void, (function* _warpToCurrentIndex() {
+        if (!this.mounted) return T.FutureOfvoid().value();
+        let c = this[_controller];
+        if (c == null) {
+          return;
+        }
+        let _diff = (c.index - dart.nullCheck(this[_currentIndex]))[$abs]();
+        if (_diff === 1) {
+          if (this[_blockEvent](c.index)) return;
+          let previousIndex = c.previousIndex;
+          let index = c.index;
+          this[_warpUnderwayCount] = this[_warpUnderwayCount] + 1;
+          yield this.animateTo(index, {from: previousIndex});
+          this[_warpUnderwayCount] = this[_warpUnderwayCount] - 1;
+          return T.FutureOfvoid().value();
+        }
+      }).bind(this));
+    }
+    animateTo(index, opts) {
+      let from = opts && 'from' in opts ? opts.from : null;
+      return async.async(dart.void, (function* animateTo() {
+        let t0, t0$;
+        let gap = new core.DateTime.now().millisecondsSinceEpoch - this[_previousTimestamp];
+        this[_updateAnimation]({from: (t0 = from, t0 == null ? this[_currentIndex] : t0), to: index, duration: new core.Duration.new({milliseconds: gap < 150 ? 0 : 150})});
+        t0$ = this[_animationController];
+        t0$ == null ? null : t0$.forward();
+        if (this.mounted) {
+          this.setState(dart.fn(() => {
+            this[_currentIndex] = index;
+          }, T.VoidTovoid()));
+        }
+        this[_previousTimestamp] = new core.DateTime.now().millisecondsSinceEpoch;
+      }).bind(this));
+    }
+    [_updateAnimation](opts) {
+      let t0, t0$, t0$0, t0$1;
+      let from = opts && 'from' in opts ? opts.from : null;
+      let to = opts && 'to' in opts ? opts.to : null;
+      let duration = opts && 'duration' in opts ? opts.duration : C[267] || CT.C267;
+      if (from != null && from == to && this[_animation] != null) {
+        return dart.nullCheck(this[_animation]);
+      }
+      from == null ? from = (t0$0 = (t0$ = (t0 = this[_controller], t0 == null ? null : t0.index), t0$ == null ? this.widget.initialActiveIndex : t0$), t0$0 == null ? 0 : t0$0) : null;
+      to == null ? to = from : null;
+      let lower = (2 * dart.notNull(from) + 1) / (2 * this.widget.count);
+      let upper = (2 * dart.notNull(to) + 1) / (2 * this.widget.count);
+      t0$1 = this[_animationController];
+      t0$1 == null ? null : t0$1.dispose();
+      let controller = new animation_controller.AnimationController.new({duration: duration, vsync: this});
+      let curve = new animations.CurvedAnimation.new({parent: controller, curve: this.widget.curve});
+      this[_animationController] = controller;
+      return this[_animation] = new (T.TweenOfdouble()).new({begin: lower, end: upper}).animate(curve);
+    }
+    dispose() {
+      let t1, t0, t0$;
+      t0 = this[_controller];
+      t0 == null ? null : (t1 = t0.animation, t1 == null ? null : t1.removeListener(dart.bind(this, _handleTabControllerAnimationTick)));
+      this[_controller] = null;
+      t0$ = this[_animationController];
+      t0$ == null ? null : t0$.dispose();
+      super.dispose();
+    }
+    get [_takeControllerRef]() {
+      let t0;
+      if (this.widget.disableDefaultTabController === true) {
+        return this.widget.controller;
+      }
+      t0 = this.widget.controller;
+      return t0 == null ? tab_controller.DefaultTabController.of(this.context) : t0;
+    }
+    [_updateTabController]() {
+      let t1, t0, t1$, t0$;
+      let newController = this[_takeControllerRef];
+      if (!dart.fn(() => {
+        if (newController != null && this.widget.controller == null && this.widget.initialActiveIndex != null) {
+          dart.throw(assertions.FlutterError.new("ConvexAppBar.initialActiveIndex is not allowed when working with TabController.\n" + "Please setup through TabController.initialIndex, or disable DefaultTabController by #disableDefaultTabController"));
+        }
+        return true;
+      }, T.VoidTobool())()) dart.assertFailed(null, I[11], 478, 12, "() {\n      if (newController != null &&\n          widget.controller == null &&\n          widget.initialActiveIndex != null) {\n        throw FlutterError(\n            'ConvexAppBar.initialActiveIndex is not allowed when working with TabController.\\n'\n            'Please setup through TabController.initialIndex, or disable DefaultTabController by #disableDefaultTabController');\n      }\n      return true;\n    }()");
+      if (dart.equals(newController, this[_controller])) return;
+      t0 = this[_controller];
+      t0 == null ? null : (t1 = t0.animation, t1 == null ? null : t1.removeListener(dart.bind(this, _handleTabControllerAnimationTick)));
+      this[_controller] = newController;
+      t0$ = this[_controller];
+      t0$ == null ? null : (t1$ = t0$.animation, t1$ == null ? null : t1$.addListener(dart.bind(this, _handleTabControllerAnimationTick)));
+    }
+    [_resetState]() {
+      let t0, t0$, t0$0;
+      let index = (t0$ = (t0 = this[_controller], t0 == null ? null : t0.index), t0$ == null ? this.widget.initialActiveIndex : t0$);
+      this[_currentIndex] = (t0$0 = index, t0$0 == null ? 0 : t0$0);
+      if (!this.isFixed() && this[_controller] != null) {
+        this[_updateAnimation]();
+      }
+    }
+    didChangeDependencies() {
+      super.didChangeDependencies();
+      if (!dart.equals(this[_controller], this[_takeControllerRef])) {
+        this[_updateTabController]();
+        this[_resetState]();
+      }
+    }
+    didUpdateWidget(oldWidget) {
+      bar.ConvexAppBar.as(oldWidget);
+      super.didUpdateWidget(oldWidget);
+      if (!dart.equals(this.widget.controller, oldWidget.controller) || this.widget.count !== oldWidget.count) {
+        this[_updateTabController]();
+        this[_resetState]();
+      }
+    }
+    build(context) {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4, t0$5;
+      let additionalBottomPadding = math.max(core.double, media_query.MediaQuery.of(context).padding.bottom, 0.0);
+      let convexIndex = this.isFixed() ? (this.widget.count / 2)[$truncate]() : this[_currentIndex];
+      let active = this.isFixed() ? convexIndex == this[_currentIndex] : true;
+      let height = dart.notNull((t0 = this.widget.height, t0 == null ? 50 : t0)) + additionalBottomPadding;
+      let width = media_query.MediaQuery.of(context).size.width;
+      let percent = this.isFixed() ? C[268] || CT.C268 : (t0$ = this[_animation], t0$ == null ? this[_updateAnimation]() : t0$);
+      let factor = 1 / this.widget.count;
+      let textDirection = basic.Directionality.of(context);
+      let dx = dart.nullCheck(convexIndex) / (this.widget.count - 1);
+      if (textDirection === ui.TextDirection.rtl) {
+        dx = 1 - dx;
+      }
+      let offset = new fractional_offset.FractionalOffset.new(this.widget.count > 1 ? dx : 0.0, 0.0);
+      return new stack.Stack.new({clipBehavior: ui.Clip.none, alignment: alignment.Alignment.bottomCenter, children: T.JSArrayOfWidget().of([new container.Container.new({height: height, width: width, child: new basic.CustomPaint.new({painter: new painter.ConvexPainter.new({top: (t0$0 = this.widget.top, t0$0 == null ? -25 : t0$0), width: (t0$1 = this.widget.curveSize, t0$1 == null ? 80 : t0$1), height: (t0$2 = this.widget.curveSize, t0$2 == null ? 80 : t0$2), color: (t0$3 = this.widget.backgroundColor, t0$3 == null ? colors.Colors.blue : t0$3), gradient: this.widget.gradient, sigma: (t0$4 = this.widget.elevation, t0$4 == null ? 2 : t0$4), leftPercent: percent, textDirection: textDirection, cornerRadius: this.widget.cornerRadius}), $creationLocationd_0dea112b090073317d4: C[269] || CT.C269}), $creationLocationd_0dea112b090073317d4: C[272] || CT.C272}), this[_barContent](height, additionalBottomPadding, convexIndex), new basic.Positioned.fill({top: (t0$5 = this.widget.top, t0$5 == null ? -25 : t0$5), bottom: additionalBottomPadding, child: new basic.FractionallySizedBox.new({widthFactor: factor, alignment: offset, child: new gesture_detector.GestureDetector.new({onTap: dart.fn(() => this[_onTabClick](convexIndex), T.VoidTovoid()), child: this[_newTab](convexIndex, active), $creationLocationd_0dea112b090073317d4: C[277] || CT.C277}), $creationLocationd_0dea112b090073317d4: C[281] || CT.C281}), $creationLocationd_0dea112b090073317d4: C[286] || CT.C286})]), $creationLocationd_0dea112b090073317d4: C[291] || CT.C291});
+    }
+    isFixed() {
+      return this.widget.itemBuilder.fixed();
+    }
+    [_barContent](height, paddingBottom, curveTabIndex) {
+      let children = T.JSArrayOfWidget().of([]);
+      for (let i = 0; i < this.widget.count; i = i + 1) {
+        if (i === curveTabIndex) {
+          children[$add](new basic.Expanded.new({child: new container.Container.new({$creationLocationd_0dea112b090073317d4: C[296] || CT.C296}), $creationLocationd_0dea112b090073317d4: C[298] || CT.C298}));
+          continue;
+        }
+        let active = this[_currentIndex] === i;
+        children[$add](new basic.Expanded.new({child: new gesture_detector.GestureDetector.new({behavior: proxy_box.HitTestBehavior.opaque, onTap: dart.fn(() => this[_onTabClick](i), T.VoidTovoid()), child: this[_newTab](i, active), $creationLocationd_0dea112b090073317d4: C[301] || CT.C301}), $creationLocationd_0dea112b090073317d4: C[306] || CT.C306}));
+      }
+      return new container.Container.new({height: height, padding: new edge_insets.EdgeInsets.only({bottom: paddingBottom}), child: new basic.Row.new({mainAxisSize: flex.MainAxisSize.max, crossAxisAlignment: flex.CrossAxisAlignment.center, children: children, $creationLocationd_0dea112b090073317d4: C[309] || CT.C309}), $creationLocationd_0dea112b090073317d4: C[314] || CT.C314});
+    }
+    [_newTab](i, active) {
+      let t0, t0$;
+      let child = this.widget.itemBuilder.build(this.context, i, active);
+      t0$ = (t0 = this.widget.chipBuilder, t0 == null ? null : t0.build(this.context, child, i, active));
+      return t0$ == null ? child : t0$;
+    }
+    [_blockEvent](i) {
+      if (this.widget.onTapNotify != null && !dart.nullCheck(this.widget.onTapNotify)(i)) {
+        print.debugPrint("tap event block by " + dart.str(this.widget.onTapNotify));
+        return true;
+      }
+      return false;
+    }
+    [_onTabClick](i) {
+      let t0, t0$;
+      if (this[_blockEvent](i)) return;
+      this.animateTo(i);
+      t0 = this[_controller];
+      t0 == null ? null : t0.animateTo(i);
+      t0$ = this.widget.onTap;
+      t0$ == null ? null : t0$(i);
+    }
+    tap(index) {
+      this[_onTabClick](index);
+    }
+  };
+  (bar.ConvexAppBarState.new = function() {
+    this[_currentIndex] = null;
+    this[_warpUnderwayCount] = 0;
+    this[_animation] = null;
+    this[_animationController] = null;
+    this[_controller] = null;
+    this[_previousTimestamp] = 0;
+    bar.ConvexAppBarState.__proto__.new.call(this);
+    ;
+  }).prototype = bar.ConvexAppBarState.prototype;
+  dart.addTypeTests(bar.ConvexAppBarState);
+  dart.addTypeCaches(bar.ConvexAppBarState);
+  dart.setMethodSignature(bar.ConvexAppBarState, () => ({
+    __proto__: dart.getMethods(bar.ConvexAppBarState.__proto__),
+    [_handleTabControllerAnimationTick]: dart.fnType(dart.void, []),
+    [_warpToCurrentIndex]: dart.fnType(async.Future$(dart.void), []),
+    animateTo: dart.fnType(async.Future$(dart.void), [core.int], {from: dart.nullable(core.int)}, {}),
+    [_updateAnimation]: dart.fnType(animation.Animation$(core.double), [], {duration: core.Duration, from: dart.nullable(core.int), to: dart.nullable(core.int)}, {}),
+    [_updateTabController]: dart.fnType(dart.void, []),
+    [_resetState]: dart.fnType(dart.void, []),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    isFixed: dart.fnType(core.bool, []),
+    [_barContent]: dart.fnType(framework.Widget, [core.double, core.double, core.int]),
+    [_newTab]: dart.fnType(framework.Widget, [core.int, core.bool]),
+    [_blockEvent]: dart.fnType(core.bool, [core.int]),
+    [_onTabClick]: dart.fnType(dart.void, [core.int]),
+    tap: dart.fnType(dart.void, [core.int])
+  }));
+  dart.setGetterSignature(bar.ConvexAppBarState, () => ({
+    __proto__: dart.getGetters(bar.ConvexAppBarState.__proto__),
+    [_takeControllerRef]: dart.nullable(tab_controller.TabController)
+  }));
+  dart.setLibraryUri(bar.ConvexAppBarState, I[10]);
+  dart.setFieldSignature(bar.ConvexAppBarState, () => ({
+    __proto__: dart.getFields(bar.ConvexAppBarState.__proto__),
+    [_currentIndex]: dart.fieldType(dart.nullable(core.int)),
+    [_warpUnderwayCount]: dart.fieldType(core.int),
+    [_animation]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [_animationController]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
+    [_controller]: dart.fieldType(dart.nullable(tab_controller.TabController)),
+    [_previousTimestamp]: dart.fieldType(core.int)
+  }));
+  dart.defineLazy(bar.ConvexAppBarState, {
+    /*bar.ConvexAppBarState._TRANSITION_DURATION*/get _TRANSITION_DURATION() {
+      return 150;
+    }
+  }, false);
+  var style$ = dart.privateName(bar, "StyleProvider.style");
+  bar.StyleProvider = class StyleProvider extends framework.InheritedWidget {
+    get style() {
+      return this[style$];
+    }
+    set style(value) {
+      super.style = value;
+    }
+    static of(context) {
+      return context.dependOnInheritedWidgetOfExactType(bar.StyleProvider);
+    }
+    updateShouldNotify(oldWidget) {
+      bar.StyleProvider.as(oldWidget);
+      return this.style.activeIconMargin !== oldWidget.style.activeIconMargin || this.style.activeIconSize !== oldWidget.style.activeIconSize || this.style.iconSize != oldWidget.style.iconSize;
+    }
+  };
+  (bar.StyleProvider.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let style = opts && 'style' in opts ? opts.style : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[style$] = style;
+    bar.StyleProvider.__proto__.new.call(this, {key: key, child: child, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = bar.StyleProvider.prototype;
+  dart.addTypeTests(bar.StyleProvider);
+  dart.addTypeCaches(bar.StyleProvider);
+  dart.setMethodSignature(bar.StyleProvider, () => ({
+    __proto__: dart.getMethods(bar.StyleProvider.__proto__),
+    updateShouldNotify: dart.fnType(core.bool, [dart.nullable(core.Object)])
+  }));
+  dart.setLibraryUri(bar.StyleProvider, I[10]);
+  dart.setFieldSignature(bar.StyleProvider, () => ({
+    __proto__: dart.getFields(bar.StyleProvider.__proto__),
+    style: dart.finalFieldType($interface.StyleHook)
+  }));
+  dart.defineLazy(bar, {
+    /*bar.CONVEX_SIZE*/get CONVEX_SIZE() {
+      return 80;
+    },
+    /*bar.BAR_HEIGHT*/get BAR_HEIGHT() {
+      return 50;
+    },
+    /*bar.CURVE_TOP*/get CURVE_TOP() {
+      return -25;
+    },
+    /*bar.ACTION_LAYOUT_SIZE*/get ACTION_LAYOUT_SIZE() {
+      return 60;
+    },
+    /*bar.ACTION_INNER_BUTTON_SIZE*/get ACTION_INNER_BUTTON_SIZE() {
+      return 40;
+    },
+    /*bar.ELEVATION*/get ELEVATION() {
+      return 2;
+    }
+  }, false);
+  dart.trackLibraries("packages/convex_bottom_bar/src/style/titled_tab_style.dart", {
+    "package:convex_bottom_bar/src/style/titled_tab_style.dart": titled_tab_style,
+    "package:convex_bottom_bar/src/style/textin_tab_style.dart": textin_tab_style,
+    "package:convex_bottom_bar/src/style/flip_tab_style.dart": flip_tab_style,
+    "package:convex_bottom_bar/src/style/styles.dart": styles,
+    "package:convex_bottom_bar/src/style/react_tab_style.dart": react_tab_style,
+    "package:convex_bottom_bar/src/style/react_circle_tab_style.dart": react_circle_tab_style,
+    "package:convex_bottom_bar/src/style/fixed_tab_style.dart": fixed_tab_style,
+    "package:convex_bottom_bar/src/style/internal_style_config.dart": internal_style_config,
+    "package:convex_bottom_bar/src/style/inner_builder.dart": inner_builder,
+    "package:convex_bottom_bar/src/style/fixed_circle_tab_style.dart": fixed_circle_tab_style,
+    "package:convex_bottom_bar/src/bar.dart": bar,
+    "package:convex_bottom_bar/convex_bottom_bar.dart": convex_bottom_bar
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["inner_builder.dart","titled_tab_style.dart","textin_tab_style.dart","flip_tab_style.dart","styles.dart","react_tab_style.dart","react_circle_tab_style.dart","fixed_tab_style.dart","internal_style_config.dart","fixed_circle_tab_style.dart","../bar.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;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","file":"../../../../../../../../../packages/convex_bottom_bar/src/style/titled_tab_style.dart.lib.js"}');
+  // Exports:
+  return {
+    src__style__titled_tab_style: titled_tab_style,
+    src__style__textin_tab_style: textin_tab_style,
+    src__style__flip_tab_style: flip_tab_style,
+    src__style__styles: styles,
+    src__style__react_tab_style: react_tab_style,
+    src__style__react_circle_tab_style: react_circle_tab_style,
+    src__style__fixed_tab_style: fixed_tab_style,
+    src__style__internal_style_config: internal_style_config,
+    src__style__inner_builder: inner_builder,
+    src__style__fixed_circle_tab_style: fixed_circle_tab_style,
+    src__bar: bar,
+    convex_bottom_bar: convex_bottom_bar
+  };
+}));
+
+//# sourceMappingURL=titled_tab_style.dart.lib.js.map
