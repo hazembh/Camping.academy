@@ -31,7 +31,7 @@ class _MenuState extends State<Menu> {
               SizedBox(width: 80,),
 
               ClipOval(
-                child: Image.asset('assets/kais.jpg',width: 60,),
+                child: Image.asset('assets/c5.png',width: 60,),
 
               ),
               SizedBox(width: 20,),

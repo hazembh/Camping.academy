@@ -16,8 +16,9 @@ class MyTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.only(left: 40,right: 30,top:15),
       child: TextFormField(
+
         //controller: controller,
         obscureText: obscure,
         style: TextStyle(color: Colors.black),
@@ -27,6 +28,8 @@ class MyTextField extends StatelessWidget {
             hintStyle: TextStyle(color: Colors.grey),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30.0),
+              borderSide:BorderSide(color: Colors.black)
+
 
             ),
             ),

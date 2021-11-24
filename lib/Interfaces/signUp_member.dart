@@ -12,19 +12,55 @@ class SignUpmember extends StatefulWidget {
 class _SignUpmemberState extends State<SignUpmember> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return
+
+      Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.asset("assets/signupmemberback.png",fit: BoxFit.cover,),
-            MyTextField(name: "Full name", obscure: false,icon: Icons.supervised_user_circle_rounded),
-            MyTextField(name: "Birthday", obscure: false,icon: Icons.date_range),
-            MyTextField(name: "Email", obscure: true,icon: Icons.email),
-            MyTextField(name: "Password", obscure: false,icon: Icons.lock),
-            button(val: "Register", onTap: (){})
+            Container(
+
+
+              child:Column(
+
+                children: [
+                  Stack(
+                    children: [
+                      Image.asset('assets/back1.png',fit: BoxFit.cover,
+                        width: double.infinity,),
+                      Positioned(
+                        top: 35,
+                        child:  IconButton(
+
+                        icon: const Icon(Icons.arrow_back_sharp,size: 40,color: Colors.white,),
+
+                        onPressed: () {
+
+                        },
+                      ),)
+                    ],
+
+                  ),
+
+
+
+                  MyTextField(name: "Full name", obscure: false,icon: Icons.supervised_user_circle_rounded),
+                  MyTextField(name: "Birthday", obscure: false,icon: Icons.date_range),
+                  MyTextField(name: "Email", obscure: false,icon: Icons.email),
+                  MyTextField(name: "Password", obscure: true,icon: Icons.lock),
+                  SizedBox(height: 20,),
+                  button(val: "register", onTap: (){}),
+                  SizedBox(height: 20,),
+                ],
+              ),
+            )
+
+
           ],
+
         ),
+
         
       ),
 

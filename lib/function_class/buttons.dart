@@ -6,7 +6,7 @@ Widget button(
   // ignore: deprecated_member_use
   return Container(
     height: 50.0,
-    width:100,
+    width:200,
     child: Center(
       child: RaisedButton(
         onPressed: () { onTap();},
