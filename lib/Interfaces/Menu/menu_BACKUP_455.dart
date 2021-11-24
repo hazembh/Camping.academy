@@ -15,7 +15,7 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+<<<<<<< HEAD
         backgroundColor: Color.fromRGBO(239,232,232,1),
         body:
         Column(
@@ -35,10 +35,10 @@ class _MenuState extends State<Menu> {
 
               ClipOval(
                 child: Image.asset('assets/c5.png',width: 60,),
-                backgroundColor: Color.fromRGBO(239, 232, 232, 1),
-              )
-    )
-                body: SingleChildScrollView(
+
+=======
+      backgroundColor: Color.fromRGBO(239, 232, 232, 1),
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -89,6 +89,7 @@ class _MenuState extends State<Menu> {
                 height: 1.0,
                 width: 800.0,
                 color: Colors.black,
+>>>>>>> 48d178dd70d0225965c4cd19a999bb8e5e205583
               ),
             ),
             SizedBox(
@@ -189,77 +190,6 @@ class _MenuState extends State<Menu> {
           ],
         ),
       ),
-    )
-    ]
-    )
-    ]
-    )
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-aadzazd
-
-
