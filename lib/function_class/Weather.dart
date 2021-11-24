@@ -4,6 +4,8 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 class Weather extends StatefulWidget {
   static const IconData wb_sunny_outlined =
       IconData(0xf4bc, fontFamily: 'MaterialIcons');
+  static const IconData wb_cloudy =
+      IconData(0xe6d5, fontFamily: 'MaterialIcons');
 
   @override
   _WeatherState createState() => _WeatherState();
@@ -53,9 +55,29 @@ class _WeatherState extends State<Weather> {
               width: 100,
             ),
             Icon(
-              Icons.wb_sunny_outlined,
+              Icons.wb_sunny_rounded,
               color: Colors.yellowAccent,
               size: 100.0,
+            ),
+          ]),
+          SizedBox(
+            height: 15,
+          ),
+          Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
+            Padding(padding: const EdgeInsets.fromLTRB(30.0, 5.0, 0.0, 0.0)),
+            Container(
+              child: Icon(
+                Icons.wb_cloudy_rounded,
+                size: 20.0,
+              ),
+              decoration: BoxDecoration(
+                  gradient:
+                      LinearGradient(colors: [Colors.white, Colors.blueGrey])),
+            ),
+            Text('20 °C',
+                textAlign: TextAlign.start, style: TextStyle(fontSize: 100)),
+            SizedBox(
+              width: 100,
             ),
           ]),
         ],
