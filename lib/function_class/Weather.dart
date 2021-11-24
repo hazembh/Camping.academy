@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class Weather extends StatefulWidget {
   static const IconData wb_sunny_outlined =
-      IconData(0xf4bc, fontFamily: 'MaterialIcons');
+  IconData(0xf4bc, fontFamily: 'MaterialIcons');
 
   @override
   _WeatherState createState() => _WeatherState();
@@ -24,7 +25,7 @@ class _WeatherState extends State<Weather> {
             child: Row(children: <Widget>[
               Text('Hong Kong', style: TextStyle(fontSize: 25)),
               SizedBox(
-                width: 280.0,
+                width: 200,
               ),
               IconButton(
                 onPressed: () => Navigator.pop(context),
@@ -40,7 +41,7 @@ class _WeatherState extends State<Weather> {
             alignment: Alignment.topLeft,
             padding: const EdgeInsets.fromLTRB(30.0, 4.0, 0.0, 0.0),
             child: Text('Mon, 12:30 PM, Mostly Sunny',
-                textAlign: TextAlign.start, style: TextStyle(fontSize: 12)),
+                textAlign: TextAlign.start, style: TextStyle(fontSize: 15)),
           ),
           SizedBox(
             height: 15,
@@ -48,16 +49,59 @@ class _WeatherState extends State<Weather> {
           Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
             Padding(padding: const EdgeInsets.fromLTRB(30.0, 5.0, 0.0, 0.0)),
             Text('20 °C',
-                textAlign: TextAlign.start, style: TextStyle(fontSize: 100)),
+                textAlign: TextAlign.start, style: TextStyle(fontSize: 95)),
             SizedBox(
-              width: 100,
+              width: 40,
             ),
             Icon(
-              Icons.wb_sunny_outlined,
+              Icons.wb_sunny_rounded,
               color: Colors.yellowAccent,
-              size: 100.0,
+              size: 95.0,
             ),
           ]),
+          SizedBox(
+            height: 15,
+          ),
+          Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
+            Padding(padding: const EdgeInsets.fromLTRB(30.0, 5.0, 0.0, 0.0)),
+            Icon(
+              Icons.wb_cloudy_rounded,
+              color: Colors.lightBlueAccent,
+              size: 30.0,
+            ),
+            SizedBox(
+              width: 15,
+            ),
+            Text('2% Precipitation',
+                textAlign: TextAlign.start, style: TextStyle(fontSize: 16)),
+            SizedBox(
+              width: 50,
+            ),
+            Icon(
+              Icons.wb_auto_rounded,
+              color: Colors.lightBlueAccent,
+              size: 30,
+            ),
+            SizedBox(
+              width: 15,
+            ),
+            Text('5 km/h Winds',
+                textAlign: TextAlign.start, style: TextStyle(fontSize: 16)),
+          ]),
+          SizedBox(
+            width: 25,
+          ),
+          SfRangeSlider(
+            min: 8,
+            max: 12,
+            interval: 2,
+            showLabels: true,
+            enableTooltip: true,
+            onChanged: (nawRating) {
+              setState(() {});
+            },
+            values: SfRangeValues('8AM', '10AM'),
+          )
         ],
       ),
     );

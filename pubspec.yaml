@@ -32,11 +32,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   convex_bottom_bar: ^3.0.0
   sliding_up_panel: ^2.0.0+1
-<<<<<<< HEAD
-  adaptive_action_sheet: ^2.0.0
-=======
+
   modal_bottom_sheet: ^2.0.0
   weather_icons: any
+  syncfusion_flutter_sliders: ^19.3.55
 
 
 

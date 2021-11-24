@@ -17,27 +17,8 @@ class _MenuState extends State<Menu> {
     return Scaffold(
 
         backgroundColor: Color.fromRGBO(239,232,232,1),
-        body:
-        Column(
-        children: [
-          SizedBox(height: 50,),
-          Row(
-            children: [
-              SizedBox(width: 50,),
-              Text("Menu",style:TextStyle(fontSize: 40,fontWeight: FontWeight.bold,color: Colors.grey)),
-            ],
-          ),
-          SizedBox(height: 20,),
-          Row(
-
-            children: [
-              SizedBox(width: 80,),
-
-              ClipOval(
-                child: Image.asset('assets/c5.png',width: 60,),
-                backgroundColor: Color.fromRGBO(239, 232, 232, 1),
-              )
-    )
+        
+       
                 body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -67,7 +48,7 @@ class _MenuState extends State<Menu> {
                 ),
                 ClipOval(
                   child: Image.asset(
-                    'assets/kais.jpg',
+                    'assets/c5.png',
                     width: 60,
                   ),
                 ),
@@ -189,12 +170,12 @@ class _MenuState extends State<Menu> {
           ],
         ),
       ),
-    )
-    ]
-    )
-    ]
-    )
     );
+    
+    
+    
+    
+  
   }
 }
 
@@ -258,8 +239,5 @@ class _MenuState extends State<Menu> {
 
 
 
-
-
-aadzazd
 
 
