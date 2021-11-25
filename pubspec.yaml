@@ -36,6 +36,7 @@ dependencies:
   modal_bottom_sheet: ^2.0.0
   weather_icons: any
   syncfusion_flutter_sliders: ^19.3.55
+  flutter_sliding_up_panel: ^1.2.1
 
 
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/function_class/Weather.dart';
+import 'package:flutter_application_1/function_class/advantages.dart';
 import 'package:flutter_application_1/function_class/gest_detector.dart';
 import 'package:flutter_application_1/function_class/navigation%20bar.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -15,11 +16,8 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-        backgroundColor: Color.fromRGBO(239,232,232,1),
-        
-       
-                body: SingleChildScrollView(
+      backgroundColor: Color.fromRGBO(239, 232, 232, 1),
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -87,7 +85,14 @@ class _MenuState extends State<Menu> {
                     SizedBox(
                       height: 10,
                     ),
-                    Gest_detector("Advantages", () {}),
+                    Gest_detector(
+                        "Advantages",
+                        () => showModalBottomSheet(
+                              //expand: false,
+                              context: context,
+                              backgroundColor: Colors.transparent,
+                              builder: (context) => Advantages(),
+                            )),
                     SizedBox(
                       height: 10,
                     ),
@@ -171,73 +176,5 @@ class _MenuState extends State<Menu> {
         ),
       ),
     );
-    
-    
-    
-    
-  
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
