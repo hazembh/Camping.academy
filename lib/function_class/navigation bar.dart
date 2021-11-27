@@ -8,6 +8,7 @@ import 'package:flutter_application_1/Interfaces/Profile.dart';
 import 'package:flutter_application_1/Interfaces/friends.dart';
 import 'package:flutter_application_1/Interfaces/objectives/objectives.dart';
 import 'package:flutter_application_1/Interfaces/setting.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Navigationbar extends StatefulWidget {
   Navigationbar({Key ?key}) : super(key: key);
@@ -17,7 +18,10 @@ class Navigationbar extends StatefulWidget {
 }
 class _NavigationbarState extends State<Navigationbar> {
   int selectedPage = 0;
-  final _pageOptions = [Menu(),Settings(),Profile(),Friends(),Objectives()];
+  final _pageOptions = [Menu(),Settings(),ImageFromGalleryEx(Typography.blackRedwoodCity),Friends(),Objective()];
+
+
+
 
   @override
   Widget build(BuildContext context) {

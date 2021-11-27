@@ -1,23 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-class Objectives extends StatefulWidget {
-  const Objectives({Key? key}) : super(key: key);
+class Objective extends StatefulWidget {
+  const Objective({Key? key}) : super(key: key);
 
   @override
-  _ObjectivesState createState() => _ObjectivesState();
+  _ObjectiveState createState() => _ObjectiveState();
 }
 
-class _ObjectivesState extends State<Objectives> {
+class _ObjectiveState extends State<Objective> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-        ],
-      )
-
-
+    return Center(
+        child: Text("objective"),
     );
   }
 }

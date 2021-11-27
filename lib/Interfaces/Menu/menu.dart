@@ -33,7 +33,7 @@ class _MenuState extends State<Menu> {
                     style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
-                        color: Colors.grey)),
+                        color: Colors.grey[600])),
               ],
             ),
             SizedBox(

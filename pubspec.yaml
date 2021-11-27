@@ -37,6 +37,10 @@ dependencies:
   weather_icons: any
   syncfusion_flutter_sliders: ^19.3.55
   flutter_sliding_up_panel: ^1.2.1
+  image_picker:
+  video_player: any
+
+
 
 
 
