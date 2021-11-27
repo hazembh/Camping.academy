@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Interfaces/souvenirs.dart';
 import 'package:flutter_application_1/function_class/Weather.dart';
 import 'package:flutter_application_1/function_class/advantages.dart';
 import 'package:flutter_application_1/function_class/gest_detector.dart';
@@ -119,7 +120,14 @@ class _MenuState extends State<Menu> {
                     SizedBox(
                       height: 10,
                     ),
-                    Gest_detector("Souvenirs", () {}),
+                    Gest_detector(
+                        "Souvenirs",
+                        () => showModalBottomSheet(
+                              //expand: false,
+                              context: context,
+                              backgroundColor: Colors.transparent,
+                              builder: (context) => Souvenirs(),
+                            )),
                   ],
                 )
               ],
