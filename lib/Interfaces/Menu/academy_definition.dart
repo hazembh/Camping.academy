@@ -25,7 +25,7 @@ class _AcademyState extends State<Academy> {
             end: Alignment.bottomCenter,
           ),
       ),
-      child: SingleChildScrollView(
+
             child: Stack(children: <Widget>[
           Container(
             height: 270,
@@ -158,6 +158,6 @@ class _AcademyState extends State<Academy> {
           )
       ])),
     ),
-        ));
+        );
   }
 }
