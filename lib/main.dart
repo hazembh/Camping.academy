@@ -1,20 +1,23 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Interfaces/signIn.dart';
-import 'package:flutter_application_1/Interfaces/testsouvenirs.dart';
-import 'package:flutter_application_1/testWeather.dart';
+import 'package:flutter_application_1/Interfaces/FirstInterface.dart';
+import 'package:flutter_application_1/Interfaces/objectives/mission.dart';
+import 'package:page_transition/page_transition.dart';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_application_1/function_class/navigation%20bar.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
+import 'Interfaces/Menu/menu.dart';
+void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false, home: Navigationbar());
+      debugShowCheckedModeBanner: false,
+        home: AnimatedSplashScreen(
+            duration: 3000,
+            splashIconSize: 200,
+            splash: Image.asset('assets/logo.png',),
+            nextScreen: Mission(),
+            splashTransition: SplashTransition.scaleTransition,
+        )
+    );
   }
 }
