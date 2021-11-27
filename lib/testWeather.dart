@@ -44,20 +44,22 @@ class Card2 extends StatelessWidget {
     buildExpanded3() {
       return Padding(
         padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            buildRow('Tuesday  '),
-            SizedBox(height: 12),
-            buildRow('Wednesday'),
-            SizedBox(height: 12),
-            buildRow('Thursday '),
-            SizedBox(height: 12),
-            buildRow('Friday   '),
-            SizedBox(height: 12),
-            buildRow('Saturday '),
-            SizedBox(height: 12),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              buildRow('Tuesday  '),
+              SizedBox(height: 12),
+              buildRow('Wednesday'),
+              SizedBox(height: 12),
+              buildRow('Thursday '),
+              SizedBox(height: 12),
+              buildRow('Friday   '),
+              SizedBox(height: 12),
+              buildRow('Saturday '),
+              SizedBox(height: 12),
+            ],
+          ),
         ),
       );
     }
