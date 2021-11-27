@@ -18,7 +18,7 @@ class _WeatherState extends State<Weather> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        height: 570,
+        height: 700,
         decoration: BoxDecoration(
             color: Colors.grey, borderRadius: BorderRadius.circular(5.0)),
         child: Card(
@@ -28,26 +28,30 @@ class _WeatherState extends State<Weather> {
             //mainAxisAlignment: MainAxisAlignment.center,
             //mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.fromLTRB(30.0, 8.0, 0.0, 0.0),
-                child: Row(children: <Widget>[
-                  Container(
-                    child:
-                        Text('Barrage Masri', style: TextStyle(fontSize: 25)),
-                    width: 200,
-                  ),
-                  SizedBox(
-                    width: 70,
-                  ),
-                  IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: Icon(
-                      Icons.arrow_back,
-                      size: 30,
-                      color: Colors.black,
+
+              Container(
+                padding: EdgeInsets.fromLTRB(15, 0,0,0),
+                child: AppBar(
+
+                  backgroundColor: Colors.white,
+                  toolbarHeight: 50,
+
+                      automaticallyImplyLeading: false,
+
+                      elevation: 0,
+                      title:
+                      Text('Barrage Masri', style: TextStyle(fontSize: 25,color: Colors.black)),
+                  actions: [
+                    IconButton(
+                      onPressed: () => Navigator.pop(context),
+                      icon: Icon(
+                        Icons.arrow_back,
+                        size: 30,
+                        color: Colors.black,
+                      ),
                     ),
-                  ),
-                ]),
+                  ],
+                ),
               ),
               Container(
                 alignment: Alignment.topLeft,
