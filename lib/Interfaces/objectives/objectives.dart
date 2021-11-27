@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 class Story extends StatefulWidget {
   final String image;
   final String image2;
@@ -9,6 +10,7 @@ class Story extends StatefulWidget {
   @override
   _StoryState createState() => _StoryState();
 }
+
 class _StoryState extends State<Story> {
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,7 @@ class _StoryState extends State<Story> {
       child: Container(
         child: Column(
           children: [
+            SizedBox(height: 20),
             Row(
               children: [
                 SizedBox(width: 25),
@@ -28,7 +31,7 @@ class _StoryState extends State<Story> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(widget.image),
-                      //fit: BoxFit.cover,
+                      fit: BoxFit.cover,
                     ),
                   ),
                   height: 120,
@@ -46,12 +49,13 @@ class _StoryState extends State<Story> {
     );
   }
 }
+
 class Cont extends StatefulWidget {
   final String image3;
   final String title;
   final String etoile;
   final double size;
-  const Cont(this.image3,this.title,this.etoile,this.size);
+  const Cont(this.image3, this.title, this.etoile, this.size);
   @override
   _ContState createState() => _ContState();
 }
@@ -59,15 +63,14 @@ class Cont extends StatefulWidget {
 class _ContState extends State<Cont> {
   @override
   Widget build(BuildContext context) {
-    final double width =MediaQuery.of(context).size.width;
-    final double height =MediaQuery.of(context).size.height;
-    return  Container(
-      color:Colors.black.withOpacity(0.1),
-      height: (height-100)/3,
+    final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
+    return Container(
+      color: Colors.black.withOpacity(0.1),
+      height: (height - 50) / 3,
       width: width,
       child: Column(
         children: [
-
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -79,13 +82,20 @@ class _ContState extends State<Cont> {
                 ],
               ),
             ),
-
-
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(widget.image3,width: 130,),
-                Text(widget.title,style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color: Colors.white),)
+                Image.asset(
+                  widget.image3,
+                  width: 130,
+                ),
+                Text(
+                  widget.title,
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                )
               ],
             ),
           ),
@@ -94,73 +104,73 @@ class _ContState extends State<Cont> {
             child: Row(children: [
               Story(
                 'assets/1.png',
-                    () {},
-               widget.etoile,
+                () {},
+                widget.etoile,
                 widget.size,
               ),
               Story(
                 'assets/2.png',
-                    () {},
+                () {},
                 widget.etoile,
                 widget.size,
               ),
               Story(
                 'assets/3.png',
-                    () {},
+                () {},
                 widget.etoile,
                 widget.size,
               ),
               Story(
                 'assets/4.png',
-                    () {},
+                () {},
                 widget.etoile,
                 widget.size,
               ),
               Story(
                 'assets/5.png',
-                    () {},
+                () {},
                 widget.etoile,
                 widget.size,
               ),
               Story(
                 'assets/6.png',
-                    () {},
+                () {},
                 widget.etoile,
                 widget.size,
               ),
               Story(
                 'assets/7.png',
-                    () {},
+                () {},
                 widget.etoile,
                 widget.size,
               ),
               Story(
                 'assets/8.png',
-                    () {},
+                () {},
                 widget.etoile,
                 widget.size,
               ),
               Story(
                 'assets/9.png',
-                    () {},
+                () {},
                 widget.etoile,
                 widget.size,
               ),
               Story(
                 'assets/10.png',
-                    () {},
+                () {},
                 widget.etoile,
                 widget.size,
               ),
               Story(
                 'assets/11.png',
-                    () {},
+                () {},
                 widget.etoile,
                 widget.size,
               ),
               Story(
                 'assets/12.png',
-                    () {},
+                () {},
                 widget.etoile,
                 widget.size,
               ),
@@ -171,19 +181,20 @@ class _ContState extends State<Cont> {
     );
   }
 }
+
 class Objective extends StatefulWidget {
   const Objective({Key? key}) : super(key: key);
   @override
   _ObjectiveState createState() => _ObjectiveState();
 }
+
 class _ObjectiveState extends State<Objective> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-     Container(height: 50 ,color:Colors.black.withOpacity(0.1),),
-      Cont('assets/mostakchef.png', 'Explorer Stage','assets/1etoile.png',40),
-      Cont('assets/mo8amer.png', 'Adventurer Stage','assets/2etoile.png',70),
-      Cont('assets/ra7ala.png', 'Nomadic Stage','assets/3etoile.png',100),
+      Cont('assets/mostakchef.png', 'Explorer Stage', 'assets/1etoile.png', 40),
+      Cont('assets/mo8amer.png', 'Adventurer Stage', 'assets/2etoile.png', 70),
+      Cont('assets/ra7ala.png', 'Nomadic Stage', 'assets/3etoile.png', 100),
     ]);
   }
 }

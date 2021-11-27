@@ -14,7 +14,15 @@ class _TestsouvenirState extends State<Testsouvenir> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: ListView(
-          children: <Widget>[TileItem()],
+          children: <Widget>[TileItem(), TileItem()],
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+        floatingActionButton: FloatingActionButton.extended(
+          backgroundColor: const Color(0xff03dac6),
+          foregroundColor: Colors.black,
+          onPressed: () {},
+          icon: Icon(Icons.add),
+          label: Text('ADD'),
         ),
       ),
     );
@@ -55,7 +63,6 @@ class TileItem extends StatelessWidget {
           children: <Widget>[
             Column(
               children: <Widget>[
-
                 AspectRatio(
                   aspectRatio: 485.0 / 320.0,
                   child: Image.asset('assets/souvenir1.jpg'),
@@ -133,7 +140,7 @@ class PageItem extends StatelessWidget {
       ),
       backgroundColor: Colors.transparent,
     );
-    //final MediaQueryData mediaQuery = MediaQuery.of(context);
+    final MediaQueryData mediaQuery = MediaQuery.of(context);
 
     return Stack(children: <Widget>[
       Hero(
@@ -188,10 +195,13 @@ class PageItem extends StatelessWidget {
       ),
       Column(
         children: <Widget>[
+          Container(
+            height: mediaQuery.padding.top,
+          ),
           ConstrainedBox(
             constraints: BoxConstraints(maxHeight: appBar.preferredSize.height),
             child: appBar,
-          )
+          ),
         ],
       ),
     ]);

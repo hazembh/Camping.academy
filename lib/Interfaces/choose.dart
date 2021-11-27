@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/function_class/buttons.dart';
+
 class Choose extends StatefulWidget {
   const Choose({Key? key}) : super(key: key);
   @override
   _ChooseState createState() => _ChooseState();
 }
+
 class _ChooseState extends State<Choose> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children:[
+        children: [
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -20,11 +22,16 @@ class _ChooseState extends State<Choose> {
             ),
           ),
           Positioned(
-              top: 50, // To take AppBar Size only
+              //top: 50, // To take AppBar Size only
               left: -350.0,
               right: 0.0,
-              child: IconButton(icon: Icon(Icons.arrow_back_sharp), onPressed: () {  }, iconSize: 40,)
-          ),
+              child: IconButton(
+                icon: Icon(Icons.arrow_back_sharp),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                iconSize: 40,
+              )),
           Positioned(
             top: 100, // To take AppBar Size only
             left: 0.0,
@@ -35,26 +42,42 @@ class _ChooseState extends State<Choose> {
               top: 300, // To take AppBar Size only
               left: 80.0,
               right: 0.0,
-              child: Text("Are you a member of scouts",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black),)
-          ),
+              child: Text(
+                "Are you a member of scouts",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+              )),
           Positioned(
               top: 330, // To take AppBar Size only
               left: 125.0,
               right: 0.0,
-              child: Text("or administration?",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black),)
-          ),
+              child: Text(
+                "or administration?",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+              )),
           Positioned(
               top: 380, // To take AppBar Size only
               left: 0.0,
               right: 0.0,
-              child: button(val:"Scout member", onTap:(){})
-          ),
+              child: button(
+                  val: "Scout member",
+                  onTap: () {
+                    Navigator.pushNamed(context, '/signup_member');
+                  })),
           Positioned(
               top: 450, // To take AppBar Size only
               left: 0.0,
               right: 0.0,
-              child: button(val:"Admin", onTap:(){})
-          ),
+              child: button(
+                  val: "Admin",
+                  onTap: () {
+                    Navigator.pushNamed(context, '/signup_admin');
+                  })),
         ],
       ),
     );

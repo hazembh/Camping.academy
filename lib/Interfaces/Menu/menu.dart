@@ -1,5 +1,8 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Interfaces/Menu/membre_scout.dart';
+import 'package:flutter_application_1/Interfaces/eventour.dart';
 import 'package:flutter_application_1/Interfaces/souvenirs.dart';
 import 'package:flutter_application_1/function_class/Weather.dart';
 import 'package:flutter_application_1/function_class/advantages.dart';
@@ -83,7 +86,14 @@ class _MenuState extends State<Menu> {
                 ),
                 Column(
                   children: [
-                    Gest_detector("Event", () {}),
+                    Gest_detector(
+                        "Event",
+                        () => showModalBottomSheet(
+                              //expand: false,
+                              context: context,
+                              backgroundColor: Colors.white,
+                              builder: (context) => EventOur(),
+                            )),
                     SizedBox(
                       height: 10,
                     ),
@@ -160,14 +170,23 @@ class _MenuState extends State<Menu> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.logout,
-                        size: 50,
+                      IconButton(
+                        icon: Icon(Icons.logout),
+                        hoverColor: Colors.black26,
+                        iconSize: 35,
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/logout');
+                        },
                       ),
-                      Text(
-                        "Logout",
-                        style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/logout');
+                        },
+                        child: Text(
+                          "Logout",
+                          style: TextStyle(
+                              fontSize: 27, fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ],
                   ),
