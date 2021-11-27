@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Interfaces/Menu/membre_scout.dart';
 import 'package:flutter_application_1/Interfaces/souvenirs.dart';
 import 'package:flutter_application_1/function_class/Weather.dart';
 import 'package:flutter_application_1/function_class/advantages.dart';
@@ -56,7 +57,7 @@ class _MenuState extends State<Menu> {
                 ),
                 Text(
                   "Kais Kammoun",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 )
               ],
             ),
@@ -116,7 +117,12 @@ class _MenuState extends State<Menu> {
                     SizedBox(
                       height: 10,
                     ),
-                    Gest_detector("Team", () {}),
+                    Gest_detector("Team", () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Membrescouts()),
+                      );
+                    }),
                     SizedBox(
                       height: 10,
                     ),
