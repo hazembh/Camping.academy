@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Interfaces/Menu/membre_scout.dart';
 import 'package:flutter_application_1/Interfaces/eventour.dart';
@@ -9,6 +7,7 @@ import 'package:flutter_application_1/function_class/advantages.dart';
 import 'package:flutter_application_1/function_class/gest_detector.dart';
 import 'package:flutter_application_1/function_class/navigation%20bar.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+
 
 class Menu extends StatefulWidget {
   const Menu({Key? key}) : super(key: key);
