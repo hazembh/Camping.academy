@@ -18,19 +18,27 @@ import 'Interfaces/Menu/menu.dart';
 void main() {
   runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
-        home: AnimatedSplashScreen(
-            duration: 3000,
-            splashIconSize: 200,
-            splash: Image.asset('assets/logo.png',),
-            nextScreen: Mission('Roaming Badge','assets/1.png','assets/1etoile.png',['Prepares a list of the equipment necessary to perform a cellular output', 'Prepares report on a trip or a trip to another city is prepared with pictures', 'Participates in a cellular trip in which he travels at least 4 km on foot','Prepares a special notebook for scouting trips and camps']),
-            splashTransition: SplashTransition.scaleTransition,
+      home: AnimatedSplashScreen(
+        duration: 3000,
+        splashIconSize: 200,
+        splash: Image.asset(
+          'assets/logo.png',
         ),
+        nextScreen: Navigationbar(),
+        /*Mission('Roaming Badge', 'assets/1.png', 'assets/1etoile.png', [
+          'Prepares a list of the equipment necessary to perform a cellular output',
+          'Prepares report on a trip or a trip to another city is prepared with pictures',
+          'Participates in a cellular trip in which he travels at least 4 km on foot',
+          'Prepares a special notebook for scouting trips and camps'
+        ]),*/
+        splashTransition: SplashTransition.scaleTransition,
+      ),
       initialRoute: '/',
       routes: {
         //'/': (context) => const FirstInterface(),

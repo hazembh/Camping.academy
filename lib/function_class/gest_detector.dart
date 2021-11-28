@@ -32,7 +32,14 @@ class _Gest_detectorState extends State<Gest_detector> {
           ),
         ),
         decoration: BoxDecoration(
-          color: Color.fromRGBO(68, 68, 68, 1),
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.black.withOpacity(0.7),
+              Colors.black.withOpacity(0.5),
+            ],
+          ),
           borderRadius: BorderRadius.circular(18),
         ),
       ),

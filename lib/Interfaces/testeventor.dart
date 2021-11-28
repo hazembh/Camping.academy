@@ -20,7 +20,10 @@ class _TesteventorState extends State<Testeventor> {
         children: [
           ListTile(
             //leading: Icon(Icons.arrow_drop_down_circle),
-            title: const Text('Earth Day'),
+            title: const Text(
+              'Earth Day',
+              style: TextStyle(fontSize: 18, color: Colors.blueAccent),
+            ),
             subtitle: Text(
               'on april,22 2022',
               style: TextStyle(color: Colors.black.withOpacity(0.6)),
@@ -67,16 +70,13 @@ class Card3 extends StatelessWidget {
         child: ScrollOnExpand(
       child: Card(
         clipBehavior: Clip.antiAlias,
-        elevation: 0.0,
+        //elevation: 0.0,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Expandable(
               collapsed: buildCollapsed3(),
               expanded: buildExpanded3(),
-            ),
-            Divider(
-              color: Colors.grey[300],
             ),
             Builder(
               builder: (context) {
@@ -97,10 +97,10 @@ class Card3 extends StatelessWidget {
                       IconButton(
                         icon: Icon(
                           controller.expanded
-                              ? Icons.arrow_drop_up_rounded
-                              : Icons.arrow_drop_down_circle,
+                              ? Icons.keyboard_arrow_up_rounded
+                              : Icons.keyboard_arrow_down_rounded,
                           color: Colors.blue,
-                          //size: 100,
+                          size: 25,
                         ),
                         onPressed: () {
                           controller.toggle();

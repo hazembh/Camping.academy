@@ -20,12 +20,12 @@ class _EventOurState extends State<EventOur> {
             toolbarHeight: 50,
             automaticallyImplyLeading: false,
             elevation: 3.0,
-            leading:
-                Icon(Icons.event_note_rounded, color: Colors.black, size: 30),
-            title: Text('Event',
+            leading: Icon(Icons.event_note_rounded,
+                color: Colors.indigo[900], size: 30),
+            title: Text('Events',
                 style: TextStyle(
                   fontSize: 25,
-                  color: Colors.black,
+                  color: Colors.indigo[900],
                   letterSpacing: 1,
                   fontWeight: FontWeight.bold,
                 )),
@@ -37,13 +37,16 @@ class _EventOurState extends State<EventOur> {
                   icon: Icon(
                     Icons.arrow_back,
                     size: 30,
-                    color: Colors.black,
+                    color: Colors.indigo[800],
                   ),
                 ),
               ),
             ]),
         body: ListView(
           children: <Widget>[
+            Testeventor(
+              title: 'Earth day',
+            ),
             Testeventor(
               title: 'Earth day',
             )
