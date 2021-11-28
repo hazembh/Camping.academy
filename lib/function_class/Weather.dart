@@ -16,9 +16,10 @@ class Weather extends StatefulWidget {
 class _WeatherState extends State<Weather> {
   @override
   Widget build(BuildContext context) {
+    final double height2 = MediaQuery.of(context).size.height - 230;
     return SingleChildScrollView(
       child: Container(
-        height: 700,
+        height: height2,
         decoration: BoxDecoration(
             color: Colors.grey, borderRadius: BorderRadius.circular(5.0)),
         child: Card(
@@ -28,19 +29,15 @@ class _WeatherState extends State<Weather> {
             //mainAxisAlignment: MainAxisAlignment.center,
             //mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-
               Container(
-                padding: EdgeInsets.fromLTRB(15, 0,0,0),
+                padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
                 child: AppBar(
-
                   backgroundColor: Colors.white,
                   toolbarHeight: 50,
-
-                      automaticallyImplyLeading: false,
-
-                      elevation: 0,
-                      title:
-                      Text('Barrage Masri', style: TextStyle(fontSize: 25,color: Colors.black)),
+                  automaticallyImplyLeading: false,
+                  elevation: 0,
+                  title: Text('Barrage Masri',
+                      style: TextStyle(fontSize: 25, color: Colors.black)),
                   actions: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),

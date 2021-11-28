@@ -9,68 +9,66 @@ class SignUpmember extends StatefulWidget {
   @override
   _SignUpmemberState createState() => _SignUpmemberState();
 }
+
 class _SignUpmemberState extends State<SignUpmember> {
   @override
   Widget build(BuildContext context) {
-    return
-
-      Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
-
-
-              child:Column(
-
+              child: Column(
                 children: [
                   Stack(
                     children: [
-                      Image.asset('assets/back1.png',fit: BoxFit.cover,
-                        width: double.infinity,),
+                      Image.asset(
+                        'assets/back1.png',
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      ),
                       Positioned(
-                        top: 35,
-                        child:  IconButton(
-
-                        icon: const Icon(Icons.arrow_back_sharp,size: 40,color: Colors.white,),
-
-                        onPressed: () {
-
-                        },
-                      ),)
+                        //top: 35,
+                        child: IconButton(
+                          icon: const Icon(
+                            Icons.arrow_back_sharp,
+                            size: 40,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                      )
                     ],
-
                   ),
-
-
-
-                  MyTextField(name: "Full name", obscure: false,icon: Icons.supervised_user_circle_rounded),
-                  MyTextField(name: "Birthday", obscure: false,icon: Icons.date_range),
-                  MyTextField(name: "Email", obscure: false,icon: Icons.email),
-                  MyTextField(name: "Password", obscure: true,icon: Icons.lock),
-                  SizedBox(height: 20,),
-                  button(val: "register", onTap: (){}),
-                  SizedBox(height: 20,),
+                  MyTextField(
+                      name: "Full name",
+                      obscure: false,
+                      icon: Icons.supervised_user_circle_rounded),
+                  MyTextField(
+                      name: "Birthday", obscure: false, icon: Icons.date_range),
+                  MyTextField(name: "Email", obscure: false, icon: Icons.email),
+                  MyTextField(
+                      name: "Password", obscure: true, icon: Icons.lock),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  button(
+                      val: "register",
+                      onTap: () {
+                        Navigator.pushNamed(context, '/signin');
+                      }),
+                  SizedBox(
+                    height: 20,
+                  ),
                 ],
               ),
             )
-
-
           ],
-
         ),
-
-        
       ),
-
-
-
-
-
-
-
-
     );
   }
 }
