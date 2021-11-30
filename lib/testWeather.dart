@@ -85,12 +85,12 @@ class Card2 extends StatelessWidget {
                 Builder(
                   builder: (context) {
                     var controller =
-                        ExpandableController.of(context, required: true)!;
+                        ExpandableController.of(context, required: true);
                     return TextButton(
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
                         child: Text(
-                          controller.expanded ? "COLLAPSE" : "EXPAND",
+                          controller!.expanded ? "COLLAPSE" : "EXPAND",
                           style: Theme.of(context).textTheme.button!.copyWith(
                                 color: Colors.deepPurple,
                                 fontSize: 16,
@@ -98,7 +98,7 @@ class Card2 extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        controller.toggle();
+                        controller!.toggle();
                       },
                     );
                   },

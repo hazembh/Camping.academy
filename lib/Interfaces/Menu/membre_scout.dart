@@ -3,7 +3,6 @@ import 'package:flutter_application_1/Interfaces/Menu/academy_definition.dart';
 import 'package:flutter_application_1/function_class/teamdef.dart';
 
 class Membrescouts extends StatefulWidget {
-  const Membrescouts({Key? key}) : super(key: key);
 
   @override
   _MembrescoutsState createState() => _MembrescoutsState();

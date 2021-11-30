@@ -4,11 +4,11 @@ class MyTextField extends StatelessWidget {
   final String name;
   final bool obscure;
   final IconData icon;
-  //final TextEditingController controller;
+  final TextEditingController controller;
   MyTextField(
       {required this.name,
         required this.obscure,
-        required this.icon,
+        required this.icon, required this.controller,
         });
 
   @override
@@ -17,7 +17,7 @@ class MyTextField extends StatelessWidget {
       padding: EdgeInsets.only(left: 40,right: 30,top:15),
       child: TextFormField(
 
-        //controller: controller,
+        controller: controller,
         obscureText: obscure,
         style: TextStyle(color: Colors.black),
         decoration: InputDecoration(

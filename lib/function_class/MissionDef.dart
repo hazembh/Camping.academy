@@ -59,7 +59,7 @@ class _MissionDefinitionState extends State<MissionDefinition> {
                           print('Extension: ${file.extension}');
                           print('Path: ${file.path}');
                          // final newFile = await saveFilePermently(file);
-                          print('From Path: ${file.path!}');
+                          print('From Path: ${file.path}');
                          // print('To Path: ${newFile.path}');
 
                         }, icon: Icon(Icons.download_rounded),iconSize: 30,),
@@ -123,7 +123,7 @@ class _MissionDefinitionState extends State<MissionDefinition> {
 
 
   void openFile(PlatformFile file) {
-    OpenFile.open(file.path!);
+    OpenFile.open(file.path);
 }
 /*
   saveFilePermently(PlatformFile file) async {

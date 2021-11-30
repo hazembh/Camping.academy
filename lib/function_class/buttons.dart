@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 Widget button(
-    {required String val,
-      required Function onTap } ) {
+    { required String val,
+       required Function onTap } ) {
   // ignore: deprecated_member_use
   return Container(
     height: 50.0,
