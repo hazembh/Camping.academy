@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/function_class/buttons.dart';
 import 'package:flutter_application_1/testWeather.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:expandable/expandable.dart';
+import 'dart:convert' as convert;
+import 'package:http/http.dart' as http;
 
 class Weather extends StatefulWidget {
   static const IconData wb_sunny_outlined =
@@ -14,6 +17,27 @@ class Weather extends StatefulWidget {
 }
 
 class _WeatherState extends State<Weather> {
+  int _itemCount = 0;
+
+  var jsonResponse;
+
+  Future<void> getWeather() async {
+    String url = "http://127.0.0.1:8000/api";
+    http.Response response = await http.get(Uri.parse(url));
+    if (response.statusCode == 200) {
+      setState(() {
+        jsonResponse = response.body;
+        //_itemCount = jsonResponse.length;
+      });
+      print(jsonResponse);
+//      jsonResponse[0]["json"]; = author name
+//      jsonResponse[0]["json_current"]; = quotes text
+      print("Number of quotes found : $_itemCount.");
+    } else {
+      print("Request failed with status: ${response.statusCode}.");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final double height2 = MediaQuery.of(context).size.height - 230;
@@ -47,6 +71,11 @@ class _WeatherState extends State<Weather> {
                         color: Colors.black,
                       ),
                     ),
+                    TextButton(
+                        onPressed: () {
+                          getWeather();
+                        },
+                        child: Text('data'))
                   ],
                 ),
               ),

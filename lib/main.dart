@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         splash: Image.asset(
           'assets/logo.png',
         ),
-        nextScreen: Navigationbar(),
+        nextScreen: FirstInterface(),
         /*Mission('Roaming Badge', 'assets/1.png', 'assets/1etoile.png', [
           'Prepares a list of the equipment necessary to perform a cellular output',
           'Prepares report on a trip or a trip to another city is prepared with pictures',

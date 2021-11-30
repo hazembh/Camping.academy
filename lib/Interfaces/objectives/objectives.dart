@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Interfaces/objectives/mission.dart';
 
 class Story extends StatefulWidget {
   final String image;
@@ -104,7 +105,12 @@ class _ContState extends State<Cont> {
             child: Row(children: [
               Story(
                 'assets/1.png',
-                () {},
+                () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Mission()),
+                  );
+                },
                 widget.etoile,
                 widget.size,
               ),

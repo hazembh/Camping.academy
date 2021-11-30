@@ -7,11 +7,11 @@ import 'package:flutter_application_1/function_class/TextFiled.dart';
 import 'package:flutter_application_1/function_class/buttons.dart';
 
 class Mission extends StatefulWidget {
-  String title;
-  String badge;
-  String etoile;
-  var fixedLengthList =<String>['', '', '',''];
-  Mission(this.title,this.badge,this.etoile,this.fixedLengthList  );
+  String title = '';
+  String badge = '';
+  String etoile = '';
+  var fixedLengthList = <String>['', '', '', ''];
+  //Mission(this.title,this.badge,this.etoile,this.fixedLengthList  );
   @override
   _MissionState createState() => _MissionState();
 }
@@ -26,7 +26,8 @@ class _MissionState extends State<Mission> {
           toolbarHeight: 110,
           backgroundColor: Colors.white,
           //centerTitle: true,
-          title: Text(widget.title,
+          title: Text(
+            widget.title,
             style: TextStyle(fontSize: 28, color: Colors.black),
           ),
           leading: IconButton(
@@ -72,14 +73,11 @@ class _MissionState extends State<Mission> {
                   textAlign: TextAlign.justify,
                 )),
             SizedBox(height: width / 30),
-            MissionDefinition( widget.fixedLengthList[0] , (){}, (){}),
-            MissionDefinition(widget.fixedLengthList[1], (){}, (){}),
-            MissionDefinition(widget.fixedLengthList[2], (){}, (){}),
-            MissionDefinition(widget.fixedLengthList[3], (){}, (){}),
-
-
+            MissionDefinition(widget.fixedLengthList[0], () {}, () {}),
+            MissionDefinition(widget.fixedLengthList[1], () {}, () {}),
+            MissionDefinition(widget.fixedLengthList[2], () {}, () {}),
+            MissionDefinition(widget.fixedLengthList[3], () {}, () {}),
           ]),
         )));
   }
 }
-
