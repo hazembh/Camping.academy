@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Academy extends StatefulWidget {
-  const Academy({Key? key}) : super(key: key);
 
   @override
   _AcademyState createState() => _AcademyState();

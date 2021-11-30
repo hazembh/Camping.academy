@@ -7,7 +7,7 @@ class MyTextFieldProfile extends StatelessWidget {
 
   //final TextEditingController controller;
   MyTextFieldProfile(
-      {required this.name,required this.color,required this.width});
+      { required this.name,required this.color,required this.width});
   @override
   Widget build(BuildContext context) {
     return Container(

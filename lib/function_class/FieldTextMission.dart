@@ -6,8 +6,8 @@ class TextFieldMission extends StatelessWidget {
   final int line;
   //final TextEditingController controller;
   TextFieldMission(
-      {required this.name,
-        required this.size,
+      { required this.name,
+         required this.size,
         required this.line,
       });
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 Widget Teamdef(
-    {required String path, required String name, required String post}) {
+    {required String path,  required String name, required String post}) {
   return ListTile(
       dense: true,
       minLeadingWidth: 30,

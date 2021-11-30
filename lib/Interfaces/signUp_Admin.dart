@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:flutter_application_1/function_class/TextFiled.dart';
 import 'package:flutter_application_1/function_class/buttons.dart';
 
@@ -71,3 +71,4 @@ class _SignUpAdminState extends State<SignUpAdmin> {
     );
   }
 }
+*/
