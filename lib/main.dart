@@ -18,7 +18,6 @@ import 'package:flutter_application_1/function_class/navigation%20bar.dart';
 import 'Interfaces/Menu/menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -34,36 +33,24 @@ class MyApp extends StatelessWidget {
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (index, sncpshot) {
               if (sncpshot.hasData) {
-                return Navigationbar();
-              }
-              return Navigationbar();
-            }
-    ),
-
-        /*AnimatedSplashScreen(
+                return AnimatedSplashScreen(
                   duration: 3000,
                   splashIconSize: 200,
                   splash: Image.asset('assets/logo.png',),
-                  nextScreen: Navigationbar(),
+                  nextScreen: SignUpmember(),
                   splashTransition: SplashTransition.scaleTransition,
-              ),*/
+                );
+              }
+              return AnimatedSplashScreen(
+                duration: 3000,
+                splashIconSize: 200,
+                splash: Image.asset('assets/logo.png',),
+                nextScreen: SignUpmember(),
+                splashTransition: SplashTransition.scaleTransition,
+              );
+            }
+    ),
 
-
-      /*home: AnimatedSplashScreen(
-        duration: 3000,
-        splashIconSize: 200,
-        splash: Image.asset(
-          'assets/logo.png',
-        ),
-        nextScreen: Navigationbar(),
-        /*Mission('Roaming Badge', 'assets/1.png', 'assets/1etoile.png', [
-          'Prepares a list of the equipment necessary to perform a cellular output',
-          'Prepares report on a trip or a trip to another city is prepared with pictures',
-          'Participates in a cellular trip in which he travels at least 4 km on foot',
-          'Prepares a special notebook for scouting trips and camps'
-        ]),*/
-        splashTransition: SplashTransition.scaleTransition,
-      ),*/
       initialRoute: '/',
       routes: {
         //'/': (context) => const FirstInterface(),

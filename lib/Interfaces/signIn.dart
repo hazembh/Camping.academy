@@ -1,4 +1,5 @@
-/*import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/function_class/TextFiled.dart';
 import 'package:flutter_application_1/function_class/buttons.dart';
@@ -8,9 +9,116 @@ class SignIn extends StatefulWidget {
 
   @override
   _SignInState createState() => _SignInState();
+
 }
 
 class _SignInState extends State<SignIn> {
+  bool loading = false;
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
+
+  Future loginUser() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email.text,
+        password: password.text,
+      );
+      // ignore: nullable_type_in_catch_clause
+    } on FirebaseException catch (e) {
+      if (e.code == 'user-not-found') {
+        ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+            backgroundColor: Colors.grey[200],
+            content: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('No User Found !!',
+                    style: TextStyle(
+                        color: Colors.red, fontWeight: FontWeight.bold))
+              ],
+            )));
+      } else if (e.code == 'wrong-password') {
+        ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+            backgroundColor: Colors.grey[200],
+            content: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Wrong Password !! ',
+                    style: TextStyle(
+                        color: Colors.red, fontWeight: FontWeight.bold))
+              ],
+            )));
+        setState(() {
+          loading = false;
+        });
+      }
+      setState(() {
+        loading = false;
+      });
+    }
+  }
+
+  void validation() {
+    if ((email.text.trim().isEmpty || email.text.trim() == null) &&
+        (password.text.trim().isEmpty || password.text.trim() == null)) {
+      ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+          backgroundColor: Colors.grey[200],
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('All Fields are Empty !',
+                  style:
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+            ],
+          )));
+      return;
+    }
+    if (email.text.trim().isEmpty || email.text.trim() == null) {
+      ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+          backgroundColor: Colors.grey[200],
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Please Enter Your Email !',
+                  style:
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+            ],
+          )));
+      return;
+    }   else if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email.text)
+    ) {
+      ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+          backgroundColor: Colors.grey[200],
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Please Enter a valid Email !',
+                  style:
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+            ],
+          )));
+    }
+    // ignore: unnecessary_null_comparison
+    else if (password.text.trim().isEmpty || password.text.trim() == null) {
+      // ignore: deprecated_member_use
+      ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+          backgroundColor: Colors.grey[200],
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Please Enter Your Passowrd !',
+                  style:
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+            ],
+          )));
+      return;
+    } else {
+      setState(() {
+        loading = true;
+      });
+      loginUser();
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,15 +150,15 @@ class _SignInState extends State<SignIn> {
                     )
                   ],
                 ),
-                MyTextField(name: "Email", obscure: false, icon: Icons.email),
-                MyTextField(name: "Password", obscure: true, icon: Icons.lock),
+                MyTextField(name: "Email", obscure: false, icon: Icons.email, controller: email,),
+                MyTextField(name: "Password", obscure: true, icon: Icons.lock, controller: password,),
                 SizedBox(
                   height: 20,
                 ),
                 button(
                     val: "Sign In",
                     onTap: () {
-                      Navigator.pushNamed(context, '/navigation');
+                      validation();
                     }),
                 SizedBox(
                   height: 20,
@@ -61,4 +169,3 @@ class _SignInState extends State<SignIn> {
         ])));
   }
 }
-*/

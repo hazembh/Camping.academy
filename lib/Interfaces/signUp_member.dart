@@ -2,18 +2,22 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Interfaces/signIn.dart';
 import 'package:flutter_application_1/function_class/TextFiled.dart';
 import 'package:flutter_application_1/function_class/buttons.dart';
 import 'dart:core';
 
-class SignUpmember extends StatefulWidget {
+import 'package:flutter_application_1/function_class/navigation%20bar.dart';
 
+class SignUpmember extends StatefulWidget {
   static Pattern pattern =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+
   @override
   _SignUpmemberState createState() => _SignUpmemberState();
 }
-  class _SignUpmemberState extends State<SignUpmember> {
+
+class _SignUpmemberState extends State<SignUpmember> {
   late UserCredential userCredential;
   TextEditingController fullName = TextEditingController();
   TextEditingController birthday = TextEditingController();
@@ -22,63 +26,63 @@ class SignUpmember extends StatefulWidget {
   GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
   bool loading = false;
 
-
   sendData() async {
+    bool hasException = false;
     try {
       userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
-          email: email.text, password: password.text);
-      loading = true;
+              email: email.text, password: password.text);
 
-      await FirebaseFirestore.instance
-          .collection('userData')
-          .add({
+      await FirebaseFirestore.instance.collection('userData').add({
         'FullName': fullName.text.trim(),
         'email': email.text.trim(),
-        //'userid': userCredential.user!.uid,
+        'userid': userCredential.user?.uid,
         'password': password.text.trim(),
       });
-    } on FirebaseException catch (e) {
-      if (e.code == 'weak-password') {
-        ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-            backgroundColor: Colors.grey[200],
-            content: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('weak password !!!',
-                    style: TextStyle(
-                        color: Colors.red, fontWeight: FontWeight.bold))
-              ],
-            )));
-
-      } else if (e.code == 'email-already-in-use') {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            backgroundColor: Colors.grey[200],
-            content: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('The account is already exist ! ',
-                    style: TextStyle(
-                        color: Colors.red, fontWeight: FontWeight.bold))
-              ],
-            )));
-      }
-
-
-
     } catch (e) {
-      print(e);
+      hasException = true;
+      if (e is FirebaseException) {
+        if (e.code == 'weak-password') {
+          ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+              backgroundColor: Colors.grey[200],
+              content: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('weak password !!!',
+                      style: TextStyle(
+                          color: Colors.red, fontWeight: FontWeight.bold))
+                ],
+              )));
+        } else if (e.code == 'email-already-in-use') {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              backgroundColor: Colors.grey[200],
+              content: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('The account is already exist ! ',
+                      style: TextStyle(
+                          color: Colors.red, fontWeight: FontWeight.bold))
+                ],
+              )));
+        }
+      }
+    } finally {
+      if (!hasException) {
+        setState(() {
+          loading = false;
+        });
 
-      setState(() {
-        loading = false;
-      });
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => SignIn()));
+      } else {
+        setState(() {
+          loading = false;
+        });
+      }
     }
-
   }
+
   void validation() {
-    if (fullName.text
-        .trim()
-        .isEmpty || fullName.text.trim() == null) {
+    if (fullName.text.trim().isEmpty || fullName.text.trim() == null) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -86,15 +90,13 @@ class SignUpmember extends StatefulWidget {
             children: [
               Text('Please Enter Your Full Name !',
                   style:
-                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
 
       return;
     }
-    if (birthday.text
-        .trim()
-        .isEmpty || birthday.text.trim() == null) {
+    if (birthday.text.trim().isEmpty || birthday.text.trim() == null) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -102,15 +104,13 @@ class SignUpmember extends StatefulWidget {
             children: [
               Text('Birthday !',
                   style:
-                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
 
       return;
     }
-    if (email.text
-        .trim()
-        .isEmpty || email.text.trim() == null) {
+    if (email.text.trim().isEmpty || email.text.trim() == null) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -118,7 +118,7 @@ class SignUpmember extends StatefulWidget {
             children: [
               Text('Please Enter your Email !',
                   style:
-                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
       Scaffold.of(context).showSnackBar(SnackBar(
@@ -126,7 +126,7 @@ class SignUpmember extends StatefulWidget {
       ));
       return;
     } else if (!RegExp(
-        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(email.text)) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
@@ -135,7 +135,7 @@ class SignUpmember extends StatefulWidget {
             children: [
               Text('Please Enter a valid Email !',
                   style:
-                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
       Scaffold.of(context).showSnackBar(SnackBar(
@@ -143,9 +143,7 @@ class SignUpmember extends StatefulWidget {
       ));
     }
 
-    if (password.text
-        .trim()
-        .isEmpty || password.text.trim() == null) {
+    if (password.text.trim().isEmpty || password.text.trim() == null) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -153,21 +151,18 @@ class SignUpmember extends StatefulWidget {
             children: [
               Text(' Please Enter your Password !',
                   style:
-                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
 
       return;
-    }
-    else {
-        setState(() {
-        loading = false;
+    } else {
+      setState(() {
+        loading = true;
       });
       sendData();
-
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -202,27 +197,39 @@ class SignUpmember extends StatefulWidget {
                     ],
                   ),
                   MyTextField(
-                      name: "Full name",
-                      obscure: false,
-                      icon: Icons.supervised_user_circle_rounded,controller: fullName,),
+                    name: "Full name",
+                    obscure: false,
+                    icon: Icons.supervised_user_circle_rounded,
+                    controller: fullName,
+                  ),
                   MyTextField(
-                      name: "Birthday", obscure: false, icon: Icons.date_range,controller: birthday,),
-                  MyTextField(name: "Email", obscure: false, icon: Icons.email,controller: email,),
+                    name: "Birthday",
+                    obscure: false,
+                    icon: Icons.date_range,
+                    controller: birthday,
+                  ),
                   MyTextField(
-                      name: "Password", obscure: true, icon: Icons.lock,controller: password,),
+                    name: "Email",
+                    obscure: false,
+                    icon: Icons.email,
+                    controller: email,
+                  ),
+                  MyTextField(
+                    name: "Password",
+                    obscure: true,
+                    icon: Icons.lock,
+                    controller: password,
+                  ),
                   SizedBox(
                     height: 20,
                   ),
                   loading
-                      ? CircularProgressIndicator(
-                      color:Colors.black
-
-                  ):
-                  button(
-                      val: "register",
-                      onTap: () {
-                        validation();
-                      }),
+                      ? CircularProgressIndicator(color: Colors.black)
+                      : button(
+                          val: "register",
+                          onTap: () async {
+                            validation();
+                          }),
                   SizedBox(
                     height: 20,
                   ),
