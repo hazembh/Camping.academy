@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Interfaces/Menu/membre_scout.dart';
 import 'package:flutter_application_1/Interfaces/eventour.dart';
@@ -16,6 +17,8 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
+  final user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,11 +56,17 @@ class _MenuState extends State<Menu> {
                     width: 60,
                   ),
                 ),
+                /*CircleAvatar(
+                    backgroundImage:NetworkImage(
+                    user!.photoURL!,
+                  ),
+                ),*/
                 SizedBox(
                   width: 20,
                 ),
                 Text(
-                  "Kais Kammoun",
+                  user!.email!,
+
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 )
               ],

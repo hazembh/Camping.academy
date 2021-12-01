@@ -71,7 +71,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
-<<<<<<< HEAD
   convert:
     dependency: "direct main"
     description:
@@ -79,8 +78,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
-=======
->>>>>>> f4c2f6f1618f9188d7d3e50e9f9aa3661211795e
   convex_bottom_bar:
     dependency: "direct main"
     description:
