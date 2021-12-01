@@ -4,6 +4,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Interfaces/FirstInterface.dart';
 import 'package:flutter_application_1/Interfaces/objectives/mission.dart';
+import 'package:flutter_application_1/function_class/googlesignin.dart';
+import 'package:flutter_application_1/home.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter_application_1/Interfaces/Menu/membre_scout.dart';
 import 'package:flutter_application_1/Interfaces/choose.dart';
@@ -15,6 +17,7 @@ import 'package:flutter_application_1/testWeather.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/function_class/navigation%20bar.dart';
+import 'package:provider/provider.dart';
 import 'Interfaces/Menu/menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -26,41 +29,24 @@ void main() async{
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-        home: StreamBuilder(
-            stream: FirebaseAuth.instance.authStateChanges(),
-            builder: (index, sncpshot) {
-              if (sncpshot.hasData) {
-                return AnimatedSplashScreen(
-                  duration: 3000,
-                  splashIconSize: 200,
-                  splash: Image.asset('assets/logo.png',),
-                  nextScreen: SignIn(),
-                  splashTransition: SplashTransition.scaleTransition,
-                );
-              }
-              return AnimatedSplashScreen(
-                duration: 3000,
-                splashIconSize: 200,
-                splash: Image.asset('assets/logo.png',),
-                nextScreen: Navigationbar(),
-                splashTransition: SplashTransition.scaleTransition,
-              );
-            }
-    ),
+  Widget build(BuildContext context)
+    => ChangeNotifierProvider( create: (context)=>GoogleSignInProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+          home: Home(),
 
-      initialRoute: '/',
-      routes: {
-        //'/': (context) => const FirstInterface(),
-        '/choose': (context) => const Choose(),
-        //'/signin': (context) => const SignIn(),
-        '/signup_member': (context) => SignUpmember(),
-        //'/signup_admin': (context) => const SignUpAdmin(),
-        '/navigation': (context) => Navigationbar(),
-        '/logout': (context) => SignIn(),
-      },
+
+        initialRoute: '/',
+        routes: {
+          //'/': (context) => const FirstInterface(),
+          '/choose': (context) => const Choose(),
+          //'/signin': (context) => const SignIn(),
+          '/signup_member': (context) => SignUpmember(),
+          //'/signup_admin': (context) => const SignUpAdmin(),
+          '/navigation': (context) => Navigationbar(),
+          '/logout': (context) => SignIn(),
+        },
+      ),
     );
-  }
+
 }

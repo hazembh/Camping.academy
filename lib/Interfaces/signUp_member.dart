@@ -6,7 +6,6 @@ import 'package:flutter_application_1/Interfaces/signIn.dart';
 import 'package:flutter_application_1/function_class/TextFiled.dart';
 import 'package:flutter_application_1/function_class/buttons.dart';
 import 'dart:core';
-
 import 'package:flutter_application_1/function_class/navigation%20bar.dart';
 
 class SignUpmember extends StatefulWidget {
@@ -32,7 +31,6 @@ class _SignUpmemberState extends State<SignUpmember> {
       userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
               email: email.text, password: password.text);
-
       await FirebaseFirestore.instance.collection('userData').add({
         'FullName': fullName.text.trim(),
         'email': email.text.trim(),
@@ -43,16 +41,17 @@ class _SignUpmemberState extends State<SignUpmember> {
       hasException = true;
       if (e is FirebaseException) {
         if (e.code == 'weak-password') {
-          ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-              backgroundColor: Colors.grey[200],
-              content: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('weak password !!!',
-                      style: TextStyle(
-                          color: Colors.red, fontWeight: FontWeight.bold))
-                ],
-              )));
+          ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                  backgroundColor: Colors.grey[200],
+                  content: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('weak password ! ',
+                          style: TextStyle(
+                              color: Colors.red, fontWeight: FontWeight.bold))
+                    ],
+                  )));
         } else if (e.code == 'email-already-in-use') {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               backgroundColor: Colors.grey[200],

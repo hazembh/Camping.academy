@@ -5,8 +5,10 @@ import 'package:flutter_application_1/Interfaces/souvenirs.dart';
 import 'package:flutter_application_1/function_class/Weather.dart';
 import 'package:flutter_application_1/function_class/advantages.dart';
 import 'package:flutter_application_1/function_class/gest_detector.dart';
+import 'package:flutter_application_1/function_class/googlesignin.dart';
 import 'package:flutter_application_1/function_class/navigation%20bar.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:provider/provider.dart';
 
 class Menu extends StatefulWidget {
   @override
@@ -176,7 +178,9 @@ class _MenuState extends State<Menu> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, '/logout');
+                          //Navigator.pushReplacement(context,SingIn());
+                          final provider = Provider.of<GoogleSignInProvider>(context,listen:false);
+                          provider.logout();
                         },
                         child: Text(
                           "Logout",

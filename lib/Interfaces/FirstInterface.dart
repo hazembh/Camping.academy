@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/function_class/buttons.dart';
+import 'package:flutter_application_1/function_class/googlesignin.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class FirstInterface extends StatefulWidget {
   const FirstInterface({Key? key}) : super(key: key);
@@ -70,9 +73,13 @@ class _FirstInterfaceState extends State<FirstInterface> {
                     color: Colors.blue[800],
                   ),
                   IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.email),
-                      iconSize: 50,
+                      onPressed: () {
+                        final provider = Provider.of<GoogleSignInProvider>(context,listen:false);
+                        provider.googleLogin();
+
+                      },
+                      icon: FaIcon(FontAwesomeIcons.google),
+                      iconSize: 40,
                       color: Colors.green),
                 ],
               )),
