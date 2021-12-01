@@ -1,9 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/function_class/buttons.dart';
 import 'package:flutter_application_1/testWeather.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:expandable/expandable.dart';
+import 'dart:convert' as convert;
+import 'package:http/http.dart' as http;
 
 class Weather extends StatefulWidget {
   static const IconData wb_sunny_outlined =
@@ -14,6 +19,33 @@ class Weather extends StatefulWidget {
 }
 
 class _WeatherState extends State<Weather> {
+  int _itemCount = 0;
+
+  var jsonResponse;
+  var result;
+  var resultDays;
+  final String localisation = 'Ariana';
+
+  Future<void> getWeather() async {
+    String url = "http://10.0.2.2:8000/api";
+    http.Response response = await http.get(Uri.parse(url));
+    if (response.statusCode == 200) {
+
+      setState(() {
+        jsonResponse = response.body;
+        result = json.decode(response.body)['json_current']['0'];
+        resultDays = json.decode(response.body)['json'];
+        //_itemCount = jsonResponse.length;
+      });
+      print(result);
+//      jsonResponse[0]["json"]; = author name
+//      jsonResponse[0]["json_current"]; = quotes text
+      print("Number of quotes found : $_itemCount.");
+    } else {
+      print("Request failed with status: ${response.statusCode}.");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final double height2 = MediaQuery.of(context).size.height - 230;
@@ -36,7 +68,7 @@ class _WeatherState extends State<Weather> {
                   toolbarHeight: 50,
                   automaticallyImplyLeading: false,
                   elevation: 0,
-                  title: Text('Barrage Masri',
+                  title: Text("$localisation",
                       style: TextStyle(fontSize: 25, color: Colors.black)),
                   actions: [
                     IconButton(
@@ -47,13 +79,18 @@ class _WeatherState extends State<Weather> {
                         color: Colors.black,
                       ),
                     ),
+                    TextButton(
+                        onPressed: () {
+                          getWeather();
+                        },
+                        child: Text('data'))
                   ],
                 ),
               ),
               Container(
                 alignment: Alignment.topLeft,
                 padding: const EdgeInsets.fromLTRB(30.0, 4.0, 0.0, 0.0),
-                child: Text('Mon, 12:30 PM, Mostly Sunny',
+                child: Text("${result['time']}, ${result['description']}",
                     textAlign: TextAlign.start, style: TextStyle(fontSize: 15)),
               ),
               SizedBox(
@@ -65,17 +102,25 @@ class _WeatherState extends State<Weather> {
                     Padding(
                         padding:
                             const EdgeInsets.fromLTRB(30.0, 5.0, 0.0, 0.0)),
-                    Text('20 °C',
+                    Text('${result["temp"]} °C',
                         textAlign: TextAlign.start,
                         style: TextStyle(fontSize: 95)),
                     SizedBox(
                       width: 40,
                     ),
-                    Icon(
+                    /*Icon(
                       Icons.wb_sunny_rounded,
                       color: Colors.yellowAccent,
                       size: 95.0,
-                    ),
+                    )*/ClipRect(
+                      child: Align(
+
+                        heightFactor: 1,
+                        child: Image.network('http://openweathermap.org/img/w/${result["icon"]}.png',scale: 0.5,),
+                      ),
+                    )
+
+
                   ]),
               SizedBox(
                 height: 13,
@@ -87,14 +132,14 @@ class _WeatherState extends State<Weather> {
                         padding:
                             const EdgeInsets.fromLTRB(30.0, 5.0, 0.0, 0.0)),
                     Icon(
-                      Icons.wb_cloudy_rounded,
+                      Icons.wb_cloudy_outlined,
                       color: Colors.lightBlueAccent,
                       size: 30.0,
                     ),
                     SizedBox(
                       width: 15,
                     ),
-                    Text('2% Precipitation',
+                    Text("${result['humidity']}",
                         textAlign: TextAlign.start,
                         style: TextStyle(fontSize: 16)),
                     SizedBox(
@@ -108,7 +153,7 @@ class _WeatherState extends State<Weather> {
                     SizedBox(
                       width: 15,
                     ),
-                    Text('5 km/h Winds',
+                    Text("${result['wind']}",
                         textAlign: TextAlign.start,
                         style: TextStyle(fontSize: 16)),
                   ]),
@@ -135,7 +180,7 @@ class _WeatherState extends State<Weather> {
                 value: 10,
               ),
               SizedBox(height: 13),
-              Card2()
+              Card2(resultDays)
             ],
           ),
         ),

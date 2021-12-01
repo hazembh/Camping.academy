@@ -8,7 +8,6 @@ import 'package:flutter_application_1/function_class/gest_detector.dart';
 import 'package:flutter_application_1/function_class/navigation%20bar.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
-
 class Menu extends StatefulWidget {
   @override
   _MenuState createState() => _MenuState();

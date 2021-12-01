@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
                   duration: 3000,
                   splashIconSize: 200,
                   splash: Image.asset('assets/logo.png',),
-                  nextScreen: SignUpmember(),
+                  nextScreen: SignIn(),
                   splashTransition: SplashTransition.scaleTransition,
                 );
               }
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
                 duration: 3000,
                 splashIconSize: 200,
                 splash: Image.asset('assets/logo.png',),
-                nextScreen: SignUpmember(),
+                nextScreen: Navigationbar(),
                 splashTransition: SplashTransition.scaleTransition,
               );
             }
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
         '/signup_member': (context) => SignUpmember(),
         //'/signup_admin': (context) => const SignUpAdmin(),
         '/navigation': (context) => Navigationbar(),
-        //'/logout': (context) => SignIn(),
+        '/logout': (context) => SignIn(),
       },
     );
   }

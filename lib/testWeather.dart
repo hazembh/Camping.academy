@@ -35,6 +35,8 @@ class buildRow extends StatelessWidget {
 }
 
 class Card2 extends StatelessWidget {
+  var resultDays;
+  Card2(resultDays);
   @override
   Widget build(BuildContext context) {
     buildCollapsed3() {
@@ -48,7 +50,7 @@ class Card2 extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              buildRow('Tuesday  '),
+              buildRow("${resultDays['1']['day']}"),
               SizedBox(height: 12),
               buildRow('Wednesday'),
               SizedBox(height: 12),
@@ -98,7 +100,7 @@ class Card2 extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        controller!.toggle();
+                        controller.toggle();
                       },
                     );
                   },

@@ -41,8 +41,7 @@ class Card3 extends StatelessWidget {
   Widget build(BuildContext context) {
     buildCollapsed3() {
       return Container(
-        child: Image.network(
-            'https://www.eiroforum.org/wp-content/uploads/earth-day.jpg'),
+        child: Image.asset('assets/earth-day.jpg'),
       );
     }
 
@@ -51,8 +50,7 @@ class Card3 extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Image.network(
-                'https://www.eiroforum.org/wp-content/uploads/earth-day.jpg'),
+            Image.asset('assets/earth-day.jpg'),
             Padding(
               padding: const EdgeInsets.fromLTRB(8, 10, 8, 0),
               child: Text(

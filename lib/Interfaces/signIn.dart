@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/function_class/TextFiled.dart';
 import 'package:flutter_application_1/function_class/buttons.dart';
+import 'package:flutter_application_1/function_class/navigation%20bar.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -19,13 +20,19 @@ class _SignInState extends State<SignIn> {
   GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
 
   Future loginUser() async {
+    bool hasException = false;
+
     try {
+
+
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email.text,
         password: password.text,
       );
       // ignore: nullable_type_in_catch_clause
     } on FirebaseException catch (e) {
+      hasException = true;
+
       if (e.code == 'user-not-found') {
         ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
             backgroundColor: Colors.grey[200],
@@ -48,13 +55,24 @@ class _SignInState extends State<SignIn> {
                         color: Colors.red, fontWeight: FontWeight.bold))
               ],
             )));
+
+      }
+
+
+
+    }
+    finally {
+      if (!hasException) {
+        setState(() {
+          loading = false;
+        });
+
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Navigationbar()));
+      } else {
         setState(() {
           loading = false;
         });
       }
-      setState(() {
-        loading = false;
-      });
     }
   }
 
