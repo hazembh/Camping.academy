@@ -44,16 +44,14 @@ dependencies:
   animated_native_splash: ^1.2.4
   file_picker: ^4.2.4
   open_file: ^3.2.1
-<<<<<<< HEAD
   http: any
-  convert: ^3.0.1
+  convert: ^2.1.0
   collection: ^1.15.0
-=======
   firebase_core: ^1.10.0
   firebase_database: ^8.1.0
   cloud_firestore: ^3.1.0
   firebase_auth: ^3.2.0
->>>>>>> 4796b7e2f548fc9073e0750b8af272e826df91d6
+
 
 
 

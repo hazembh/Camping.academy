@@ -98,7 +98,7 @@ class Card2 extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        controller!.toggle();
+                        controller.toggle();
                       },
                     );
                   },
