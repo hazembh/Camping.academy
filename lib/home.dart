@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
                 splash: Image.asset('assets/logo.png',),
                 nextScreen: Navigationbar(),
                 splashTransition: SplashTransition.scaleTransition,
-              );;
+              );
             }
             else if (sncpshot.hasError) {
               return Center(

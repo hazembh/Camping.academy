@@ -11,11 +11,9 @@ enum ImageSourceType { gallery, camera }
 class ImageFromGalleryEx extends StatefulWidget {
   final type;
   ImageFromGalleryEx(this.type);
-
   @override
   ImageFromGalleryExState createState() => ImageFromGalleryExState(this.type);
 }
-
 class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
   var _image;
   var imagePicker;
@@ -32,7 +30,6 @@ class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
-
     return Scaffold(
       body: SingleChildScrollView(
       child: Container(
@@ -84,7 +81,7 @@ class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
 
                   padding:EdgeInsets.only(top: 100,left: 80),
 
-                  decoration: BoxDecoration(
+                  /*decoration: BoxDecoration(
                       image: DecorationImage(
                           image: NetworkImage(
                             user!.photoURL!,
@@ -93,7 +90,7 @@ class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
 
                       ),
                       borderRadius: new BorderRadius.circular(200),
-                  ),
+                  ),*/
                   width: 100,
                   height: 200,
                   child: Icon(
@@ -110,7 +107,7 @@ class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
           //MyTextFieldProfile(name: user!.displayName!,color: Colors.black,width: 300,),
           Row(
             children: [
-              MyTextFieldProfile(name: "birthday",color: Colors.black,width: 205,),
+              MyTextFieldProfile(name:'birthday',color: Colors.black,width: 205,),
               MyTextFieldProfile(name: "Place",color: Colors.white,width: 205,),
             ],
           ),
@@ -151,3 +148,12 @@ class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
     );
   }
 }
+
+class FullName {
+  late final String id;
+
+  FullName({
+    required this.id,
+  });
+}
+

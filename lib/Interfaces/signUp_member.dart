@@ -6,16 +6,12 @@ import 'package:flutter_application_1/Interfaces/signIn.dart';
 import 'package:flutter_application_1/function_class/TextFiled.dart';
 import 'package:flutter_application_1/function_class/buttons.dart';
 import 'dart:core';
-import 'package:flutter_application_1/function_class/navigation%20bar.dart';
-
 class SignUpmember extends StatefulWidget {
   static Pattern pattern =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-
   @override
   _SignUpmemberState createState() => _SignUpmemberState();
 }
-
 class _SignUpmemberState extends State<SignUpmember> {
   late UserCredential userCredential;
   TextEditingController fullName = TextEditingController();
@@ -32,10 +28,12 @@ class _SignUpmemberState extends State<SignUpmember> {
           .createUserWithEmailAndPassword(
               email: email.text, password: password.text);
       await FirebaseFirestore.instance.collection('userData').add({
+        'userid': userCredential.user?.uid,
         'FullName': fullName.text.trim(),
         'email': email.text.trim(),
-        'userid': userCredential.user?.uid,
+        'Birthday': birthday.text.trim(),
         'password': password.text.trim(),
+
       });
     } catch (e) {
       hasException = true;
@@ -92,16 +90,16 @@ class _SignUpmemberState extends State<SignUpmember> {
                       TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
-
       return;
     }
-    if (birthday.text.trim().isEmpty || birthday.text.trim() == null) {
+    if ((!RegExp(r"^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$").hasMatch(birthday.text)))
+    {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Birthday !',
+              Text('Please enter a valid Birthday',
                   style:
                       TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
@@ -115,14 +113,11 @@ class _SignUpmemberState extends State<SignUpmember> {
           content: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Please Enter your Email !',
+              Text('Please Enter Your Email !',
                   style:
                       TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
-      Scaffold.of(context).showSnackBar(SnackBar(
-        content: Text("New Notification"),
-      ));
       return;
     } else if (!RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -137,9 +132,6 @@ class _SignUpmemberState extends State<SignUpmember> {
                       TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
-      Scaffold.of(context).showSnackBar(SnackBar(
-        content: Text("New Notification"),
-      ));
     }
 
     if (password.text.trim().isEmpty || password.text.trim() == null) {
@@ -200,6 +192,7 @@ class _SignUpmemberState extends State<SignUpmember> {
                     obscure: false,
                     icon: Icons.supervised_user_circle_rounded,
                     controller: fullName,
+
                   ),
                   MyTextField(
                     name: "Birthday",

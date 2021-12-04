@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Interfaces/FirstInterface.dart';
 import 'package:flutter_application_1/Interfaces/Menu/membre_scout.dart';
 import 'package:flutter_application_1/Interfaces/eventour.dart';
 import 'package:flutter_application_1/Interfaces/souvenirs.dart';
@@ -10,6 +11,8 @@ import 'package:flutter_application_1/function_class/googlesignin.dart';
 import 'package:flutter_application_1/function_class/navigation%20bar.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
+
+import '../signIn.dart';
 
 class Menu extends StatefulWidget {
   @override
@@ -182,12 +185,14 @@ class _MenuState extends State<Menu> {
                         hoverColor: Colors.black26,
                         iconSize: 35,
                         onPressed: () {
-                          Navigator.pushNamed(context, '/logout');
+                          final provider = Provider.of<GoogleSignInProvider>(context,listen:false);
+                          provider.logout();
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => FirstInterface()));
                         },
                       ),
                       GestureDetector(
                         onTap: () {
-                          //Navigator.pushReplacement(context,SingIn());
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => FirstInterface()));
                           final provider = Provider.of<GoogleSignInProvider>(context,listen:false);
                           provider.logout();
                         },
