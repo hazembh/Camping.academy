@@ -1,10 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/function_class/buttons.dart';
 import 'package:flutter_application_1/function_class/googlesignin.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class FirstInterface extends StatefulWidget {
+
   const FirstInterface({Key? key}) : super(key: key);
 
   @override
@@ -14,6 +17,7 @@ class FirstInterface extends StatefulWidget {
 class _FirstInterfaceState extends State<FirstInterface> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Stack(
         children: [
@@ -50,7 +54,7 @@ class _FirstInterfaceState extends State<FirstInterface> {
                     Navigator.pushNamed(context, '/choose');
                   })),
           Positioned(
-              top: 700, // To take AppBar Size only
+              top: 500, // To take AppBar Size only
               left: 130.0,
               right: 0.0,
               child: Text(
@@ -61,13 +65,16 @@ class _FirstInterfaceState extends State<FirstInterface> {
                     color: Colors.black),
               )),
           Positioned(
-              top: 740, // To take AppBar Size only
+              top: 520, // To take AppBar Size only
               left: 140.0,
               right: 0.0,
               child: Row(
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      signInWithFacebook();
+
+                    },
                     icon: Icon(Icons.facebook),
                     iconSize: 50,
                     color: Colors.blue[800],
@@ -87,4 +94,35 @@ class _FirstInterfaceState extends State<FirstInterface> {
       ),
     );
   }
+
+
+  Future<UserCredential> signInWithFacebook() async {
+    Map<String, dynamic>? _userData;
+
+    String welcome = "Facebook";
+
+
+    final LoginResult result = await FacebookAuth.instance.login(permissions:['email']);
+
+
+    if (result.status == LoginStatus.success) {
+
+      final userData = await FacebookAuth.instance.getUserData();
+
+      _userData = userData;
+    } else {
+      print(result.message);
+    }
+
+    setState(() {
+      welcome = _userData?['email'];
+    });
+
+
+    final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(result.accessToken!.token);
+
+    return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+  }
+
 }
+
