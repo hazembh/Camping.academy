@@ -6,7 +6,13 @@ import 'package:flutter/material.dart';
 class buildRow extends StatelessWidget {
   final String title;
 
-  buildRow(this.title);
+  String iconweather;
+
+  int max;
+
+  int min;
+
+  buildRow(this.title, this.iconweather, this.max, this.min);
 
   @override
   Widget build(BuildContext context) {
@@ -14,21 +20,20 @@ class buildRow extends StatelessWidget {
       Padding(padding: const EdgeInsets.fromLTRB(10.0, 5.0, 0.0, 0.0)),
       Container(
         child: Text(title,
-            textAlign: TextAlign.start, style: TextStyle(fontSize: 18)),
+            textAlign: TextAlign.start, style: TextStyle(fontSize: 19)),
         width: 120,
       ),
       SizedBox(
         width: 115,
       ),
-      Icon(
-        Icons.wb_cloudy_rounded,
-        color: Colors.lightBlueAccent,
-        size: 25,
+      Image.network(
+        iconweather,
+        scale: 1.1,
       ),
       SizedBox(
         width: 50,
       ),
-      Text('24°/12°',
+      Text('$max°/$min°',
           textAlign: TextAlign.start, style: TextStyle(fontSize: 16))
     ]);
   }
@@ -36,7 +41,9 @@ class buildRow extends StatelessWidget {
 
 class Card2 extends StatelessWidget {
   var resultDays;
-  Card2(resultDays);
+  Function getWeather;
+  Card2(this.resultDays, this.getWeather());
+
   @override
   Widget build(BuildContext context) {
     buildCollapsed3() {
@@ -47,20 +54,38 @@ class Card2 extends StatelessWidget {
       return Padding(
         padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              buildRow("${resultDays['1']['day']}"),
-              SizedBox(height: 12),
-              buildRow('Wednesday'),
-              SizedBox(height: 12),
-              buildRow('Thursday '),
-              SizedBox(height: 12),
-              buildRow('Friday   '),
-              SizedBox(height: 12),
-              buildRow('Saturday '),
-              SizedBox(height: 12),
-            ],
+          child: Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                buildRow(
+                    "${resultDays['1']['day']}",
+                    'http://openweathermap.org/img/w/${resultDays['1']["icon"]}.png',
+                    resultDays['1']['temp_max'],
+                    resultDays['1']['temp_min']),
+                buildRow(
+                    '${resultDays['2']['day']}',
+                    'http://openweathermap.org/img/w/${resultDays['2']["icon"]}.png',
+                    resultDays['2']['temp_max'],
+                    resultDays['2']['temp_min']),
+                buildRow(
+                    "${resultDays['3']['day']}",
+                    'http://openweathermap.org/img/w/${resultDays['3']["icon"]}.png',
+                    resultDays['3']['temp_max'],
+                    resultDays['3']['temp_min']),
+                buildRow(
+                    "${resultDays['4']['day']}",
+                    'http://openweathermap.org/img/w/${resultDays['4']["icon"]}.png',
+                    resultDays['4']['temp_max'],
+                    resultDays['4']['temp_min']),
+                if (resultDays['5'] != null)
+                  buildRow(
+                      "${resultDays['5']['day']}",
+                      'http://openweathermap.org/img/w/${resultDays['5']["icon"]}.png',
+                      resultDays['5']['temp_max'],
+                      resultDays['5']['temp_min']),
+              ],
+            ),
           ),
         ),
       );
@@ -90,7 +115,7 @@ class Card2 extends StatelessWidget {
                         ExpandableController.of(context, required: true);
                     return TextButton(
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
+                        padding: const EdgeInsets.fromLTRB(3.0, 0.0, 0.0, 0.0),
                         child: Text(
                           controller!.expanded ? "COLLAPSE" : "EXPAND",
                           style: Theme.of(context).textTheme.button!.copyWith(

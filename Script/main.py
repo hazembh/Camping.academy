@@ -1,3 +1,4 @@
+from flask import request
 import requests
 import datetime
 from flask import Flask, jsonify
@@ -8,7 +9,27 @@ from flask import Flask, jsonify
 
 
 #headers={'username':'admin','password':'password'}
-localisation='ariana'
+
+
+		
+
+
+
+app = Flask(__name__)
+
+
+
+
+@app.route('/receive', methods=["POST"])
+def receiving_location():
+	query = request.get_json()
+	
+	res = query['localisation']
+	print(res)
+	return res
+#localisation=''
+localisation='Sfax'
+
 def get_weather(localisation):
 	days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 	r = requests.get(f'https://api.openweathermap.org/data/2.5/forecast?q={localisation}&units=metric&APPID=fbf0c9f6621085fb191ac5019906443d')
@@ -36,7 +57,7 @@ def get_weather(localisation):
 		iter_date = r.json()['list'][i]['dt_txt']
 		d = datetime.datetime(year=int(iter_date[:4]), month=int(iter_date[5:7]), day=int(iter_date[8:10]),hour=int(iter_date[11:13]),minute=int(iter_date[14:16]))
 		if i < 5:
-			json_current[f'{i}'] = {'time':d.strftime("%a, %I:%M %p"),'time_slider':d.strftime("%I%p"),'temp':int(r.json()['list'][i]['main']['temp']),'description':r.json()['list'][i]['weather'][0]['description'],'icon':r.json()['list'][i]['weather'][0]['icon'],'humidity':str(r.json()['list'][i]['main']['humidity'])+"% humidity" ,'wind':str(int((r.json()['list'][i]['wind']['speed'])*3.6))+' km/h Winds'}
+			json_current[f'{i}'] = {'time':d.strftime("%a, %I:%M %p"),'time_slider':d.strftime("%I %p"),'temp':int(r.json()['list'][i]['main']['temp']),'description':r.json()['list'][i]['weather'][0]['description'],'icon':r.json()['list'][i]['weather'][0]['icon'],'humidity':str(r.json()['list'][i]['main']['humidity'])+"% humidity" ,'wind':str(int((r.json()['list'][i]['wind']['speed'])*3.6))+' km/h Winds'}
 		iterdate = iter_date[:10]
 		if date == iterdate:
 			k=k+1
@@ -73,12 +94,6 @@ def get_weather(localisation):
 
 	json[f'{j}']={'day':days[intDay],'temp_min':int(min(l2)) if min(l)>min(l2) else int(min(l)),'temp_max':int(max(l)) if max(l)>max(l2) else int(max(l2)),'icon':icon}
 	return (json_current,json)
-		
-
-
-
-app = Flask(__name__)
-
 
 @app.route('/api')
 def hello_world():
