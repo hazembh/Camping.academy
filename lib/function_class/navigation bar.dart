@@ -18,11 +18,11 @@ class Navigationbar extends StatefulWidget {
 }
 
 class _NavigationbarState extends State<Navigationbar> {
-  int selectedPage = 0;
+  int selectedPage = 2;
   final _pageOptions = [
     Menu(),
     Settings(),
-    ImageFromGalleryEx(Typography.blackRedwoodCity),
+    ImageFromGalleryEx(Typography.whiteCupertino),
     Friends(),
     Objective()
   ];

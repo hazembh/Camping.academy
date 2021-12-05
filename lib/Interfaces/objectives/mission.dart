@@ -11,7 +11,7 @@ class Mission extends StatefulWidget {
   String badge = '';
   String etoile = '';
   var fixedLengthList = <String>['', '', '', ''];
-  //Mission(this.title,this.badge,this.etoile,this.fixedLengthList  );
+  Mission(this.title,this.badge,this.etoile,this.fixedLengthList );
   @override
   _MissionState createState() => _MissionState();
 }

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/function_class/TextFieldProfile.dart';
@@ -10,11 +11,9 @@ enum ImageSourceType { gallery, camera }
 class ImageFromGalleryEx extends StatefulWidget {
   final type;
   ImageFromGalleryEx(this.type);
-
   @override
   ImageFromGalleryExState createState() => ImageFromGalleryExState(this.type);
 }
-
 class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
   var _image;
   var imagePicker;
@@ -30,6 +29,7 @@ class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       body: SingleChildScrollView(
       child: Container(
@@ -81,16 +81,16 @@ class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
 
                   padding:EdgeInsets.only(top: 100,left: 80),
 
-                  decoration: BoxDecoration(
+                  /*decoration: BoxDecoration(
                       image: DecorationImage(
                           image: NetworkImage(
-                              "https://media.istockphoto.com/vectors/woman-avatar-isolated-on-white-background-vector-illustration-for-vector-id1167753373?k=20&m=1167753373&s=612x612&w=0&h=88d0JshtPmZuJO3ybxNU9P-v-IHadT8PnPDNKdAFxCU=",
+                            user!.photoURL!,
                           ),
                           fit: BoxFit.cover,
 
                       ),
                       borderRadius: new BorderRadius.circular(200),
-                  ),
+                  ),*/
                   width: 100,
                   height: 200,
                   child: Icon(
@@ -102,20 +102,22 @@ class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
             ),
           ),
 
-          MyTextFieldProfile(name: "Kais Kammoun",color: Colors.black,width: 300,),
+
+
+          //MyTextFieldProfile(name: user!.displayName!,color: Colors.black,width: 300,),
           Row(
             children: [
-              MyTextFieldProfile(name: "21/01/2000",color: Colors.black,width: 205,),
+              MyTextFieldProfile(name:'birthday',color: Colors.black,width: 205,),
               MyTextFieldProfile(name: "Place",color: Colors.white,width: 205,),
             ],
           ),
           Row(
             children: [
               MyTextFieldProfile(name: "Num Tel father/mother",color: Colors.white,width: 205,),
-              MyTextFieldProfile(name: "Num Tel Mobile",color: Colors.white,width: 205,),
+              MyTextFieldProfile(name: "Num Tel",color: Colors.white,width: 205,),
             ],
           ),
-          MyTextFieldProfile(name: "KaisKammoun@gmail.com",color: Colors.black,width: 300,),
+          MyTextFieldProfile(name: user!.email!,color: Colors.black,width: 300,),
           MyTextFieldProfile(name: "Personal Address",color: Colors.white,width: 500,),
           MyTextFieldProfile(name: "Date of the Scouting Movement",color: Colors.white,width: 500,),
           Row(
@@ -146,3 +148,12 @@ class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
     );
   }
 }
+
+class FullName {
+  late final String id;
+
+  FullName({
+    required this.id,
+  });
+}
+
