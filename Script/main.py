@@ -18,17 +18,35 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 
+from flask import current_app
 
 
+
+'''@pytest.fixture
+def client():
+    with app.test_client() as client:
+        with app.app_context():  # New!!
+            assert current_app.config["ENV"] == "production"
+        yield client
+
+
+def test_index_page(client):
+   response = client.get('/')
+
+   assert response.status_code == 200
+   assert b'Welcome!' in response.data'''
+
+#localisation='Tunis'
 @app.route('/receive', methods=["POST"])
 def receiving_location():
 	query = request.get_json()
 	
 	res = query['localisation']
-	print(res)
+	
+	localisation=res
+	print(localisation)
 	return res
-#localisation=''
-localisation='Sfax'
+#localisation= receiving_location()
 
 def get_weather(localisation):
 	days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
@@ -95,12 +113,13 @@ def get_weather(localisation):
 	json[f'{j}']={'day':days[intDay],'temp_min':int(min(l2)) if min(l)>min(l2) else int(min(l)),'temp_max':int(max(l)) if max(l)>max(l2) else int(max(l2)),'icon':icon}
 	return (json_current,json)
 
-@app.route('/api')
-def hello_world():
-    json_file = {}
-    json_file['json_current'] = get_weather(localisation)[0]
-    json_file['json'] = get_weather(localisation)[1]
-    return jsonify(json_file)
+@app.route('/api/<string:localisation>')
+def hello_world(localisation):
+	print('api',localisation)
+	json_file = {}
+	json_file['json_current'] = get_weather(localisation)[0]
+	json_file['json'] = get_weather(localisation)[1]
+	return jsonify(json_file)
 
 
 if __name__ == '__main__':

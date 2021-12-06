@@ -7,11 +7,11 @@ import 'package:flutter_application_1/function_class/TextFiled.dart';
 import 'package:flutter_application_1/function_class/buttons.dart';
 
 class Mission extends StatefulWidget {
-  String title = '';
-  String badge = '';
-  String etoile = '';
-  var fixedLengthList = <String>['', '', '', ''];
-  Mission(this.title,this.badge,this.etoile,this.fixedLengthList );
+  String title;
+  String badge;
+  String etoile;
+  late var fixedLengthList;
+  Mission(this.title, this.badge, this.etoile, this.fixedLengthList);
   @override
   _MissionState createState() => _MissionState();
 }

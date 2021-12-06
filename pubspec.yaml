@@ -49,18 +49,15 @@ dependencies:
   firebase_database: ^8.1.0
   cloud_firestore: ^3.1.0
   firebase_auth: ^3.2.0
-<<<<<<< HEAD
   time_slider: ^0.1.0
   geolocator: 7.6.2
   geocoding: any
-=======
   google_sign_in: ^5.0.1
   font_awesome_flutter:
   provider: ^6.0.1
   flutter_facebook_auth:
 
 
->>>>>>> e32a3174752675736e6163b99307422210e234d5
 
 
 
