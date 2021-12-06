@@ -16,15 +16,17 @@ class buildRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
       Padding(padding: const EdgeInsets.fromLTRB(10.0, 5.0, 0.0, 0.0)),
       Container(
         child: Text(title,
             textAlign: TextAlign.start, style: TextStyle(fontSize: 19)),
-        width: 120,
+        width: 110,
       ),
       SizedBox(
-        width: 115,
+        width: size.width-300,
       ),
       Image.network(
         iconweather,

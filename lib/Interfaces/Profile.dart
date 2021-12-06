@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
+
     return Scaffold(
       body: SingleChildScrollView(
       child: Container(
@@ -45,8 +47,10 @@ class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
           end: Alignment.bottomCenter,
         ),
       ),
+
       child: Column(
         children: <Widget>[
+
           SizedBox(
             height: 70,
           ),
@@ -140,8 +144,30 @@ class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
           button(val: "Update", onTap: (){}),
           SizedBox(height:30),
 
+   /* Expanded(
+            child: StreamBuilder(stream: collectionReference.snapshots(),
+            builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if(snapshot.hasData){
+            return ListView(
+            children: snapshot.data!.docs.map((e) => Column(
+            children: [
+            ListTile(title: Text(e['FullName']),),
+            Divider(color: Colors.black.withOpacity(0.6), thickness: 2,)
+            ],
+            )).toList(),
+            );
+            }
+            return Center(child: CircularProgressIndicator(),);
+    },
+            )
+    )*/
 
-        ],
+
+
+
+
+    ],
+
       ),
     )
     )
@@ -149,11 +175,4 @@ class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
   }
 }
 
-class FullName {
-  late final String id;
-
-  FullName({
-    required this.id,
-  });
-}
 

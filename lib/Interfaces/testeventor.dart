@@ -2,9 +2,13 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
 class Testeventor extends StatefulWidget {
-  Testeventor({Key? key, required this.title}) : super(key: key);
-
   final String title;
+  final String date;
+  final String image;
+  final String description;
+  Testeventor({Key? key, required this.title,required this.date,required this.image,required this.description}) : super(key: key);
+
+
 
   @override
   _TesteventorState createState() => _TesteventorState();
@@ -20,28 +24,36 @@ class _TesteventorState extends State<Testeventor> {
         children: [
           ListTile(
             //leading: Icon(Icons.arrow_drop_down_circle),
-            title: const Text(
-              'Earth Day',
+            title: Text(
+              widget.title,
               style: TextStyle(fontSize: 18, color: Colors.blueAccent),
             ),
             subtitle: Text(
-              'on april,22 2022',
+              'On ${widget.date}',
               style: TextStyle(color: Colors.black.withOpacity(0.6)),
             ),
           ),
-          Card3()
+          Card3(img: widget.image,des: widget.description)
         ],
       ),
     );
   }
 }
 
-class Card3 extends StatelessWidget {
+class Card3 extends StatefulWidget {
+  final String img;
+  final String des;
+  Card3({required this.img,required this.des});
+  @override
+  _Card3State createState() => _Card3State();
+}
+
+class _Card3State extends State<Card3> {
   @override
   Widget build(BuildContext context) {
     buildCollapsed3() {
       return Container(
-        child: Image.asset('assets/earth-day.jpg'),
+        child: Image.network(widget.img),
       );
     }
 
@@ -50,11 +62,10 @@ class Card3 extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Image.asset('assets/earth-day.jpg'),
+            Image.network(widget.img),
             Padding(
               padding: const EdgeInsets.fromLTRB(8, 10, 8, 0),
-              child: Text(
-                'The theme of Earth Day 2021 is ‘Restore Our Earth’. Last year, despite significant slowdowns in global economic and social activity due to the pandemic, only a short, sharp reduction of -7.7% in carbon emissions was observed in Europe, compared to 2019. The impact of the coronavirus has captured much of our attention over the past year and in most parts of the world we are yet to restore day-to-day life.',
+              child: Text(widget.des,
                 style: TextStyle(color: Colors.black.withOpacity(0.6)),
                 textAlign: TextAlign.justify,
               ),

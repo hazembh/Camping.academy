@@ -18,6 +18,7 @@ class _SouvenirsState extends State<Souvenirs> {
       height: 500,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0)),
       child: Testsouvenir(),
-    ));
+    ),
+    );
   }
 }

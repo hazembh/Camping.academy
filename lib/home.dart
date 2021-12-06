@@ -5,12 +5,10 @@ import 'Interfaces/FirstInterface.dart';
 import 'function_class/TextFiled.dart';
 import 'function_class/buttons.dart';
 import 'function_class/navigation bar.dart';
-
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
-
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
@@ -43,9 +41,6 @@ class _HomeState extends State<Home> {
               );
           }
       ),
-
-
-
     );
   }
 }

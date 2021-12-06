@@ -54,7 +54,7 @@ class _FirstInterfaceState extends State<FirstInterface> {
                     Navigator.pushNamed(context, '/choose');
                   })),
           Positioned(
-              top: 500, // To take AppBar Size only
+              top: 700, // To take AppBar Size only
               left: 130.0,
               right: 0.0,
               child: Text(
@@ -65,7 +65,7 @@ class _FirstInterfaceState extends State<FirstInterface> {
                     color: Colors.black),
               )),
           Positioned(
-              top: 520, // To take AppBar Size only
+              top: 720, // To take AppBar Size only
               left: 140.0,
               right: 0.0,
               child: Row(

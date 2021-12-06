@@ -34,7 +34,7 @@ class _WeatherState extends State<Weather> {
   late String _currentAddress = '';
 
   Future<void> getWeather(String localisation) async {
-    String url = "http://192.168.1.108:8000/api";
+    String url = "http://10.0.2.2:8000/api";
     http.Response response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       setState(() {
@@ -83,7 +83,7 @@ class _WeatherState extends State<Weather> {
   }
 
   SendLocation(String localisation) async {
-    String url = "http://192.168.1.108:8000/receive";
+    String url = "http://192.168.1.109:8000/receive";
     try {
       var request = await http.post(Uri.parse(url),
           headers: {
@@ -114,11 +114,11 @@ class _WeatherState extends State<Weather> {
     }
 
     List<RadioModel> hourList = [
-      RadioModel(false, sup_zero(resultCurrent['0']['time_slider'])),
-      RadioModel(false, sup_zero(resultCurrent['1']['time_slider'])),
-      RadioModel(false, sup_zero(resultCurrent['2']['time_slider'])),
-      RadioModel(false, sup_zero(resultCurrent['3']['time_slider'])),
-      RadioModel(false, sup_zero(resultCurrent['4']['time_slider'])),
+      RadioModel(false, "1"),
+      RadioModel(false, "2"),
+      RadioModel(false, "3"),
+      RadioModel(false, "4"),
+      RadioModel(false, "5"),
     ];
     /*double get_index(radio){
 
@@ -238,7 +238,7 @@ class _WeatherState extends State<Weather> {
                       width: double.infinity,
                       height: 50,
                       child: TimeSlider(
-                        onPressed: () {
+                        onPressed: (){
                           //print('Changed!');
                           for (var i = 0; i < hourList.length; i++) {
                             if (hourList[i].isSelected == true) {
