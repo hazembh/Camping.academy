@@ -8,9 +8,9 @@ class Story extends StatefulWidget {
   final String image;
   final String image2;
   final double size;
-  final Function function;
-  final String etoile;
-  Story(this.image, this.function, this.image2, this.size,this.etoile);
+  late var missiondata;
+  final int id;
+  Story(this.image, this.missiondata, this.image2, this.size, this.id);
   @override
   _StoryState createState() => _StoryState();
 }
@@ -18,30 +18,64 @@ class Story extends StatefulWidget {
 class _StoryState extends State<Story> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
+    final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
+    return Hero(
+      tag: 'mission',
+      child: Stack(
         children: [
-          SizedBox(height: 20),
-          Row(
+          Column(
             children: [
-              SizedBox(width: 25),
-              GestureDetector(
-                onTap: () {
-                  widget.function();
-                }, // handle your image tap here
-                child: Image.asset(
-                  widget.image,
-                  fit: BoxFit.cover, // this is the solution for border
-                  width: 150.0,
-                  height: 120.0,
-                ),
+              SizedBox(height: 20),
+              Row(
+                children: [
+                  SizedBox(width: 25),
+                  Container(
+                    width: width / 3,
+                    height: height / 7.6,
+                    child: FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Image.asset(
+                        widget.image,
+                        fit: BoxFit.cover, // this is the solution for border
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Image.asset(
+                widget.image2,
+                width: widget.size,
               )
             ],
           ),
-          Image.asset(
-            widget.image2,
-            width: widget.size,
-          )
+          Positioned(
+            left: 0.0,
+            top: 0.0,
+            bottom: 0.0,
+            right: 0.0,
+            child: Material(
+              type: MaterialType.transparency,
+              child: InkWell(
+                onTap: () async {
+                  await Future.delayed(Duration(milliseconds: 200));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return new Mission(
+                            widget.missiondata['badge'],
+                            widget.image,
+                            widget.image2,
+                            widget.missiondata['obj'][widget.id]);
+                      },
+                      fullscreenDialog: true,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -52,8 +86,10 @@ class Cont extends StatefulWidget {
   final String image3;
   final String title;
   final String etoile;
-  final double size;
-  const Cont(this.image3, this.title, this.etoile, this.size);
+  final double taille;
+  final int id;
+
+  Cont(this.image3, this.title, this.etoile, this.taille, this.id);
   @override
   _ContState createState() => _ContState();
 }
@@ -65,7 +101,7 @@ class _ContState extends State<Cont> {
     final double height = MediaQuery.of(context).size.height;
     return Container(
       color: Colors.black.withOpacity(0.1),
-      height: (height - 50) / 3,
+      height: (height - 73) / 3,
       width: width,
       child: Column(
         children: [
@@ -75,8 +111,8 @@ class _ContState extends State<Cont> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Colors.black.withOpacity(0.4),
-                  Colors.black.withOpacity(0.1),
+                  Colors.black.withOpacity(0.5),
+                  Colors.black.withOpacity(0.2),
                 ],
               ),
             ),
@@ -85,7 +121,7 @@ class _ContState extends State<Cont> {
               children: [
                 Image.asset(
                   widget.image3,
-                  width: 130,
+                  width: height / 5.7,
                 ),
                 Text(
                   widget.title,
@@ -99,110 +135,11 @@ class _ContState extends State<Cont> {
           ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Row(children: 
-              
-              DUMMY_MISSIONS.map((e){
-                return Story(e.image, (){Navigator.pushNamed(context, e.routeName);}, e.image2, e.size,e.etoile);
-              }).toList()
-
-              /*Story(
-                'assets/1.png',
-                () {
-                  Navigator.pushNamed(context, '/mission11');
-
-
-                },
-                widget.etoile,
-                widget.size,
-              ),
-              Story(
-                'assets/2.png',
-                () {
-                  Navigator.pushNamed(context, '/mission12');
-                },
-                widget.etoile,
-                widget.size,
-              ),
-              Story(
-                'assets/3.png',
-                () {
-                  Navigator.pushNamed(context, '/mission13');
-                },
-                widget.etoile,
-                widget.size,
-              ),
-              Story(
-                'assets/4.png',
-                () {
-                  Navigator.pushNamed(context, '/mission14');
-                },
-                widget.etoile,
-                widget.size,
-              ),
-              Story(
-                'assets/5.png',
-                () {Navigator.pushNamed(context, '/mission15');},
-                widget.etoile,
-                widget.size,
-              ),
-              Story(
-                'assets/6.png',
-                () {
-                  Navigator.pushNamed(context, '/mission16');
-
-                },
-                widget.etoile,
-                widget.size,
-              ),
-              Story(
-                'assets/7.png',
-                () {
-                  Navigator.pushNamed(context, '/mission17');
-                },
-                widget.etoile,
-                widget.size,
-              ),
-              Story(
-                'assets/8.png',
-                () {
-                  Navigator.pushNamed(context, '/mission18');
-                },
-                widget.etoile,
-                widget.size,
-              ),
-              Story(
-                'assets/9.png',
-                () {
-                  Navigator.pushNamed(context, '/mission19');
-                },
-                widget.etoile,
-                widget.size,
-              ),
-              Story(
-                'assets/10.png',
-                () {
-                  Navigator.pushNamed(context, '/mission110');
-                },
-                widget.etoile,
-                widget.size,
-              ),
-              Story(
-                'assets/11.png',
-                () {
-                  Navigator.pushNamed(context, '/mission111');
-                },
-                widget.etoile,
-                widget.size,
-              ),
-              Story(
-                'assets/12.png',
-                () {
-                  Navigator.pushNamed(context, '/mission112');
-                },
-                widget.etoile,
-                widget.size,
-              ),*/
-            ),
+            child: Row(
+                children: DUMMY_MISSIONS.map((e) {
+              return Story(e.image, e.missiondata, widget.etoile, widget.taille,
+                  widget.id);
+            }).toList()),
           ),
         ],
       ),
@@ -220,9 +157,14 @@ class _ObjectiveState extends State<Objective> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Cont('assets/mostakchef.png', 'Explorer Stage', 'assets/1etoile.png', 40),
-      Cont('assets/mo8amer.png', 'Adventurer Stage', 'assets/2etoile.png', 70),
-      Cont('assets/ra7ala.png', 'Nomadic Stage', 'assets/3etoile.png', 100),
+      SizedBox(
+        height: MediaQuery.of(context).size.height / 40,
+      ),
+      Cont('assets/mostakchef.png', 'Explorer Stage', 'assets/1etoile.png', 40,
+          0),
+      Cont('assets/mo8amer.png', 'Adventurer Stage', 'assets/2etoile.png', 70,
+          1),
+      Cont('assets/ra7ala.png', 'Nomadic Stage', 'assets/3etoile.png', 100, 2),
     ]);
   }
 }

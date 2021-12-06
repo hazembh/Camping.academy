@@ -29,12 +29,15 @@ class _WeatherState extends State<Weather> {
   var resultDays;
   var resultCurrent;
   int index1 = 0;
-  final String localisation = 'Sfax';
+  late String localisation = 'Tunis';
   late Position _currentPosition;
   late String _currentAddress = '';
+  String dropdownValue = 'Tunis';
 
   Future<void> getWeather(String localisation) async {
-    String url = "http://10.0.2.2:8000/api";
+
+
+    String url = "http://192.168.1.108:8000/api/$localisation";
     http.Response response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       setState(() {
@@ -62,6 +65,7 @@ class _WeatherState extends State<Weather> {
         _currentPosition = position;
         _getAddressFromLatLng();
       });
+      print(position);
     }).catchError((e) {
       print(e);
     });
@@ -73,15 +77,21 @@ class _WeatherState extends State<Weather> {
           _currentPosition.latitude, _currentPosition.longitude);
 
       Placemark place = placemarks[0];
+      print(place);
 
       setState(() {
-        _currentAddress = "${place.locality},  ${place.country}";
+        _currentAddress = "${place.locality}";
+        //localisation = _currentAddress;
+        print(_currentAddress);
+        //await SendLocation(localisation);
+        //await getWeather(localisation);
       });
+      //print(place.locality);
     } catch (e) {
       print(e);
     }
   }
-
+/*
   SendLocation(String localisation) async {
     String url = "http://192.168.1.109:8000/receive";
     try {
@@ -96,23 +106,26 @@ class _WeatherState extends State<Weather> {
     } catch (e) {
       print(e);
     }
-  }
+  }*/
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getWeather('');
+    getWeather(localisation);
+    //_getCurrentLocation();
+    //getWeather('London');
   }
 
   @override
   Widget build(BuildContext context) {
-    final double height2 = MediaQuery.of(context).size.height - 230;
+    final double height2 = MediaQuery.of(context).size.height;
     // ignore: non_constant_identifier_names
     String sup_zero(tim) {
       return tim.substring(0, 1) == '0' ? tim.substring(1, 5) : tim;
     }
 
+    //
     List<RadioModel> hourList = [
       RadioModel(false, "1"),
       RadioModel(false, "2"),
@@ -120,9 +133,77 @@ class _WeatherState extends State<Weather> {
       RadioModel(false, "4"),
       RadioModel(false, "5"),
     ];
-    /*double get_index(radio){
+    if (jsonResponse != null) {
+      setState(() {
+        hourList = [
+          RadioModel(false, sup_zero(resultCurrent['0']['time_slider'])),
+          RadioModel(false, sup_zero(resultCurrent['1']['time_slider'])),
+          RadioModel(false, sup_zero(resultCurrent['2']['time_slider'])),
+          RadioModel(false, sup_zero(resultCurrent['3']['time_slider'])),
+          RadioModel(false, sup_zero(resultCurrent['4']['time_slider'])),
+        ];
+      });
+    }
+    Widget selectlocalisation() {
+      return DropdownButton<String>(
+        value: dropdownValue,
+        icon: const Icon(Icons.edit_location_alt_sharp),
+        iconSize: 22,
+        menuMaxHeight: height2 / 2,
+        style: const TextStyle(
+          color: Colors.deepPurple,
+          fontSize: 22,
+        ),
+        underline: Container(
+          height: 2,
+          color: Colors.deepPurpleAccent,
+        ),
+        onChanged: (String? newValue) {
+          setState(() {
+            dropdownValue = newValue!;
+            localisation = dropdownValue;
+            getWeather(localisation);
+            print(dropdownValue);
+          });
+        },
+        items: <String>[
+          'Ariana',
+          'Béja',
+          'Ben Arous',
+          'Bizerte',
+          'Gabès',
+          'Gafsa',
+          'Jendouba',
+          'Kairouan',
+          'Kasserine',
+          'Kebili',
+          'Le Kef',
+          'Mahdia',
+          'Manouba',
+          'Medenine',
+          'Monastir',
+          'Nabeul',
+          'Sfax',
+          'Sidi bouzid',
+          'Siliana',
+          'Sousse',
+          'Tataouine',
+          'Tozeur',
+          'Tunis',
+          'Zaghouan'
+        ].map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(value,
+                style: TextStyle(
+                    color: Colors.deepPurple,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22)),
+          );
+        }).toList(),
+      );
+    }
 
-    }*/
     hourlyForecast(resultForecast) {
       return Card(
           elevation: 5.0,
@@ -135,11 +216,21 @@ class _WeatherState extends State<Weather> {
                 automaticallyImplyLeading: false,
                 elevation: 0,
                 leading: GestureDetector(
-                    onTap: () => {_getCurrentLocation()},
+                    onTap: () => {
+                          setState(() async {
+                            _getCurrentLocation();
+                            if (_currentAddress != null) {
+                              localisation = _currentAddress;
+                              await getWeather(localisation);
+                              print('localisation' + localisation);
+                              //dropdownValue = localisation;
+                            }
+                          })
+                        },
                     child: Icon(Icons.location_on_outlined,
                         size: 30, color: Colors.black)),
-                title: Text("$localisation",
-                    style: TextStyle(fontSize: 25, color: Colors.black)),
+                title: selectlocalisation(),
+                //style: TextStyle(fontSize: 25, color: Colors.black)),
                 actions: [
                   IconButton(
                     onPressed: () => Navigator.pop(context),
@@ -149,13 +240,11 @@ class _WeatherState extends State<Weather> {
                       color: Colors.black,
                     ),
                   ),
-                  TextButton(
+                  /*TextButton(
                       onPressed: () {
                         SendLocation(localisation);
                       },
-                      child: Text('data')),
-                  // ignore: unnecessary_null_comparison
-                  if (_currentAddress != null) Text(_currentAddress),
+                      child: Text('data')),*/
                 ],
               ),
             ),
@@ -172,17 +261,24 @@ class _WeatherState extends State<Weather> {
             ),
             Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
               Padding(padding: const EdgeInsets.fromLTRB(20.0, 5.0, 0.0, 0.0)),
-              Text('${resultForecast["temp"]} °C',
-                  textAlign: TextAlign.start, style: TextStyle(fontSize: 95)),
+              Container(
+                width: MediaQuery.of(context).size.width - 200,
+                child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text('${resultForecast["temp"]} °C',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(fontSize: 100)),
+                ),
+              ),
               SizedBox(
                 width: 40,
               ),
-              ClipRect(
-                child: Align(
-                  heightFactor: 1,
+              Container(
+                width: 115,
+                child: FittedBox(
                   child: Image.network(
                     'http://openweathermap.org/img/w/${resultForecast["icon"]}.png',
-                    scale: 0.5,
+                    scale: 0.3,
                   ),
                 ),
               )
@@ -200,7 +296,7 @@ class _WeatherState extends State<Weather> {
               Text("${resultForecast['humidity']}",
                   textAlign: TextAlign.start, style: TextStyle(fontSize: 17)),
               SizedBox(
-                width: 60,
+                width: MediaQuery.of(context).size.width / 8,
               ),
               Icon(
                 Icons.air_rounded,
@@ -224,7 +320,19 @@ class _WeatherState extends State<Weather> {
           clipBehavior: Clip.antiAlias,
           elevation: 5.0,
           child: jsonResponse == null
-              ? Center(child: CircularProgressIndicator(color: Colors.black))
+              ? Container(
+                  height: height2 / 2,
+                  child: Center(
+                      child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(color: Colors.black),
+                      SizedBox(height: 10),
+                      /*if (localisation != '')
+                        Text('Loading weather in $localisation ...'),*/
+                      Text('Please wait few seconds')
+                    ],
+                  )))
               : Column(
                   //mainAxisAlignment: MainAxisAlignment.center,
                   //mainAxisSize: MainAxisSize.min,

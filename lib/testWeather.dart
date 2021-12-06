@@ -26,7 +26,10 @@ class buildRow extends StatelessWidget {
         width: 110,
       ),
       SizedBox(
-        width: size.width-300,
+
+
+        width: MediaQuery.of(context).size.width / 4,
+
       ),
       Image.network(
         iconweather,
