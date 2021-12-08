@@ -15,7 +15,7 @@ class SignUpmember extends StatefulWidget {
 class _SignUpmemberState extends State<SignUpmember> {
   late UserCredential userCredential;
   TextEditingController fullName = TextEditingController();
-  TextEditingController birthday = TextEditingController();
+  TextEditingController Repassword = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
@@ -31,7 +31,6 @@ class _SignUpmemberState extends State<SignUpmember> {
         'userid': userCredential.user?.uid,
         'FullName': fullName.text.trim(),
         'email': email.text.trim(),
-        'Birthday': birthday.text.trim(),
         'password': password.text.trim(),
 
       });
@@ -79,34 +78,7 @@ class _SignUpmemberState extends State<SignUpmember> {
   }
 
   void validation() {
-    if (fullName.text.trim().isEmpty || fullName.text.trim() == null) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          backgroundColor: Colors.grey[200],
-          content: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Please Enter Your Full Name !',
-                  style:
-                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
-            ],
-          )));
-      return;
-    }
-    if ((!RegExp(r"^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$").hasMatch(birthday.text)))
-    {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          backgroundColor: Colors.grey[200],
-          content: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Please enter a valid Birthday',
-                  style:
-                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
-            ],
-          )));
 
-      return;
-    }
     if (email.text.trim().isEmpty || email.text.trim() == null) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
@@ -147,7 +119,21 @@ class _SignUpmemberState extends State<SignUpmember> {
           )));
 
       return;
-    } else {
+    }
+    if (password.text.trim() != Repassword.text.trim()) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.grey[200],
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(' Please check your Password !',
+                  style:
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+            ],
+          )));
+
+      return;
+    }else {
       setState(() {
         loading = true;
       });
@@ -194,12 +180,7 @@ class _SignUpmemberState extends State<SignUpmember> {
                     controller: fullName,
 
                   ),
-                  MyTextField(
-                    name: "Birthday",
-                    obscure: false,
-                    icon: Icons.date_range,
-                    controller: birthday,
-                  ),
+
                   MyTextField(
                     name: "Email",
                     obscure: false,
@@ -211,6 +192,12 @@ class _SignUpmemberState extends State<SignUpmember> {
                     obscure: true,
                     icon: Icons.lock,
                     controller: password,
+                  ),
+                  MyTextField(
+                    name: "Repeat Password",
+                    obscure: true,
+                    icon: Icons.lock,
+                    controller: Repassword,
                   ),
                   SizedBox(
                     height: 20,

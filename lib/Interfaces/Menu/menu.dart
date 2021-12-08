@@ -24,6 +24,9 @@ class _MenuState extends State<Menu> {
 
   @override
   Widget build(BuildContext context) {
+    final width= MediaQuery.of(context).size.width;
+    final height= MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(239, 232, 232, 1),
       body: SingleChildScrollView(
@@ -31,12 +34,12 @@ class _MenuState extends State<Menu> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 50,
+              height: height/15,
             ),
             Row(
               children: [
                 SizedBox(
-                  width: 50,
+                  width: width/8,
                 ),
                 Text("Menu",
                     style: TextStyle(
@@ -46,12 +49,12 @@ class _MenuState extends State<Menu> {
               ],
             ),
             SizedBox(
-              height: 20,
+              height: height/20,
             ),
             Row(
               children: [
                 SizedBox(
-                  width: 80,
+                  width: width/12,
                 ),
                 ClipOval(
                   child: Image.asset(
@@ -65,12 +68,15 @@ class _MenuState extends State<Menu> {
                   ),
                 ),*/
                 SizedBox(
-                  width: 20,
+                  width: width/25,
                 ),
-                Text(
-                  user!.email!,
+                Container(
+                  width:width/1.4,
+                  child: Text(
+                    user!.email!,
 
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
                 )
               ],
             ),
@@ -86,18 +92,16 @@ class _MenuState extends State<Menu> {
               ),
             ),
             SizedBox(
-              height: 10,
+              height: height/50,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: 15,
-                ),
+
                 Column(
                   children: [
                     Gest_detector(
-                        "Event",
+                        "Events",
                         () => showModalBottomSheet(
                               //expand: false,
                               context: context,
@@ -105,7 +109,7 @@ class _MenuState extends State<Menu> {
                               builder: (context) => EventOur(),
                             )),
                     SizedBox(
-                      height: 10,
+                      height: height/70,
                     ),
                     Gest_detector(
                         "Advantages",
@@ -116,7 +120,7 @@ class _MenuState extends State<Menu> {
                               builder: (context) => Advantages(),
                             )),
                     SizedBox(
-                      height: 10,
+                      height: height/70,
                     ),
                     Gest_detector(
                         "Weather",
@@ -129,7 +133,7 @@ class _MenuState extends State<Menu> {
                   ],
                 ),
                 SizedBox(
-                  width: 10,
+                  width: width/30,
                 ),
                 Column(
                   children: [
@@ -144,7 +148,7 @@ class _MenuState extends State<Menu> {
                       );
                     }),
                     SizedBox(
-                      height: 10,
+                      height: height/70,
                     ),
                     Gest_detector(
                         "Souvenirs",
@@ -159,7 +163,7 @@ class _MenuState extends State<Menu> {
               ],
             ),
             SizedBox(
-              height: 20,
+              height: height/35,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -170,7 +174,7 @@ class _MenuState extends State<Menu> {
               ),
             ),
             SizedBox(
-              height: 10,
+              height: height/70,
             ),
             GestureDetector(
                 onTap: () {
@@ -206,7 +210,7 @@ class _MenuState extends State<Menu> {
                   ),
                 )),
             SizedBox(
-              height: 10,
+              height: height/70,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -217,7 +221,7 @@ class _MenuState extends State<Menu> {
               ),
             ),
             SizedBox(
-              height: 10,
+              height: height/70,
             ),
           ],
         ),

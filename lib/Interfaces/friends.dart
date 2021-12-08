@@ -19,7 +19,23 @@ class _FriendsState extends State<Friends> {
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+class Friends extends StatefulWidget {
+  const Friends({Key? key}) : super(key: key);
 
+  @override
+  _FriendsState createState() => _FriendsState();
+}
+
+class _FriendsState extends State<Friends> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text("Friends"),
+    );
+  }
+}
+
+/*
 class Friends extends StatefulWidget {
   const Friends({Key? key}) : super(key: key);
 
@@ -60,7 +76,7 @@ class _FriendsState extends State<Friends> {
 
   }
 }
-/*
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

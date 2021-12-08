@@ -22,7 +22,7 @@ class _NavigationbarState extends State<Navigationbar> {
   final _pageOptions = [
     Menu(),
     Settings(),
-    ImageFromGalleryEx(Typography.whiteCupertino),
+    Profile(),
     Friends(),
     Objective()
   ];
