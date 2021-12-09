@@ -7,6 +7,7 @@ import 'package:flutter_application_1/Interfaces/Menu/menu.dart';
 import 'package:flutter_application_1/Interfaces/Profile.dart';
 import 'package:flutter_application_1/Interfaces/friends.dart';
 import 'package:flutter_application_1/Interfaces/objectives/objectives.dart';
+import 'package:flutter_application_1/Interfaces/profiles.dart';
 import 'package:flutter_application_1/Interfaces/setting.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -22,7 +23,7 @@ class _NavigationbarState extends State<Navigationbar> {
   final _pageOptions = [
     Menu(),
     Settings(),
-    Profile(),
+    Profiles(),
     Friends(),
     Objective()
   ];

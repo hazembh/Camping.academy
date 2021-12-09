@@ -11,7 +11,8 @@ import 'package:flutter_application_1/function_class/TextFieldProfile.dart';
 import 'package:flutter_application_1/function_class/buttons.dart';
 import 'package:image_picker/image_picker.dart';
 class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+      late String places ='place';
+      Profile ({required this.places});
 
   @override
   _ProfileState createState() => _ProfileState();
@@ -234,7 +235,7 @@ class _ProfileState extends State<Profile> {
                       MyTextFieldProfile(
                         name: "Birthday", color: Colors.white, width: 205,controller: birthday,),
                       MyTextFieldProfile(
-                        name: "Place", color: Colors.white, width: 205, controller: place,
+                        name: widget.places, color: Colors.white, width: 205, controller: place,
                       ),
                     ],
                   ),
