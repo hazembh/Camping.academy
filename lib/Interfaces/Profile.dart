@@ -11,8 +11,25 @@ import 'package:flutter_application_1/function_class/TextFieldProfile.dart';
 import 'package:flutter_application_1/function_class/buttons.dart';
 import 'package:image_picker/image_picker.dart';
 class Profile extends StatefulWidget {
-      late String places ='place';
-      Profile ({required this.places});
+      late String places ='Place';
+      late String birthday ='Birthday';
+      late String telparent ='Home Tel';
+      late String tel ='Tel';
+      late String adress ='Home adress';
+      late String Dateofscoot ='Date of scoot Movement ';
+      late String region ='Region';
+      late String group ='Group';
+      late String squad ='Squad';
+      late String vanguard ='vanguard';
+      late String The_current_scouting_plan_of_the_squad ='The current scouting plan of the squad';
+      late String Date_of_joining_the_camping_academy ='Date of joining the camping academy';
+      //late String image;
+
+      Profile ({
+        required this.places,required this.birthday,required this.telparent,required this.tel,required this.adress,
+        required this.Dateofscoot,required this.region,required this.group,required this.squad,required this.vanguard,
+        required this.The_current_scouting_plan_of_the_squad,required this.Date_of_joining_the_camping_academy,
+      });
 
   @override
   _ProfileState createState() => _ProfileState();
@@ -64,6 +81,7 @@ class _ProfileState extends State<Profile> {
           "dateofjoining": dateofjoining.text.trim(),
           "plan": plan.text.trim(),
           "birthday": birthday.text.trim(),
+          "squad": squad.text.trim(),
           'image':imgUrl,
 
         });
@@ -83,12 +101,12 @@ class _ProfileState extends State<Profile> {
           "dateofjoining": dateofjoining.text.trim(),
           "plan": plan.text.trim(),
           "birthday": birthday.text.trim(),
+          "squad": squad.text.trim(),
           'image':imgUrl,
         });
       }
     }
   }
-
 
   void validation() {
     if (birthday.text.trim().isEmpty || birthday.text.trim() == null) {
@@ -119,6 +137,150 @@ class _ProfileState extends State<Profile> {
 
       return;
     }
+    if (place.text.trim().isEmpty || place.text.trim() == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.grey[200],
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Please Enter the place !',
+                  style:
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+            ],
+          )));
+      return;
+    }
+    if (birthday.text.trim().isEmpty || birthday.text.trim() == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.grey[200],
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Please Enter Your Home Tel !',
+                  style:
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+            ],
+          )));
+      return;
+    }
+    if (tel.text.trim().isEmpty || tel.text.trim() == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.grey[200],
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Please Enter Your Telephone !',
+                  style:
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+            ],
+          )));
+      return;
+    }
+    if (adress.text.trim().isEmpty || adress.text.trim() == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.grey[200],
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Please Enter Your adress !',
+                  style:
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+            ],
+          )));
+      return;
+    }
+    if (Dateofscoot.text.trim().isEmpty || Dateofscoot.text.trim() == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.grey[200],
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Please Enter Your Date of scoot mouvement !',
+                  style:
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+            ],
+          )));
+      return;
+    }
+    if (region.text.trim().isEmpty || region.text.trim() == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.grey[200],
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Please Enter Your Region !',
+                  style:
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+            ],
+          )));
+      return;
+    }
+    if (group.text.trim().isEmpty || group.text.trim() == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.grey[200],
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Please Enter Your group !',
+                  style:
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+            ],
+          )));
+      return;
+    }
+    if (squad.text.trim().isEmpty || squad.text.trim() == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.grey[200],
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Please Enter Your squad !',
+                  style:
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+            ],
+          )));
+      return;
+    }
+    if (vanguard.text.trim().isEmpty || vanguard.text.trim() == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.grey[200],
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Please Enter Your vanguard !',
+                  style:
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+            ],
+          )));
+      return;
+    }
+    if (plan.text.trim().isEmpty || plan.text.trim() == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.grey[200],
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Please Enter Your plan !',
+                  style:
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+            ],
+          )));
+      return;
+    }
+    if (dateofjoining.text.trim().isEmpty || dateofjoining.text.trim() == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.grey[200],
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Please Enter Your date of joining scoot !',
+                  style:
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+            ],
+          )));
+      return;
+    }
+
     else {
       return sendData();
     }
@@ -233,7 +395,7 @@ class _ProfileState extends State<Profile> {
                   Row(
                     children: [
                       MyTextFieldProfile(
-                        name: "Birthday", color: Colors.white, width: 205,controller: birthday,),
+                        name: widget.birthday, color: Colors.white, width: 205,controller: birthday,),
                       MyTextFieldProfile(
                         name: widget.places, color: Colors.white, width: 205, controller: place,
                       ),
@@ -242,11 +404,11 @@ class _ProfileState extends State<Profile> {
 
                   Row(
                     children: [
-                      MyTextFieldProfile(name: "Num Tel father/mother",
+                      MyTextFieldProfile(name: widget.telparent,
                         color: Colors.white,
                         width: 205,controller: Telparent,),
                       MyTextFieldProfile(
-                        name: "Num Tel", color: Colors.white, width: 205,controller: tel),
+                        name: widget.tel, color: Colors.white, width: 205,controller: tel,),
                     ],
                   ),
                 Container(
@@ -267,32 +429,32 @@ class _ProfileState extends State<Profile> {
                 ),
 
                   MyTextFieldProfile(
-                    name: "Personal Address", color: Colors.white, width: 500,controller: adress,),
-                  MyTextFieldProfile(name: "Date of the Scouting Movement",
+                    name: widget.adress, color: Colors.white, width: 500,controller: adress,),
+                  MyTextFieldProfile(name:widget.Dateofscoot,
                     color: Colors.white,
                     width: 500,controller: Dateofscoot),
                   Row(
                     children: [
                       MyTextFieldProfile(
-                        name: "Region", color: Colors.white, width: 205,controller: region),
+                        name: widget.region, color: Colors.white, width: 205,controller: region),
                       MyTextFieldProfile(
-                        name: "Group", color: Colors.white, width: 205,controller: group),
+                        name: widget.group, color: Colors.white, width: 205,controller: group),
                     ],
                   ),
                   Row(
                     children: [
                       MyTextFieldProfile(
-                        name: "Squad", color: Colors.white, width: 205,controller: squad,),
+                        name: widget.squad, color: Colors.white, width: 205,controller: squad,),
                       MyTextFieldProfile(
-                        name: "vanguard", color: Colors.white, width: 205,controller: vanguard,),
+                        name: widget.vanguard, color: Colors.white, width: 205,controller: vanguard,),
                     ],
                   ),
                   MyTextFieldProfile(
-                    name: "The current scouting plan of the squad",
+                    name: widget.The_current_scouting_plan_of_the_squad,
                     color: Colors.white,
                     width: 500,controller: plan,),
                   MyTextFieldProfile(
-                    name: "Date of joining the camping academy",
+                    name: widget.Date_of_joining_the_camping_academy,
                     color: Colors.white,
                     width: 500,controller: dateofjoining,),
 

@@ -66,7 +66,6 @@ class _SignInState extends State<SignIn> {
         setState(() {
           loading = false;
         });
-
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Navigationbar()));
       } else {
         setState(() {
@@ -116,7 +115,6 @@ class _SignInState extends State<SignIn> {
             ],
           )));
     }
-    // ignore: unnecessary_null_comparison
     else if (password.text.trim().isEmpty || password.text.trim() == null) {
       // ignore: deprecated_member_use
       ScaffoldMessenger.of(context).showSnackBar(new SnackBar(

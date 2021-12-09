@@ -1,6 +1,7 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/APImaps.dart';
 import 'package:flutter_application_1/Interfaces/Menu/academy_definition.dart';
 import 'package:flutter_application_1/Interfaces/Menu/membre_scout.dart';
 import 'package:flutter_application_1/Interfaces/Menu/menu.dart';
@@ -25,7 +26,9 @@ class _NavigationbarState extends State<Navigationbar> {
     Settings(),
     Profiles(),
     Friends(),
-    Objective()
+    Objective(),
+    MapSample(),
+
   ];
 
   @override
@@ -43,6 +46,7 @@ class _NavigationbarState extends State<Navigationbar> {
           TabItem(icon: Icons.supervised_user_circle, title: 'User'),
           TabItem(icon: Icons.message, title: 'Message'),
           TabItem(icon: Icons.check, title: 'Objectives'),
+          TabItem(icon: Icons.map, title: 'MAP'),
         ],
         initialActiveIndex: selectedPage, //optional, default as 0
         onTap: (int index) {

@@ -83,7 +83,7 @@ class _FirstInterfaceState extends State<FirstInterface> {
                       onPressed: () {
                         final provider = Provider.of<GoogleSignInProvider>(context,listen:false);
                         provider.googleLogin();
-
+                        Navigator.pushNamed(context, '/signin');
                       },
                       icon: FaIcon(FontAwesomeIcons.google),
                       iconSize: 40,
@@ -98,10 +98,7 @@ class _FirstInterfaceState extends State<FirstInterface> {
 
   Future<UserCredential> signInWithFacebook() async {
     Map<String, dynamic>? _userData;
-
     String welcome = "Facebook";
-
-
     final LoginResult result = await FacebookAuth.instance.login(permissions:['email']);
 
 
