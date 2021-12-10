@@ -11,9 +11,11 @@ import 'package:flutter_application_1/Interfaces/objectives/objectives.dart';
 import 'package:flutter_application_1/Interfaces/profiles.dart';
 import 'package:flutter_application_1/Interfaces/setting.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_application_1/widget/translation_widget.dart';
+import 'package:flutter_application_1/globals.dart' as globals;
 
 class Navigationbar extends StatefulWidget {
-  Navigationbar({Key ?key}) : super(key: key);
+  Navigationbar({Key? key}) : super(key: key);
 
   @override
   _NavigationbarState createState() => _NavigationbarState();
@@ -28,7 +30,6 @@ class _NavigationbarState extends State<Navigationbar> {
     Friends(),
     Objective(),
     MapSample(),
-
   ];
 
   @override
@@ -41,7 +42,7 @@ class _NavigationbarState extends State<Navigationbar> {
         activeColor: Colors.blue,
         //cornerRadius: 30,
         items: [
-          TabItem(icon: Icons.menu, title: 'Menu'),
+          TabItem(icon: Icons.menu, title: 'menu'),
           TabItem(icon: Icons.settings, title: 'Settings'),
           TabItem(icon: Icons.supervised_user_circle, title: 'User'),
           TabItem(icon: Icons.message, title: 'Message'),

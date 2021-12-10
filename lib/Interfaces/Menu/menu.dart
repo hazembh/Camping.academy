@@ -11,6 +11,8 @@ import 'package:flutter_application_1/function_class/googlesignin.dart';
 import 'package:flutter_application_1/function_class/navigation%20bar.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_application_1/widget/translation_widget.dart';
+import 'package:flutter_application_1/globals.dart' as globals;
 
 import '../signIn.dart';
 
@@ -24,9 +26,8 @@ class _MenuState extends State<Menu> {
 
   @override
   Widget build(BuildContext context) {
-
-    final width= MediaQuery.of(context).size.width;
-    final height= MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(239, 232, 232, 1),
@@ -35,27 +36,32 @@ class _MenuState extends State<Menu> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: height/15,
+              height: height / 15,
             ),
             Row(
               children: [
                 SizedBox(
-                  width: width/8,
+                  width: width / 8,
                 ),
-                Text("Menu",
-                    style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey[600])),
+                TranslationWidget(
+                  text: "Menu",
+                  fromLanguage: globals.fromLanguage,
+                  toLanguage: globals.toLanguage,
+                  builder: (translated) => Text(translated!,
+                      style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey[600])),
+                ),
               ],
             ),
             SizedBox(
-              height: height/20,
+              height: height / 20,
             ),
             Row(
               children: [
                 SizedBox(
-                  width: width/12,
+                  width: width / 12,
                 ),
                 ClipOval(
                   child: Image.asset(
@@ -69,13 +75,13 @@ class _MenuState extends State<Menu> {
                   ),
                 ),*/
                 SizedBox(
-                  width: width/25,
+                  width: width / 25,
                 ),
                 Container(
-                  width:width/1.4,
+                  width: width / 1.4,
                   child: Text(
                     user!.email!,
-
+                    // TODO: Why not the username?
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 )
@@ -93,12 +99,11 @@ class _MenuState extends State<Menu> {
               ),
             ),
             SizedBox(
-              height: height/50,
+              height: height / 50,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-
                 Column(
                   children: [
                     Gest_detector(
@@ -110,7 +115,7 @@ class _MenuState extends State<Menu> {
                               builder: (context) => EventOur(),
                             )),
                     SizedBox(
-                      height: height/70,
+                      height: height / 70,
                     ),
                     Gest_detector(
                         "Advantages",
@@ -121,7 +126,7 @@ class _MenuState extends State<Menu> {
                               builder: (context) => Advantages(),
                             )),
                     SizedBox(
-                      height: height/70,
+                      height: height / 70,
                     ),
                     Gest_detector(
                         "Weather",
@@ -134,7 +139,7 @@ class _MenuState extends State<Menu> {
                   ],
                 ),
                 SizedBox(
-                  width: width/30,
+                  width: width / 30,
                 ),
                 Column(
                   children: [
@@ -149,7 +154,7 @@ class _MenuState extends State<Menu> {
                       );
                     }),
                     SizedBox(
-                      height: height/70,
+                      height: height / 70,
                     ),
                     Gest_detector(
                         "Souvenirs",
@@ -164,7 +169,7 @@ class _MenuState extends State<Menu> {
               ],
             ),
             SizedBox(
-              height: height/35,
+              height: height / 35,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -175,7 +180,7 @@ class _MenuState extends State<Menu> {
               ),
             ),
             SizedBox(
-              height: height/70,
+              height: height / 70,
             ),
             GestureDetector(
                 onTap: () {
@@ -190,28 +195,43 @@ class _MenuState extends State<Menu> {
                         hoverColor: Colors.black26,
                         iconSize: 35,
                         onPressed: () {
-                          final provider = Provider.of<GoogleSignInProvider>(context,listen:false);
+                          final provider = Provider.of<GoogleSignInProvider>(
+                              context,
+                              listen: false);
                           provider.logout();
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => FirstInterface()));
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => FirstInterface()));
                         },
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => FirstInterface()));
-                          final provider = Provider.of<GoogleSignInProvider>(context,listen:false);
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => FirstInterface()));
+                          final provider = Provider.of<GoogleSignInProvider>(
+                              context,
+                              listen: false);
                           provider.logout();
                         },
-                        child: Text(
-                          "Logout",
-                          style: TextStyle(
-                              fontSize: 27, fontWeight: FontWeight.bold),
+                        child: TranslationWidget(
+                          text: "Logout",
+                          fromLanguage: globals.fromLanguage,
+                          toLanguage: globals.toLanguage,
+                          builder: (translated) => Text(
+                            translated!,
+                            style: TextStyle(
+                                fontSize: 27, fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
                     ],
                   ),
                 )),
             SizedBox(
-              height: height/70,
+              height: height / 70,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -222,7 +242,7 @@ class _MenuState extends State<Menu> {
               ),
             ),
             SizedBox(
-              height: height/70,
+              height: height / 70,
             ),
           ],
         ),

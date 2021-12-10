@@ -129,13 +129,13 @@ class _ProfileState extends State<Profile> {
             children: [
               Text('Please Enter Your Birthday !',
                   style:
-                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
       return;
     }
     if ((!RegExp(
-            r"^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$")
+        r"^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$")
         .hasMatch(birthday.text))) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
@@ -144,7 +144,7 @@ class _ProfileState extends State<Profile> {
             children: [
               Text('Please enter a valid Birthday',
                   style:
-                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
 
@@ -158,7 +158,7 @@ class _ProfileState extends State<Profile> {
             children: [
               Text('Please Enter the place !',
                   style:
-                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
       return;
@@ -171,7 +171,7 @@ class _ProfileState extends State<Profile> {
             children: [
               Text('Please Enter Your Home Tel !',
                   style:
-                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
       return;
@@ -184,7 +184,7 @@ class _ProfileState extends State<Profile> {
             children: [
               Text('Please Enter Your Telephone !',
                   style:
-                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
       return;
@@ -197,7 +197,7 @@ class _ProfileState extends State<Profile> {
             children: [
               Text('Please Enter Your adress !',
                   style:
-                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
       return;
@@ -210,7 +210,7 @@ class _ProfileState extends State<Profile> {
             children: [
               Text('Please Enter Your Date of scoot mouvement !',
                   style:
-                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
       return;
@@ -223,7 +223,7 @@ class _ProfileState extends State<Profile> {
             children: [
               Text('Please Enter Your Region !',
                   style:
-                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
       return;
@@ -236,7 +236,7 @@ class _ProfileState extends State<Profile> {
             children: [
               Text('Please Enter Your group !',
                   style:
-                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
       return;
@@ -249,7 +249,7 @@ class _ProfileState extends State<Profile> {
             children: [
               Text('Please Enter Your squad !',
                   style:
-                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
       return;
@@ -262,7 +262,7 @@ class _ProfileState extends State<Profile> {
             children: [
               Text('Please Enter Your vanguard !',
                   style:
-                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
       return;
@@ -275,7 +275,7 @@ class _ProfileState extends State<Profile> {
             children: [
               Text('Please Enter Your plan !',
                   style:
-                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
       return;
@@ -288,7 +288,7 @@ class _ProfileState extends State<Profile> {
             children: [
               Text('Please Enter Your date of joining scoot !',
                   style:
-                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
       return;
@@ -359,7 +359,9 @@ class _ProfileState extends State<Profile> {
         .get();
     Map<String, dynamic>? data = docSnapshot.data();
     setState(() {
+      //getIsNewUSer = document['IsNewUser'];
       print('data: ' + data.toString());
+      //print(data.values.map((e) => print(e)));
       var List = data!.values.toList();
       birthday.text = List[0];
       images = File(List[1].toString());
@@ -376,6 +378,7 @@ class _ProfileState extends State<Profile> {
       group.text = List[12];
 
       print('start: ' + imgUrl);
+      //birthday.text.trim() = document.data().toString()['birthday']
     });
   }
 
@@ -400,23 +403,35 @@ class _ProfileState extends State<Profile> {
                   SizedBox(
                     height: 70,
                   ),
-                  Stack(
-                    children: [
-                      CircleAvatar(
-                      radius: 100,
-                      //backgroundColor: Color(0xffFDCF09),
-                      backgroundImage:  FileImage(images),
-                    ),
-                      Positioned(
-                        right: 30,
-                        top: 150,
 
-                        child: IconButton(onPressed:( ){_showPicker(context);} , icon: Icon(Icons.camera_alt),iconSize: 45,),
+                  Stack(children: [
+                    CircleAvatar(
+                        radius: 100,
+//backgroundColor: Color(0xffFDCF09),
+                        backgroundImage: FileImage(images),
+                        child: Positioned(
+                          left: 200,
+                          child: IconButton(
+                              onPressed: () {
+                                _showPicker(context);
+                              },
+                              icon: Icon(Icons.camera_alt_outlined)),
+                        )
 
-                      )
-                    ]
+/*child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(250)),
+                  width: 200,
+                  height: 200,
+                  child: Icon(
+                  Icons.camera_alt,
+                  color: Colors.grey[800],
                   ),
-                 //RaisedButton(onPressed: ,child: Text("Change picture"),),
+                  ),*/
+                    ),
+                  ]),
+                  //RaisedButton(onPressed: ,child: Text("Change picture"),),
                   Row(
                     children: [
                       MyTextFieldProfile(

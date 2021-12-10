@@ -5,9 +5,10 @@ import 'package:flutter_application_1/function_class/googlesignin.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_application_1/widget/translation_widget.dart';
+import 'package:flutter_application_1/globals.dart' as globals;
 
 class FirstInterface extends StatefulWidget {
-
   const FirstInterface({Key? key}) : super(key: key);
 
   @override
@@ -17,7 +18,6 @@ class FirstInterface extends StatefulWidget {
 class _FirstInterfaceState extends State<FirstInterface> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Stack(
         children: [
@@ -54,16 +54,22 @@ class _FirstInterfaceState extends State<FirstInterface> {
                     Navigator.pushNamed(context, '/choose');
                   })),
           Positioned(
-              top: 700, // To take AppBar Size only
-              left: 130.0,
-              right: 0.0,
-              child: Text(
-                "Sign Up with",
+            top: 700, // To take AppBar Size only
+            left: 130.0,
+            right: 0.0,
+            child: TranslationWidget(
+              text: "Sign Up with",
+              fromLanguage: globals.fromLanguage,
+              toLanguage: globals.toLanguage,
+              builder: (translated) => Text(
+                translated!,
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                     color: Colors.black),
-              )),
+              ),
+            ),
+          ),
           Positioned(
               top: 720, // To take AppBar Size only
               left: 140.0,
@@ -73,7 +79,6 @@ class _FirstInterfaceState extends State<FirstInterface> {
                   IconButton(
                     onPressed: () {
                       signInWithFacebook();
-
                     },
                     icon: Icon(Icons.facebook),
                     iconSize: 50,
@@ -81,7 +86,9 @@ class _FirstInterfaceState extends State<FirstInterface> {
                   ),
                   IconButton(
                       onPressed: () {
-                        final provider = Provider.of<GoogleSignInProvider>(context,listen:false);
+                        final provider = Provider.of<GoogleSignInProvider>(
+                            context,
+                            listen: false);
                         provider.googleLogin();
                         Navigator.pushNamed(context, '/signin');
                       },
@@ -95,15 +102,13 @@ class _FirstInterfaceState extends State<FirstInterface> {
     );
   }
 
-
   Future<UserCredential> signInWithFacebook() async {
     Map<String, dynamic>? _userData;
     String welcome = "Facebook";
-    final LoginResult result = await FacebookAuth.instance.login(permissions:['email']);
-
+    final LoginResult result =
+        await FacebookAuth.instance.login(permissions: ['email']);
 
     if (result.status == LoginStatus.success) {
-
       final userData = await FacebookAuth.instance.getUserData();
 
       _userData = userData;
@@ -115,11 +120,9 @@ class _FirstInterfaceState extends State<FirstInterface> {
       welcome = _userData?['email'];
     });
 
-
-    final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(result.accessToken!.token);
+    final OAuthCredential facebookAuthCredential =
+        FacebookAuthProvider.credential(result.accessToken!.token);
 
     return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
   }
-
 }
-

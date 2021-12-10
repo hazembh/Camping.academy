@@ -34,7 +34,6 @@ class MyApp extends StatelessWidget {
             '/signup_admin': (context) => const SignUpAdmin(),
             '/navigation': (context) => Navigationbar(),
             '/logout': (context) => SignIn(),
-            
           },
         ),
       );

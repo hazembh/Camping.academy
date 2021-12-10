@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/widget/translation_widget.dart';
+import 'package:flutter_application_1/globals.dart' as globals;
 
 class Gest_detector extends StatefulWidget {
   Function function;
@@ -21,14 +23,19 @@ class _Gest_detectorState extends State<Gest_detector> {
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
         width: 185,
         height: 80,
-        child: Text(
-          widget.title,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-            letterSpacing: 1.1,
+        child: TranslationWidget(
+          text: widget.title,
+          fromLanguage: globals.fromLanguage,
+          toLanguage: globals.toLanguage,
+          builder: (translated) => Text(
+            translated!,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              letterSpacing: 1.1,
+            ),
           ),
         ),
         decoration: BoxDecoration(

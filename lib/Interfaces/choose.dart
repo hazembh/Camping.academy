@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/function_class/buttons.dart';
+import 'package:flutter_application_1/widget/translation_widget.dart';
+import 'package:flutter_application_1/globals.dart' as globals;
 
 class Choose extends StatefulWidget {
   const Choose({Key? key}) : super(key: key);
@@ -39,27 +41,39 @@ class _ChooseState extends State<Choose> {
             child: Image.asset('assets/logo.png'),
           ),
           Positioned(
-              top: 300, // To take AppBar Size only
-              left: 80.0,
-              right: 0.0,
-              child: Text(
-                "Are you a member of scouts",
+            top: 300, // To take AppBar Size only
+            left: 80.0,
+            right: 0.0,
+            child: TranslationWidget(
+              text: "Are you a member of scouts",
+              fromLanguage: globals.fromLanguage,
+              toLanguage: globals.toLanguage,
+              builder: (translated) => Text(
+                translated!,
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.black),
-              )),
+              ),
+            ),
+          ),
           Positioned(
-              top: 330, // To take AppBar Size only
-              left: 125.0,
-              right: 0.0,
-              child: Text(
-                "or administration?",
+            top: 330, // To take AppBar Size only
+            left: 125.0,
+            right: 0.0,
+            child: TranslationWidget(
+              text: "or administration?",
+              fromLanguage: globals.fromLanguage,
+              toLanguage: globals.toLanguage,
+              builder: (translated) => Text(
+                translated!,
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.black),
-              )),
+              ),
+            ),
+          ),
           Positioned(
               top: 380, // To take AppBar Size only
               left: 0.0,
