@@ -35,8 +35,6 @@ class _WeatherState extends State<Weather> {
   String dropdownValue = 'Tunis';
 
   Future<void> getWeather(String localisation) async {
-
-
     String url = "http://192.168.1.109:8000/api/$localisation";
     http.Response response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
@@ -346,7 +344,7 @@ class _WeatherState extends State<Weather> {
                       width: double.infinity,
                       height: 50,
                       child: TimeSlider(
-                        onPressed: (){
+                        onPressed: () {
                           //print('Changed!');
                           for (var i = 0; i < hourList.length; i++) {
                             if (hourList[i].isSelected == true) {
