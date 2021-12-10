@@ -67,14 +67,14 @@ class _ProfileState extends State<Profile> {
   GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
   bool loading = false;
   late File images = File("https://via.placeholder.com/150");
-  late String imgUrl;
+  late String imgUrl = '';
   var user = FirebaseAuth.instance.currentUser;
   sendData() async {
     var user = FirebaseAuth.instance.currentUser;
     // bool hasException = false;
     var storageimage = FirebaseStorage.instance.ref().child(images.path);
-    var task = await storageimage.putFile(images);
-    imgUrl = await (task).ref.getDownloadURL();
+    //var task = await storageimage.putFile(images);
+    //imgUrl = await (task).ref.getDownloadURL();
     if (user != null) {
       var a = await FirebaseFirestore.instance
           .collection("userData")
@@ -97,7 +97,7 @@ class _ProfileState extends State<Profile> {
           "plan": plan.text.trim(),
           "birthday": birthday.text.trim(),
           "squad": squad.text.trim(),
-          'image': imgUrl,
+          'image': images.path,
         });
       } else {
         final DocumentReference documentReference = FirebaseFirestore.instance
@@ -116,14 +116,14 @@ class _ProfileState extends State<Profile> {
           "plan": plan.text.trim(),
           "birthday": birthday.text.trim(),
           "squad": squad.text.trim(),
-          'image': imgUrl,
+          'image': images.path,
         });
       }
     }
   }
 
   void validation() {
-    if (birthday.text.trim().isEmpty || birthday.text.trim() == null) {
+    if (birthday.text.trim().isEmpty || birthday.text.trim() == '') {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -152,7 +152,7 @@ class _ProfileState extends State<Profile> {
 
       return;
     }
-    if (place.text.trim().isEmpty || place.text.trim() == null) {
+    if (place.text.trim().isEmpty || place.text.trim() == '') {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -165,7 +165,7 @@ class _ProfileState extends State<Profile> {
           )));
       return;
     }
-    if (birthday.text.trim().isEmpty || birthday.text.trim() == null) {
+    if (birthday.text.trim().isEmpty || birthday.text.trim() == '') {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -178,7 +178,7 @@ class _ProfileState extends State<Profile> {
           )));
       return;
     }
-    if (tel.text.trim().isEmpty || tel.text.trim() == null) {
+    if (tel.text.trim().isEmpty || tel.text.trim() == '') {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -191,7 +191,7 @@ class _ProfileState extends State<Profile> {
           )));
       return;
     }
-    if (adress.text.trim().isEmpty || adress.text.trim() == null) {
+    if (adress.text.trim().isEmpty || adress.text.trim() == '') {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -204,7 +204,7 @@ class _ProfileState extends State<Profile> {
           )));
       return;
     }
-    if (Dateofscoot.text.trim().isEmpty || Dateofscoot.text.trim() == null) {
+    if (Dateofscoot.text.trim().isEmpty || Dateofscoot.text.trim() == '') {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -217,7 +217,7 @@ class _ProfileState extends State<Profile> {
           )));
       return;
     }
-    if (region.text.trim().isEmpty || region.text.trim() == null) {
+    if (region.text.trim().isEmpty || region.text.trim() == '') {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -230,7 +230,7 @@ class _ProfileState extends State<Profile> {
           )));
       return;
     }
-    if (group.text.trim().isEmpty || group.text.trim() == null) {
+    if (group.text.trim().isEmpty || group.text.trim() == '') {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -243,7 +243,7 @@ class _ProfileState extends State<Profile> {
           )));
       return;
     }
-    if (squad.text.trim().isEmpty || squad.text.trim() == null) {
+    if (squad.text.trim().isEmpty || squad.text.trim() == '') {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -256,7 +256,7 @@ class _ProfileState extends State<Profile> {
           )));
       return;
     }
-    if (vanguard.text.trim().isEmpty || vanguard.text.trim() == null) {
+    if (vanguard.text.trim().isEmpty || vanguard.text.trim() == '') {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -269,7 +269,7 @@ class _ProfileState extends State<Profile> {
           )));
       return;
     }
-    if (plan.text.trim().isEmpty || plan.text.trim() == null) {
+    if (plan.text.trim().isEmpty || plan.text.trim() == '') {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -282,8 +282,7 @@ class _ProfileState extends State<Profile> {
           )));
       return;
     }
-    if (dateofjoining.text.trim().isEmpty ||
-        dateofjoining.text.trim() == null) {
+    if (dateofjoining.text.trim().isEmpty || dateofjoining.text.trim() == '') {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -304,6 +303,8 @@ class _ProfileState extends State<Profile> {
     var img = await ImagePicker.platform.pickImage(source: ImageSource.camera);
     setState(() {
       images = File(img!.path);
+      //imgUrl = images.path;
+      print('from camera:' + imgUrl);
     });
   }
 
@@ -311,6 +312,8 @@ class _ProfileState extends State<Profile> {
     var img = await ImagePicker.platform.pickImage(source: ImageSource.gallery);
     setState(() {
       images = File(img!.path);
+      //imgUrl = images.path;
+      print('from gallery:' + imgUrl);
     });
   }
 
@@ -325,7 +328,7 @@ class _ProfileState extends State<Profile> {
                   new ListTile(
                       leading: new Icon(Icons.photo_library),
                       title: new TranslationWidget(
-                        text: "Photo Library",
+                        text: 'Photo Library',
                         fromLanguage: globals.fromLanguage,
                         toLanguage: globals.toLanguage,
                         builder: (translated) => Text(translated!),
@@ -337,7 +340,7 @@ class _ProfileState extends State<Profile> {
                   new ListTile(
                     leading: new Icon(Icons.photo_camera),
                     title: new TranslationWidget(
-                      text: "Camera",
+                      text: 'Camera',
                       fromLanguage: globals.fromLanguage,
                       toLanguage: globals.toLanguage,
                       builder: (translated) => Text(translated!),
@@ -352,6 +355,43 @@ class _ProfileState extends State<Profile> {
             ),
           );
         });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  Future<void> loadData() async {
+    var user = FirebaseAuth.instance.currentUser;
+    var docSnapshot = await FirebaseFirestore.instance
+        .collection('userData')
+        .doc(user!.uid)
+        .get();
+    Map<String, dynamic>? data = docSnapshot.data();
+    setState(() {
+      //getIsNewUSer = document['IsNewUser'];
+      print('data: ' + data.toString());
+      //print(data.values.map((e) => print(e)));
+      var List = data!.values.toList();
+      birthday.text = List[0];
+      images = File(List[1].toString());
+      dateofjoining.text = List[2];
+      adress.text = List[3];
+      Dateofscoot.text = List[4];
+      Telparent.text = List[5];
+      squad.text = List[6];
+      tel.text = List[7];
+      place.text = List[8];
+      region.text = List[9];
+      vanguard.text = List[10];
+      plan.text = List[11];
+      group.text = List[12];
+
+      print('start: ' + imgUrl);
+      //birthday.text.trim() = document.data().toString()['birthday']
+    });
   }
 
   @override
@@ -375,43 +415,34 @@ class _ProfileState extends State<Profile> {
           SizedBox(
             height: 70,
           ),
-          InkWell(
-            onTap: () => _showPicker,
-            child: Center(
-              child: GestureDetector(
-                onTap: () {
-                  _showPicker(context);
-                },
-                child: CircleAvatar(
-                  radius: 100,
-                  //backgroundColor: Color(0xffFDCF09),
-                  backgroundImage:
-                      NetworkImage('https://via.placeholder.com/150'),
-                  child: images != null
-                      ? ClipRRect(
-                          borderRadius: BorderRadius.circular(100),
-                          child: Image.file(
-                            images,
-                            width: 200,
-                            height: 200,
-                            fit: BoxFit.cover,
-                          ),
-                        )
-                      : Container(
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(50)),
-                          width: 200,
-                          height: 200,
-                          child: Icon(
-                            Icons.camera_alt,
-                            color: Colors.grey[800],
-                          ),
-                        ),
+          Stack(children: [
+            CircleAvatar(
+                radius: 100,
+                //backgroundColor: Color(0xffFDCF09),
+                backgroundImage: FileImage(images),
+                child: Positioned(
+                  left: 200,
+                  child: IconButton(
+                      onPressed: () {
+                        _showPicker(context);
+                      },
+                      icon: Icon(Icons.camera_alt_outlined)),
+                )
+
+                /*child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(250)),
+                  width: 200,
+                  height: 200,
+                  child: Icon(
+                  Icons.camera_alt,
+                  color: Colors.grey[800],
+                  ),
+                  ),*/
                 ),
-              ),
-            ),
-          ),
+          ]),
+          //RaisedButton(onPressed: ,child: Text("Change picture"),),
           Row(
             children: [
               MyTextFieldProfile(
@@ -517,7 +548,13 @@ class _ProfileState extends State<Profile> {
           button(
               val: "Update",
               onTap: () {
-                validation();
+                print(images);
+                print(imgUrl);
+
+                setState(() {
+                  sendData();
+                  //loadData();
+                });
               }),
           SizedBox(height: 30),
         ],
