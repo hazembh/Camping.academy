@@ -24,7 +24,8 @@ class _MembrescoutsState extends State<Membrescouts> {
                 end: Alignment.bottomCenter,
               ),
             ),
-            child: Column(children: <Widget>[
+            child: Column(
+                children: <Widget>[
               Stack(
                 children: <Widget>[
                   Container(

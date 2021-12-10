@@ -71,8 +71,8 @@ class _ProfileState extends State<Profile> {
     var user = FirebaseAuth.instance.currentUser;
     // bool hasException = false;
     var storageimage = FirebaseStorage.instance.ref().child(images.path);
-    var task = await storageimage.putFile(images);
-    imgUrl = await (task).ref.getDownloadURL();
+    //var task = await storageimage.putFile(images);
+    //imgUrl = await (task).ref.getDownloadURL();
     if (user != null) {
       var a = await FirebaseFirestore.instance
           .collection("userData")
@@ -95,7 +95,7 @@ class _ProfileState extends State<Profile> {
           "plan": plan.text.trim(),
           "birthday": birthday.text.trim(),
           "squad": squad.text.trim(),
-          'image': imgUrl,
+          'image': images.path,
         });
       } else {
         final DocumentReference documentReference = FirebaseFirestore.instance
@@ -114,13 +114,13 @@ class _ProfileState extends State<Profile> {
           "plan": plan.text.trim(),
           "birthday": birthday.text.trim(),
           "squad": squad.text.trim(),
-          'image': imgUrl,
+          'image': images.path,
         });
       }
     }
   }
 
-  /*void validation() {
+  void validation() {
     if (birthday.text.trim().isEmpty || birthday.text.trim() == '') {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
@@ -295,13 +295,13 @@ class _ProfileState extends State<Profile> {
     } else {
       return sendData();
     }
-  }*/
+  }
 
   _imgFromCamera() async {
     var img = await ImagePicker.platform.pickImage(source: ImageSource.camera);
     setState(() {
       images = File(img!.path);
-      imgUrl = images.path;
+      //imgUrl = images.path;
       print('from camera:' + imgUrl);
     });
   }
@@ -310,7 +310,7 @@ class _ProfileState extends State<Profile> {
     var img = await ImagePicker.platform.pickImage(source: ImageSource.gallery);
     setState(() {
       images = File(img!.path);
-      imgUrl = images.path;
+      //imgUrl = images.path;
       print('from gallery:' + imgUrl);
     });
   }
@@ -359,12 +359,10 @@ class _ProfileState extends State<Profile> {
         .get();
     Map<String, dynamic>? data = docSnapshot.data();
     setState(() {
-      //getIsNewUSer = document['IsNewUser'];
       print('data: ' + data.toString());
-      //print(data.values.map((e) => print(e)));
       var List = data!.values.toList();
       birthday.text = List[0];
-      imgUrl = List[1];
+      images = File(List[1].toString());
       dateofjoining.text = List[2];
       adress.text = List[3];
       Dateofscoot.text = List[4];
@@ -378,7 +376,6 @@ class _ProfileState extends State<Profile> {
       group.text = List[12];
 
       print('start: ' + imgUrl);
-      //birthday.text.trim() = document.data().toString()['birthday']
     });
   }
 
@@ -387,162 +384,156 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
         body: SingleChildScrollView(
             child: Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Color.fromRGBO(222, 237, 249, 1),
-            Color.fromRGBO(169, 116, 116, 1),
-            Color.fromRGBO(129, 143, 141, 1),
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
-      child: Column(
-        children: <Widget>[
-          SizedBox(
-            height: 70,
-          ),
-          InkWell(
-            onTap: () => _showPicker,
-            child: Center(
-              child: GestureDetector(
-                onTap: () {
-                  _showPicker(context);
-                },
-                child: CircleAvatar(
-                  radius: 100,
-                  //backgroundColor: Color(0xffFDCF09),
-                  backgroundImage: imgUrl == ''
-                      ? NetworkImage(images.path)
-                      : NetworkImage(imgUrl),
-                  /*child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(250)),
-                    width: 200,
-                    height: 200,
-                    child: Icon(
-                      Icons.camera_alt,
-                      color: Colors.grey[800],
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color.fromRGBO(222, 237, 249, 1),
+                    Color.fromRGBO(169, 116, 116, 1),
+                    Color.fromRGBO(129, 143, 141, 1),
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+              ),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 70,
+                  ),
+                  Stack(
+                    children: [
+                      CircleAvatar(
+                      radius: 100,
+                      //backgroundColor: Color(0xffFDCF09),
+                      backgroundImage:  FileImage(images),
                     ),
-                  ),*/
-                ),
+                      Positioned(
+                        right: 30,
+                        top: 150,
+
+                        child: IconButton(onPressed:( ){_showPicker(context);} , icon: Icon(Icons.camera_alt),iconSize: 45,),
+
+                      )
+                    ]
+                  ),
+                 //RaisedButton(onPressed: ,child: Text("Change picture"),),
+                  Row(
+                    children: [
+                      MyTextFieldProfile(
+                        name: widget.birthday,
+                        color: Colors.white,
+                        width: 205,
+                        controller: birthday,
+                      ),
+                      MyTextFieldProfile(
+                        name: widget.places,
+                        color: Colors.white,
+                        width: 205,
+                        controller: place,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      MyTextFieldProfile(
+                        name: widget.telparent,
+                        color: Colors.white,
+                        width: 205,
+                        controller: Telparent,
+                      ),
+                      MyTextFieldProfile(
+                        name: widget.tel,
+                        color: Colors.white,
+                        width: 205,
+                        controller: tel,
+                      ),
+                    ],
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 40, right: 30, top: 15),
+                    width: 300,
+                    child: TextFormField(
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black),
+                      decoration: InputDecoration(
+                        disabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(4)),
+                          borderSide: BorderSide(width: 1, color: Colors.orange),
+                        ),
+                        hintText: user!.email!,
+                        hintStyle: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ),
+                  MyTextFieldProfile(
+                    name: widget.adress,
+                    color: Colors.white,
+                    width: 500,
+                    controller: adress,
+                  ),
+                  MyTextFieldProfile(
+                      name: widget.Dateofscoot,
+                      color: Colors.white,
+                      width: 500,
+                      controller: Dateofscoot),
+                  Row(
+                    children: [
+                      MyTextFieldProfile(
+                          name: widget.region,
+                          color: Colors.white,
+                          width: 205,
+                          controller: region),
+                      MyTextFieldProfile(
+                          name: widget.group,
+                          color: Colors.white,
+                          width: 205,
+                          controller: group),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      MyTextFieldProfile(
+                        name: widget.squad,
+                        color: Colors.white,
+                        width: 205,
+                        controller: squad,
+                      ),
+                      MyTextFieldProfile(
+                        name: widget.vanguard,
+                        color: Colors.white,
+                        width: 205,
+                        controller: vanguard,
+                      ),
+                    ],
+                  ),
+                  MyTextFieldProfile(
+                    name: widget.The_current_scouting_plan_of_the_squad,
+                    color: Colors.white,
+                    width: 500,
+                    controller: plan,
+                  ),
+                  MyTextFieldProfile(
+                    name: widget.Date_of_joining_the_camping_academy,
+                    color: Colors.white,
+                    width: 500,
+                    controller: dateofjoining,
+                  ),
+                  SizedBox(height: 30),
+                  button(
+                      val: "Update",
+                      onTap: () {
+                        print(images);
+                        print(imgUrl);
+
+                        setState(() {
+                          sendData();
+                          //loadData();
+                        });
+
+                      }),
+                  SizedBox(height: 30),
+                ],
               ),
-            ),
-          ),
-          Row(
-            children: [
-              MyTextFieldProfile(
-                name: widget.birthday,
-                color: Colors.white,
-                width: 205,
-                controller: birthday,
-              ),
-              MyTextFieldProfile(
-                name: widget.places,
-                color: Colors.white,
-                width: 205,
-                controller: place,
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              MyTextFieldProfile(
-                name: widget.telparent,
-                color: Colors.white,
-                width: 205,
-                controller: Telparent,
-              ),
-              MyTextFieldProfile(
-                name: widget.tel,
-                color: Colors.white,
-                width: 205,
-                controller: tel,
-              ),
-            ],
-          ),
-          Container(
-            padding: EdgeInsets.only(left: 40, right: 30, top: 15),
-            width: 300,
-            child: TextFormField(
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.black),
-              decoration: InputDecoration(
-                disabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(4)),
-                  borderSide: BorderSide(width: 1, color: Colors.orange),
-                ),
-                hintText: user!.email!,
-                hintStyle: TextStyle(color: Colors.black),
-              ),
-            ),
-          ),
-          MyTextFieldProfile(
-            name: widget.adress,
-            color: Colors.white,
-            width: 500,
-            controller: adress,
-          ),
-          MyTextFieldProfile(
-              name: widget.Dateofscoot,
-              color: Colors.white,
-              width: 500,
-              controller: Dateofscoot),
-          Row(
-            children: [
-              MyTextFieldProfile(
-                  name: widget.region,
-                  color: Colors.white,
-                  width: 205,
-                  controller: region),
-              MyTextFieldProfile(
-                  name: widget.group,
-                  color: Colors.white,
-                  width: 205,
-                  controller: group),
-            ],
-          ),
-          Row(
-            children: [
-              MyTextFieldProfile(
-                name: widget.squad,
-                color: Colors.white,
-                width: 205,
-                controller: squad,
-              ),
-              MyTextFieldProfile(
-                name: widget.vanguard,
-                color: Colors.white,
-                width: 205,
-                controller: vanguard,
-              ),
-            ],
-          ),
-          MyTextFieldProfile(
-            name: widget.The_current_scouting_plan_of_the_squad,
-            color: Colors.white,
-            width: 500,
-            controller: plan,
-          ),
-          MyTextFieldProfile(
-            name: widget.Date_of_joining_the_camping_academy,
-            color: Colors.white,
-            width: 500,
-            controller: dateofjoining,
-          ),
-          SizedBox(height: 30),
-          button(
-              val: "Update",
-              onTap: () {
-                print(images);
-                print(imgUrl);
-                sendData();
-              }),
-          SizedBox(height: 30),
-        ],
-      ),
-    )));
+            )));
   }
 }
