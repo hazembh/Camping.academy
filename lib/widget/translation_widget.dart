@@ -42,7 +42,7 @@ class _TranslationWidgetState extends State<TranslationWidget> {
             return buildWaiting();
           default:
             if (snapshot.hasError) {
-              translation = 'Could not translate due to Network problems!';
+              translation = 'Checking Network!';
             } else {
               translation = snapshot.data;
             }
