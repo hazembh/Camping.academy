@@ -36,10 +36,7 @@ class _WeatherState extends State<Weather> {
 
   Future<void> getWeather(String localisation) async {
     String url = "http://192.168.1.109:8000/api/$localisation";
-<<<<<<< HEAD
-=======
 
->>>>>>> d106d048c7bb7663c10c566dec7b107572f329f2
     http.Response response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       setState(() {
