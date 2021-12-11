@@ -12,9 +12,12 @@ class MapSample extends StatefulWidget {
 }
 
 class MapSampleState extends State<MapSample> {
+  final markers = Set<Marker>();
+  MarkerId markerId = MarkerId("YOUR-MARKER-ID");
   Completer<GoogleMapController> _controller = Completer();
 
   static final CameraPosition _kGooglePlex = CameraPosition(
+
     target: LatLng(36.71421223283655, 10.274649450529116),
     zoom: 6,
   );
@@ -27,8 +30,14 @@ class MapSampleState extends State<MapSample> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       body: GoogleMap(
+        markers: markers,
+        onCameraMove: (position){
+          setState(() {
+            markers.add(Marker(markerId: markerId,position: position.target));
+          });
+        },
         mapType: MapType.normal,
         initialCameraPosition: _kGooglePlex,
         onMapCreated: (GoogleMapController controller) {

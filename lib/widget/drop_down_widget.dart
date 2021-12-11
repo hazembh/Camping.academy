@@ -56,7 +56,7 @@ class DropDownWidget extends StatelessWidget {
       iconSize: 24,
       dropdownColor: Color.fromRGBO(240, 204, 204, 1),
       elevation: 16,
-      borderRadius: BorderRadius.circular(25),
+      //borderRadius: BorderRadius.circular(25),
       onChanged: onChangedLanguage,
     );
   }
