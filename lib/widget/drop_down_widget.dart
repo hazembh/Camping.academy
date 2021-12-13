@@ -17,37 +17,34 @@ class DropDownWidget extends StatelessWidget {
     //Create the list items of the drop down menu using the available languages
     final itemflags = Translations.langflags;
     final items = Translations.languages
-        .map<
-            DropdownMenuItem<
-                String>>((String value) => DropdownMenuItem<String>(
-            value: value,
-            child: RichText(
-              text: TextSpan(
-                text: value,
-                style: TextStyle(
-                    color: Colors.black, fontSize: 25, fontFamily: 'Kalam'),
-                children: [
-                  WidgetSpan(
-                      child: SizedBox(
-                    width: 12,
-                  )),
-                  WidgetSpan(
-                    child: Image.asset(
-                      itemflags[value]!,
-                      width: 40,
-                      height: 40,
+        .map<DropdownMenuItem<String>>(
+            (String value) => DropdownMenuItem<String>(
+                  value: value,
+                  child: RichText(
+                    text: TextSpan(
+                      text: value,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontFamily: 'Kalam'),
+                      children: [
+                        WidgetSpan(
+                            child: SizedBox(
+                              width: 12,
+                            ),
+                            alignment: PlaceholderAlignment.middle),
+                        WidgetSpan(
+                          child: Image.asset(
+                            itemflags[value]!,
+                            width: 40,
+                            height: 40,
+                          ),
+                          alignment: PlaceholderAlignment.middle,
+                        ),
+                      ],
                     ),
-                    alignment: PlaceholderAlignment.middle,
                   ),
-                ],
-              ),
-            )
-            /*Text(
-                    value,
-                    style: TextStyle(
-                        color: Colors.black, fontSize: 18, fontFamily: 'Kalam'),
-                  ),*/
-            ))
+                ))
         .toList();
     return DropdownButton<String>(
       items: items,

@@ -1,5 +1,5 @@
 class Translations {
-  static final languages = <String>['English', 'French', 'Arabic'];
+  static final languages = ['English', 'French', 'Arabic'];
   static final langflags = <String?, String>{
     'English': 'assets/eng.png',
     'French': 'assets/fr.png',
