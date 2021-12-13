@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/utils/translations.dart';
 //import 'package:flutter_application_1/function_class/buttons.dart';
 //import 'package:flutter_application_1/function_class/gest_detector_language.dart';
 import 'package:flutter_application_1/widget/translation_widget.dart';
@@ -93,7 +94,8 @@ class _SettingsState extends State<Settings> {
                 DropDownWidget(
                   value: globals.toLanguage,
                   onChangedLanguage: (newLanguage) => setState(() {
-                    globals.fromLanguage = globals.toLanguage;
+                    globals.fromLanguage =
+                        Translations.languages.first; //globals.toLanguage;
                     globals.toLanguage = newLanguage;
                     print('from language: ${globals.fromLanguage}');
                     print('to language: ${globals.toLanguage}');

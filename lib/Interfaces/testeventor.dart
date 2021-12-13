@@ -1,14 +1,20 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/widget/translation_widget.dart';
+import 'package:flutter_application_1/globals.dart' as globals;
 
 class Testeventor extends StatefulWidget {
   final String title;
   final String date;
   final String image;
   final String description;
-  Testeventor({Key? key, required this.title,required this.date,required this.image,required this.description}) : super(key: key);
-
-
+  Testeventor(
+      {Key? key,
+      required this.title,
+      required this.date,
+      required this.image,
+      required this.description})
+      : super(key: key);
 
   @override
   _TesteventorState createState() => _TesteventorState();
@@ -24,16 +30,26 @@ class _TesteventorState extends State<Testeventor> {
         children: [
           ListTile(
             //leading: Icon(Icons.arrow_drop_down_circle),
-            title: Text(
-              widget.title,
-              style: TextStyle(fontSize: 18, color: Colors.blueAccent),
+            title: TranslationWidget(
+              text: widget.title,
+              fromLanguage: globals.fromLanguage,
+              toLanguage: globals.toLanguage,
+              builder: (translated) => Text(
+                translated!,
+                style: TextStyle(fontSize: 18, color: Colors.blueAccent),
+              ),
             ),
-            subtitle: Text(
-              'On ${widget.date}',
-              style: TextStyle(color: Colors.black.withOpacity(0.6)),
+            subtitle: TranslationWidget(
+              text: 'On ${widget.date}',
+              fromLanguage: globals.fromLanguage,
+              toLanguage: globals.toLanguage,
+              builder: (translated) => Text(
+                translated!,
+                style: TextStyle(color: Colors.black.withOpacity(0.6)),
+              ),
             ),
           ),
-          Card3(img: widget.image,des: widget.description)
+          Card3(img: widget.image, des: widget.description)
         ],
       ),
     );
@@ -43,7 +59,7 @@ class _TesteventorState extends State<Testeventor> {
 class Card3 extends StatefulWidget {
   final String img;
   final String des;
-  Card3({required this.img,required this.des});
+  Card3({required this.img, required this.des});
   @override
   _Card3State createState() => _Card3State();
 }
@@ -65,9 +81,15 @@ class _Card3State extends State<Card3> {
             Image.network(widget.img),
             Padding(
               padding: const EdgeInsets.fromLTRB(8, 10, 8, 0),
-              child: Text(widget.des,
-                style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                textAlign: TextAlign.justify,
+              child: TranslationWidget(
+                text: widget.des,
+                fromLanguage: globals.fromLanguage,
+                toLanguage: globals.toLanguage,
+                builder: (translated) => Text(
+                  translated!,
+                  style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                  textAlign: TextAlign.justify,
+                ),
               ),
             ),
           ],
@@ -99,8 +121,13 @@ class _Card3State extends State<Card3> {
                       onPressed: () {
                         // Perform some action
                       },
-                      child: const Text('Participate',
-                          style: TextStyle(fontSize: 20)),
+                      child: TranslationWidget(
+                        text: 'Participate',
+                        fromLanguage: globals.fromLanguage,
+                        toLanguage: globals.toLanguage,
+                        builder: (translated) =>
+                            Text(translated!, style: TextStyle(fontSize: 20)),
+                      ),
                     ),
                     actions: [
                       IconButton(

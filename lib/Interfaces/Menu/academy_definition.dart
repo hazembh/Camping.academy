@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/widget/translation_widget.dart';
+import 'package:flutter_application_1/globals.dart' as globals;
 
 class Academy extends StatefulWidget {
-
   @override
   _AcademyState createState() => _AcademyState();
 }
@@ -66,21 +67,28 @@ class _AcademyState extends State<Academy> {
               ),
 
               Positioned(
-                  top: 225, // To take AppBar Size only
-                  left: 40.0,
-                  right: 0.0,
-                  child: GestureDetector(
-                      onTap: () {
-                        print("Container was tapped");
-                      },
-                      child: Container(
-                          child: Text(
-                        "Camping Academy",
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      )))),
+                top: 225, // To take AppBar Size only
+                left: 40.0,
+                right: 0.0,
+                child: GestureDetector(
+                  onTap: () {
+                    print("Container was tapped");
+                  },
+                  child: Container(
+                    child: TranslationWidget(
+                        text: "Camping Academy",
+                        fromLanguage: globals.fromLanguage,
+                        toLanguage: globals.toLanguage,
+                        builder: (translated) => Text(
+                              translated!,
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            )),
+                  ),
+                ),
+              ),
               Column(
                 children: [
                   SizedBox(
@@ -93,14 +101,20 @@ class _AcademyState extends State<Academy> {
                       ),
                       Container(
                         width: 390,
-                        child: Text(
-                          "It is a pioneering project in the field of informal training It is intended for guides and scouts. Aims to frame Capricorn and future work to produce leaders Highly qualified and experienced leaders with different talents. It also aims to develop the role of the scouting movement inThe field of capacity and skill development. Academy progress for beneficiaries and associates its specialized programs in each camping arts. The administration of the Academy is awarded Badges and certificates of competencies under the supervision of experienced leadersand those in the field.",
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.grey[600],
-                              letterSpacing: 1,
-                              fontWeight: FontWeight.w500),
-                          textAlign: TextAlign.justify,
+                        child: TranslationWidget(
+                          text:
+                              "It is a pioneering project in the field of informal training It is intended for guides and scouts. Aims to frame Capricorn and future work to produce leaders Highly qualified and experienced leaders with different talents. It also aims to develop the role of the scouting movement inThe field of capacity and skill development. Academy progress for beneficiaries and associates its specialized programs in each camping arts. The administration of the Academy is awarded Badges and certificates of competencies under the supervision of experienced leadersand those in the field.",
+                          fromLanguage: globals.fromLanguage,
+                          toLanguage: globals.toLanguage,
+                          builder: (translated) => Text(
+                            translated!,
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.grey[600],
+                                letterSpacing: 1,
+                                fontWeight: FontWeight.w500),
+                            textAlign: TextAlign.justify,
+                          ),
                         ),
                       ),
                     ],
@@ -135,23 +149,34 @@ class _AcademyState extends State<Academy> {
                           child: new ListView(
                             scrollDirection: Axis.vertical,
                             children: [
-                              Text(
-                                "Leadership is the art of letting someone else do something you want because they want to do it. ",
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.justify,
+                              TranslationWidget(
+                                text:
+                                    "Leadership is the art of letting someone else do something you want because they want to do it. ",
+                                fromLanguage: globals.fromLanguage,
+                                toLanguage: globals.toLanguage,
+                                builder: (translated) => Text(
+                                  translated!,
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.justify,
+                                ),
                               ),
                               SizedBox(
                                 height: 5,
                               ),
-                              Text(
-                                "Doueyet Izenhaouer",
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.black38,
-                                    fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.end,
-                              )
+                              TranslationWidget(
+                                  text: "Doueyet Izenhaouer",
+                                  fromLanguage: globals.fromLanguage,
+                                  toLanguage: globals.toLanguage,
+                                  builder: (translated) => Text(
+                                        translated!,
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.black38,
+                                            fontWeight: FontWeight.bold),
+                                        textAlign: TextAlign.end,
+                                      )),
                             ],
                           ),
                         ),

@@ -21,24 +21,25 @@ class MyTextFieldProfile extends StatelessWidget {
       width: width,
       child: Column(
         children: [
-          TranslationWidget(
+          /*TranslationWidget(
             text: name,
             fromLanguage: globals.fromLanguage,
             toLanguage: globals.toLanguage,
-            builder: (translated) => TextFormField(
-              controller: controller,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.black),
-              decoration: InputDecoration(
-                hintText: translated!,
-                hintStyle: TextStyle(color: color),
-                disabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(4)),
-                  borderSide: BorderSide(width: 1, color: Colors.orange),
-                ),
+            builder: (translated) => */
+          TextFormField(
+            controller: controller,
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.black),
+            decoration: InputDecoration(
+              hintText: name, //translated!,
+              hintStyle: TextStyle(color: color),
+              disabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(4)),
+                borderSide: BorderSide(width: 1, color: Colors.orange),
               ),
             ),
           ),
+          //),
         ],
       ),
     );

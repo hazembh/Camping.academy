@@ -28,7 +28,7 @@ class MyTextField extends StatelessWidget {
           style: TextStyle(color: Colors.black),
           decoration: InputDecoration(
             prefixIcon: Icon(icon, color: Colors.grey),
-            hintText: translated!,
+            hintText: translated,
             hintStyle: TextStyle(color: Colors.grey),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30.0),

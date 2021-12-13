@@ -22,39 +22,47 @@ class Navigationbar extends StatefulWidget {
 }
 
 class _NavigationbarState extends State<Navigationbar> {
-  int selectedPage = 2;
+  int selectedPage = 0;
   final _pageOptions = [
     Menu(),
     Settings(),
     Profiles(),
     Friends(),
     Objective(),
-    MapSample(),
+    //MapSample(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pageOptions[selectedPage],
-      bottomNavigationBar: ConvexAppBar(
-        color: Colors.black,
-        backgroundColor: Colors.white,
-        activeColor: Colors.blue,
-        //cornerRadius: 30,
-        items: [
-          TabItem(icon: Icons.menu, title: 'menu'),
-          TabItem(icon: Icons.settings, title: 'Settings'),
-          TabItem(icon: Icons.supervised_user_circle, title: 'User'),
-          TabItem(icon: Icons.message, title: 'Message'),
-          TabItem(icon: Icons.check, title: 'Objectives'),
-          TabItem(icon: Icons.map, title: 'MAP'),
-        ],
-        initialActiveIndex: selectedPage, //optional, default as 0
-        onTap: (int index) {
-          setState(() {
-            selectedPage = index;
-          });
-        },
+      bottomNavigationBar: TranslationWidget(
+        text: "Menu*Settings*User*Message*Objectives",
+        fromLanguage: globals.fromLanguage,
+        toLanguage: globals.toLanguage,
+        builder: (translated) => ConvexAppBar(
+          color: Colors.black,
+          backgroundColor: Colors.white,
+          activeColor: Colors.blue,
+          //cornerRadius: 30,
+          items: [
+            TabItem(icon: Icons.menu, title: translated!.split('*')[0]),
+            TabItem(icon: Icons.settings, title: translated.split('*')[1]),
+            TabItem(
+                icon: Icons.supervised_user_circle,
+                title: translated.split('*')[2]),
+            TabItem(icon: Icons.message, title: translated.split('*')[3]),
+            TabItem(icon: Icons.check, title: translated.split('*')[4]),
+            //TabItem(icon: Icons.map, title: translated.split('*')[5]),
+          ],
+          initialActiveIndex: selectedPage, //optional, default as 0
+          onTap: (int index) {
+            setState(() {
+              selectedPage = index;
+              //print("Translated nav bar: ${translated.split('*')}");
+            });
+          },
+        ),
       ),
     );
   }

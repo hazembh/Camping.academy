@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Interfaces/objectives/mission.dart';
 import 'package:flutter_application_1/data.dart';
 import 'package:flutter_application_1/function_class/gest_detector.dart';
+import 'package:flutter_application_1/widget/translation_widget.dart';
+import 'package:flutter_application_1/globals.dart' as globals;
 
 class Story extends StatefulWidget {
   final String image;
@@ -21,7 +23,12 @@ class _StoryState extends State<Story> {
     final double width = MediaQuery.of(context).size.width;
     final double height = MediaQuery.of(context).size.height;
     return Hero(
-      tag: 'mission',
+      tag: TranslationWidget(
+        text: "mission",
+        fromLanguage: globals.fromLanguage,
+        toLanguage: globals.toLanguage,
+        builder: (translated) => Text(translated!),
+      ),
       child: Stack(
         children: [
           Column(
@@ -123,13 +130,17 @@ class _ContState extends State<Cont> {
                   widget.image3,
                   width: height / 5.7,
                 ),
-                Text(
-                  widget.title,
-                  style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                )
+                TranslationWidget(
+                    text: widget.title,
+                    fromLanguage: globals.fromLanguage,
+                    toLanguage: globals.toLanguage,
+                    builder: (translated) => Text(
+                          translated!,
+                          style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        )),
               ],
             ),
           ),

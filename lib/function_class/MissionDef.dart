@@ -5,6 +5,8 @@ import 'package:open_file/open_file.dart';
 import 'package:path/path.dart';
 import 'FieldTextMission.dart';
 import 'buttons.dart';
+import 'package:flutter_application_1/widget/translation_widget.dart';
+import 'package:flutter_application_1/globals.dart' as globals;
 
 class MissionDefinition extends StatefulWidget {
   Function checkbox;
@@ -66,12 +68,17 @@ class _MissionDefinitionState extends State<MissionDefinition> {
                   // SizedBox(width:width/30),
                   Container(
                     width: width - 300 / 2,
-                    child: Text(
-                      widget.question,
-                      style: TextStyle(
-                        fontSize: 15.0,
+                    child: TranslationWidget(
+                      text: widget.question,
+                      fromLanguage: globals.fromLanguage,
+                      toLanguage: globals.toLanguage,
+                      builder: (translated) => Text(
+                        translated!,
+                        style: TextStyle(
+                          fontSize: 15.0,
+                        ),
+                        textAlign: TextAlign.justify,
                       ),
-                      textAlign: TextAlign.justify,
                     ),
                   ), //Text
                   Checkbox(
@@ -119,7 +126,7 @@ class _MissionDefinitionState extends State<MissionDefinition> {
               ),
               SizedBox(height: width / 30),
               TextFieldMission(
-                name: "Commentaire ....",
+                name: "Comment",
                 size: width / 1.25,
                 line: 3,
               ),

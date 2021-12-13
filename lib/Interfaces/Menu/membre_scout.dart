@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Interfaces/Menu/academy_definition.dart';
 import 'package:flutter_application_1/function_class/teamdef.dart';
+import 'package:flutter_application_1/widget/translation_widget.dart';
+import 'package:flutter_application_1/globals.dart' as globals;
 
 class Membrescouts extends StatefulWidget {
-
   @override
   _MembrescoutsState createState() => _MembrescoutsState();
 }
@@ -24,8 +25,7 @@ class _MembrescoutsState extends State<Membrescouts> {
                 end: Alignment.bottomCenter,
               ),
             ),
-            child: Column(
-                children: <Widget>[
+            child: Column(children: <Widget>[
               Stack(
                 children: <Widget>[
                   Container(
@@ -89,7 +89,7 @@ class _MembrescoutsState extends State<Membrescouts> {
                               fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          " Academy",
+                          "Academy",
                           style: TextStyle(
                               fontSize: 25,
                               color: Colors.brown[800],
@@ -99,21 +99,29 @@ class _MembrescoutsState extends State<Membrescouts> {
                     ),
                   ),
                   Positioned(
-                      top: 220, // To take AppBar Size only
-                      left: 40.0,
-                      right: 0.0,
-                      child: GestureDetector(
-                          onTap: () {
-                            print("Container was tapped 2");
-                          },
-                          child: Container(
-                              child: Text(
-                            "Team",
+                    top: 220, // To take AppBar Size only
+                    left: 40.0,
+                    right: 0.0,
+                    child: GestureDetector(
+                      onTap: () {
+                        print("Container was tapped 2");
+                      },
+                      child: Container(
+                        child: TranslationWidget(
+                          text: "The Team",
+                          fromLanguage: globals.fromLanguage,
+                          toLanguage: globals.toLanguage,
+                          builder: (translated) => Text(
+                            translated!,
                             style: TextStyle(
                                 fontSize: 40,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
-                          )))),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
               SizedBox(

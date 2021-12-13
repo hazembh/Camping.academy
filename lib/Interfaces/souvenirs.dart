@@ -11,9 +11,10 @@ import 'package:flutter_application_1/function_class/buttons.dart';
 import 'package:flutter_application_1/function_class/eventtextfield.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:open_file/open_file.dart';
-import'dart:io';
-
+import 'dart:io';
 import 'Menu/menu.dart';
+import 'package:flutter_application_1/widget/translation_widget.dart';
+import 'package:flutter_application_1/globals.dart' as globals;
 
 class Souvenirs extends StatefulWidget {
   const Souvenirs({Key? key}) : super(key: key);
@@ -42,7 +43,6 @@ class _SouvenirsState extends State<Souvenirs> {
         'title': title.text.trim(),
         'Date': Date.text.trim(),
         'image': imgUrl,
-
       });
     } catch (e) {
       hasException = true;
@@ -62,9 +62,7 @@ class _SouvenirsState extends State<Souvenirs> {
   }
 
   void validation() {
-    if (title.text
-        .trim()
-        .isEmpty || title.text.trim() == null) {
+    if (title.text.trim().isEmpty || title.text.trim() == null) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -72,14 +70,12 @@ class _SouvenirsState extends State<Souvenirs> {
             children: [
               Text('Please Enter The Title!',
                   style:
-                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
       return;
     }
-    if (Date.text
-        .trim()
-        .isEmpty || Date.text.trim() == null) {
+    if (Date.text.trim().isEmpty || Date.text.trim() == null) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.grey[200],
           content: Row(
@@ -87,7 +83,7 @@ class _SouvenirsState extends State<Souvenirs> {
             children: [
               Text('Please enter the date',
                   style:
-                  TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
+                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold))
             ],
           )));
 
@@ -105,7 +101,6 @@ class _SouvenirsState extends State<Souvenirs> {
     var img = await ImagePicker.platform.pickImage(source: ImageSource.camera);
     setState(() {
       images = File(img!.path);
-
     });
   }
 
@@ -126,14 +121,24 @@ class _SouvenirsState extends State<Souvenirs> {
                 children: <Widget>[
                   new ListTile(
                       leading: new Icon(Icons.photo_library),
-                      title: new Text('Photo Library'),
+                      title: new TranslationWidget(
+                        text: 'Photo Library',
+                        fromLanguage: globals.fromLanguage,
+                        toLanguage: globals.toLanguage,
+                        builder: (translated) => Text(translated!),
+                      ),
                       onTap: () {
                         _imgFromGallery();
                         Navigator.of(context).pop();
                       }),
                   new ListTile(
                     leading: new Icon(Icons.photo_camera),
-                    title: new Text('Camera'),
+                    title: new TranslationWidget(
+                      text: 'Camera',
+                      fromLanguage: globals.fromLanguage,
+                      toLanguage: globals.toLanguage,
+                      builder: (translated) => Text(translated!),
+                    ),
                     onTap: () {
                       _imgFromCamera();
                       Navigator.of(context).pop();
@@ -143,76 +148,74 @@ class _SouvenirsState extends State<Souvenirs> {
               ),
             ),
           );
-        }
-    );
+        });
   }
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery
-        .of(context)
-        .size;
+    final size = MediaQuery.of(context).size;
     final height = size.height;
     final width = size.width;
     final user = FirebaseAuth.instance.currentUser;
     final CollectionReference collectionReference =
-    FirebaseFirestore.instance.collection('Souvenirs');
-
+        FirebaseFirestore.instance.collection('Souvenirs');
 
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0)),
-        child: Column(
-            children: [ ListTile(
-              tileColor: Colors.white70,
-              //toolbarHeight: 50,
-              //elevation: 3.0,
-              leading: Icon(Icons.wallet_membership_outlined,
-                  color: Colors.indigo[900], size: 30),
-              title: Text('Souvenirs',
+        child: Column(children: [
+          ListTile(
+            tileColor: Colors.white70,
+            //toolbarHeight: 50,
+            //elevation: 3.0,
+            leading: Icon(Icons.wallet_membership_outlined,
+                color: Colors.indigo[900], size: 30),
+            title: TranslationWidget(
+              text: 'Souvenirs',
+              fromLanguage: globals.fromLanguage,
+              toLanguage: globals.toLanguage,
+              builder: (translated) => Text(translated!,
                   style: TextStyle(
                     fontSize: 25,
                     color: Colors.indigo[900],
                     letterSpacing: 1,
                     fontWeight: FontWeight.bold,
                   )),
-              trailing: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: Icon(
-                    Icons.arrow_back,
-                    size: 30,
-                    color: Colors.indigo[800],
-                  ),
+            ),
+            trailing: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: IconButton(
+                onPressed: () => Navigator.pop(context),
+                icon: Icon(
+                  Icons.arrow_back,
+                  size: 30,
+                  color: Colors.indigo[800],
                 ),
               ),
-            )
-              , Expanded(
-                child: StreamBuilder(
-                    stream: collectionReference.snapshots(),
-                    builder: (BuildContext context,
-                        AsyncSnapshot<QuerySnapshot> snapshot) {
-                      if (snapshot.hasData) {
-                        return ListView(
-                          children: snapshot.data!.docs.map((e) =>
-                              Testsouvenir(
+            ),
+          ),
+          Expanded(
+            child: StreamBuilder(
+                stream: collectionReference.snapshots(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView(
+                      children: snapshot.data!.docs
+                          .map((e) => Testsouvenir(
                                 title: e['title'],
                                 date: e['Date'],
                                 image: e['image'],
-                              )
-                          ).toList(),
-
-                        );
-                      }
-                      return Center(child: CircularProgressIndicator(),);
-                    }
-
-                ),
-              ),
-            ]
-        ),
-
+                              ))
+                          .toList(),
+                    );
+                  }
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }),
+          ),
+        ]),
       ),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: const Color(0xff03dac6),
@@ -220,59 +223,67 @@ class _SouvenirsState extends State<Souvenirs> {
         onPressed: () {
           showDialog<String>(
             context: context,
-            builder: (BuildContext context) =>
-                SimpleDialog(
-                  title: Row(
+            builder: (BuildContext context) => SimpleDialog(
+              title: Row(
+                children: [
+                  TranslationWidget(
+                    text: 'Add Souvenirs ',
+                    fromLanguage: globals.fromLanguage,
+                    toLanguage: globals.toLanguage,
+                    builder: (translated) => Text(translated!),
+                  ),
+                  SizedBox(
+                    width: width / 4.2,
+                  ),
+                  Column(
                     children: [
-                      const Text('Add Souvenirs '),
-                      SizedBox(width: width / 4.2,),
-                      Column(
-                        children: [
-                          IconButton(onPressed: (){
-                            setState(() {
-                              _showPicker(context);
-
-                            });
-
-
-                          },
-
-                            icon: Icon(Icons.download_rounded),
-                            iconSize: 30,
-                            color: Color(0xff03dac6),),
-
-                        ],
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _showPicker(context);
+                          });
+                        },
+                        icon: Icon(Icons.download_rounded),
+                        iconSize: 30,
+                        color: Color(0xff03dac6),
                       ),
                     ],
                   ),
-
-                  children: <Widget>[
-                    ListTile(
-                        title: EventTextField(name: 'Title',
-                            icon: Icons.card_membership_outlined,
-                            controller: title,
-                            size: 1)
-                    ),
-                    ListTile(
-                        title: EventTextField(name: 'Date : Month,Day Year',
-                          icon: Icons.date_range,
-                          controller: Date,
-                          size: 1,)
-                    ),
-                    SizedBox(height: 20),
-                    loading
-                        ? CircularProgressIndicator(color: Colors.black)
-                        : button(
+                ],
+              ),
+              children: <Widget>[
+                ListTile(
+                    title: EventTextField(
+                        name: 'Title',
+                        icon: Icons.card_membership_outlined,
+                        controller: title,
+                        size: 1)),
+                ListTile(
+                    title: EventTextField(
+                  name: 'Date',
+                  icon: Icons.date_range,
+                  controller: Date,
+                  size: 1,
+                )),
+                SizedBox(height: 20),
+                loading
+                    ? CircularProgressIndicator(color: Colors.black)
+                    : button(
                         val: "Submit",
                         onTap: () async {
                           validation();
                         }),
-                  ],
-                ),
+              ],
+            ),
           );
         },
         icon: Icon(Icons.add),
-        label: Text('ADD'),
+        label: TranslationWidget(
+          text: "ADD",
+          fromLanguage: globals.fromLanguage,
+          toLanguage: globals.toLanguage,
+          builder: (translated) => Text(translated!),
+        ),
       ),
     );
   }

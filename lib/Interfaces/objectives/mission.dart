@@ -5,6 +5,8 @@ import 'package:flutter_application_1/function_class/FieldTextMission.dart';
 import 'package:flutter_application_1/function_class/MissionDef.dart';
 import 'package:flutter_application_1/function_class/TextFiled.dart';
 import 'package:flutter_application_1/function_class/buttons.dart';
+import 'package:flutter_application_1/widget/translation_widget.dart';
+import 'package:flutter_application_1/globals.dart' as globals;
 
 class Mission extends StatefulWidget {
   String title;
@@ -26,9 +28,14 @@ class _MissionState extends State<Mission> {
           toolbarHeight: 110,
           backgroundColor: Colors.white,
           //centerTitle: true,
-          title: Text(
-            widget.title,
-            style: TextStyle(fontSize: 28, color: Colors.black),
+          title: TranslationWidget(
+            text: widget.title,
+            fromLanguage: globals.fromLanguage,
+            toLanguage: globals.toLanguage,
+            builder: (translated) => Text(
+              translated!,
+              style: TextStyle(fontSize: 28, color: Colors.black),
+            ),
           ),
           leading: IconButton(
             icon: Icon(
@@ -63,15 +70,21 @@ class _MissionState extends State<Mission> {
             child: Container(
           child: Column(children: [
             Padding(
-                padding: const EdgeInsets.only(top: 20, left: 40, right: 40),
-                child: Text(
-                  "The candidate shall have the following requirements to obtain the Bronze Star",
-                  style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red),
-                  textAlign: TextAlign.justify,
-                )),
+              padding: const EdgeInsets.only(top: 20, left: 40, right: 40),
+              child: TranslationWidget(
+                  text:
+                      "The candidate shall have the following requirements to obtain the Bronze Star",
+                  fromLanguage: globals.fromLanguage,
+                  toLanguage: globals.toLanguage,
+                  builder: (translated) => Text(
+                        translated!,
+                        style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red),
+                        textAlign: TextAlign.justify,
+                      )),
+            ),
             SizedBox(height: width / 30),
             MissionDefinition(widget.fixedLengthList[0], () {}, () {}),
             MissionDefinition(widget.fixedLengthList[1], () {}, () {}),
